@@ -1,7 +1,7 @@
 {
-  "name": "react-express-auth-template",
+  "name": "access-transit",
   "version": "1.0.0",
-  "description": "",
+  "description": "A project that bridges critical gaps in transit accessibility",
   "main": "server/index.js",
   "scripts": {
     "kickstart": "cd frontend && npm i && npm run build && cd ../server && npm i && npm run migrate && npm run seed",
@@ -11,7 +11,7 @@
     "start": "cd server && npm start",
     "dev": "cd server && npm run dev",
     "dev:frontend": "cd frontend && npm run dev",
-    "connect": "psql -U postgres -d react_auth_example",
+    "connect": "psql -U postgres -d access_transit_db",
     "lint": "eslint . --fix"
   },
   "keywords": [],
