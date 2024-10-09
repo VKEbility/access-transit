@@ -12,8 +12,7 @@
     "start": "cd server && npm start",
     "dev": "cd server && npm run dev",
     "dev:frontend": "cd frontend && npm run dev",
-    "connect": "psql -U postgres -d access_transit_db",
-    "lint": "eslint . --fix"
+    "connect": "psql -U postgres -d access_transit_db"
   },
   "keywords": [],
   "author": "",

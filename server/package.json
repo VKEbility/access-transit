@@ -12,30 +12,23 @@
     "migrate:make": "knex migrate:make",
     "migrate:rollback": "knex migrate:rollback",
     "seed": "knex seed:run",
-    "seed:make": "knex seed:make",
-    "lint": "eslint . --fix"
+    "seed:make": "knex seed:make"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
-    "connect-session-knex": "^3.0.1",
+    "connect-session-knex": "^5.0.0",
     "cookie-parser": "^1.4.6",
     "cookie-session": "^2.0.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
-    "knex": "^2.4.2",
+    "knex": "^3.1.0",
     "pg": "^8.10.0"
   },
   "devDependencies": {
-    "eslint": "^8.39.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.3.4",
-    "nodemon": "^2.0.22"
+    "nodemon": "^3.1.7"
   }
 }
