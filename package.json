@@ -8,6 +8,7 @@
     "build:frontend": "cd frontend && npm i && npm run build",
     "migrate": "cd server && npm run migrate",
     "seed": "cd server && npm run seed",
+    "migrate:make": "cd server && npx run migrate:make",
     "start": "cd server && npm start",
     "dev": "cd server && npm run dev",
     "dev:frontend": "cd frontend && npm run dev",
