@@ -6,8 +6,10 @@ const NavBar = () => {
   // the to prop is the path you want to go to
   return (
     <header>
+      <div id="site-logo-and-title-container">
           <a href='/'><img src={siteLogo} alt="Site Logo" /></a>
           <a id='logo' href='/'>AccessTransit</a>
+      </div>
           <nav className="nav-bar">
          {/* <li className="nav-link"><NavLink to='/'>Home</NavLink></li> */}
         <ul className="nav-link-container">

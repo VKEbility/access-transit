@@ -35,11 +35,11 @@ export default function HomePage() {
   // if (loading) {
   //   return <div>Loading...</div>;
   // }
+
   return (
     <>
       {currentUser && <NavBar/> ? (
         <>
-        // Logged-in version of the page
         <h1 id="site-title-logged-in">Welcome to #Access Transit</h1>
   <div id="home-flex-container">
     <div id="access-transit-map">
@@ -50,8 +50,12 @@ export default function HomePage() {
   <div id="transit-cards-structure">
     <div id="transit-cards-container">
       <div id="transit-cards">
-
-
+        <img id="train-logo" src="/train-icons/1-digit.svg"></img>
+  
+        <div className="train-logos-container">
+    
+      
+       </div>
       </div>
     </div>
   </div>
