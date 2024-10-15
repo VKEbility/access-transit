@@ -1,43 +1,46 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import CurrentUserContext from '../contexts/current-user-context';
+import NavBar from '../components/NavBar';
 
 export default function HomePage() {
-  const [isAuthorized, setIsLoggedIn] = useState(false); // Track login status
-  const [username, setUsername] = useState(''); // Track the username
-  const [loading, setLoading] = useState(true); // Track loading state
+  const { currentUser } = useContext(CurrentUserContext)
+  // const [isAuthorized, setIsLoggedIn] = useState(false); // Track login status
+  // const [username, setUsername] = useState(''); // Track the username
+  // const [loading, setLoading] = useState(true); // Track loading state
 
   // Fetch the login status from the backend API when the component mounts
-  useEffect(() => {
-    const checkSignInStatus = async () => {
-      try {
-        const response = await fetch('/api/check-signin');
-        const data = await response.json();
+  // useEffect(() => {
+  //   const checkSignInStatus = async () => {
+  //     try {
+  //       const response = await fetch('/api/check-signin'); //dont need; use usrontext to determine if user is authenticated with cookies
+  //       const data = await response.json();
         
-        if (data.isAuthorized) {
-          setIsLoggedIn(true); // User is signed in
-          setUsername(data.username); // Store the username
-        } else {
-          setIsLoggedIn(false); // User is not signed in
-        }
-        setLoading(false); // Loading is done
-      } catch (error) {
-        console.error('Error checking sign-in status:', error);
-        setLoading(false); // Ensure loading ends even on error
-      }
-    };
+  //       if (data.isAuthorized) {
+  //         setIsLoggedIn(true); // User is signed in
+  //         setUsername(data.username); // Store the username
+  //       } else {
+  //         setIsLoggedIn(false); // User is not signed in
+  //       }
+  //       setLoading(false); // Loading is done
+  //     } catch (error) {
+  //       console.error('Error checking sign-in status:', error);
+  //       setLoading(false); // Ensure loading ends even on error
+  //     }
+  //   };
 
-    checkSignInStatus();
-  }, []); // Empty array means this effect runs once when the component mounts
+  //   checkSignInStatus();
+  // }, []); // Empty array means this effect runs once when the component mounts
 
   // If loading, show a loading spinner or message
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
   return (
     <>
-      {isAuthorized && <NavBar/> ? (
+      {currentUser && <NavBar/> ? (
         <>
         // Logged-in version of the page
-        <h1 id="site-title-logged-in">Welcome to #Access Transit {username}</h1>
+        <h1 id="site-title-logged-in">Welcome to #Access Transit</h1>
   <div id="home-flex-container">
     <div id="access-transit-map">
 
