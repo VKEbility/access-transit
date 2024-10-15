@@ -8,11 +8,11 @@ const NavBar = () => {
       <nav className="nav-bar">
         <ul className="nav-link-container">
           <a id='logo' href='/'>AccessTransit</a>
-          <li><NavLink to='/'>Home</NavLink></li>
+          <li className="nav-link"><NavLink to='/'>Home</NavLink></li>
           <li className="nav-link"><NavLink to='/about'>About</NavLink></li>
           <li className="nav-link"><NavLink to='/login'>Login</NavLink></li>
           <li className="nav-link"><NavLink to='/sign-up'>Sign Up</NavLink></li>
-          <li className="nav-link"><NavLink to='/user'>User</NavLink></li>
+          <li className="nav-link"><NavLink to='/user'>Profile</NavLink></li>
         </ul>
       </nav>
     </header>

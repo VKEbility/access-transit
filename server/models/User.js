@@ -81,6 +81,67 @@ class User {
   static async deleteAll() {
     return knex('users').del()
   }
+
+  static async updateLanguagePreference(userId, selectedLanguage) {
+    // SQL query to update the user's language preference
+    const query = `
+      UPDATE users
+      SET language_preference = ?
+      WHERE user_id = ?;
+    `;
+  
+    // Execute the raw query with the user's selected language and user ID
+    const result = await knex.raw(query, [selectedLanguage, userId]);
+  
+    // Check if the update was successful
+    return result.rowCount > 0; // true if at least one row was updated
+  }
+
+  static async filterAccessibleStations({ hasElevator, hasEscalator, wheelchairAccessible }) {
+    // SQL query with dynamic filtering based on accessibility preferences
+    const query = `
+      SELECT * 
+      FROM stations
+      WHERE is_operational = 1
+        AND (
+          (has_elevator = ?)
+          OR (? = false AND has_escalator = ?)
+          OR (? = false AND wheelchair_accessible = ?)
+        );
+    `;
+  
+    // Execute the raw query with the user's preferences
+    const result = await knex.raw(query, [
+      hasElevator, 
+      hasElevator, // for disabling escalator if elevator is selected
+      hasEscalator, 
+      hasElevator, // for disabling wheelchair accessible if elevator is selected
+      wheelchairAccessible
+    ]);
+  
+    // Return the list of filtered stations
+    return result.rows;
+  }
+
+  static async listByPreferences({ hasElevator, hasEscalator, wheelchairAccessible }) {
+    // Initialize the base query
+    const query = knex('stations').where('is_operational', 1);
+  
+    // Add conditions based on user's preferences
+    if (hasElevator) {
+      query.andWhere('has_elevator', true);
+    }
+    if (hasEscalator) {
+      query.andWhere('has_escalator', true);
+    }
+    if (wheelchairAccessible) {
+      query.andWhere('wheelchair_accessible', true);
+    }
+  
+    // Execute the query and return the results
+    const result = await query;
+    return result;
+  }
 }
 
 module.exports = User;
