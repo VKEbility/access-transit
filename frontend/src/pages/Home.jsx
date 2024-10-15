@@ -55,7 +55,7 @@ export default function HomePage() {
         <div className="train-logos-container">
     
       
-       </div>
+    </div>
       </div>
     </div>
   </div>
