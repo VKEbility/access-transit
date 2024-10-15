@@ -1,6 +1,31 @@
+html {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+a { 
+  color:black;
+} /* Globally */
+
+/* Each state */
+
+a:visited { text-decoration: none; color: white; }
+a:hover { text-decoration: none; color: white }
+a:focus { text-decoration: none; color:white }
+a:hover, a:active { text-decoration: none; color:black }
+
+/* Welcome Log In Button */
+#log-in-redirection {
+  color: black;
+}
+
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
+  height: 100%;
 }
 
 input, label {
@@ -20,6 +45,7 @@ header {
 }
 
 #logo {
+  display: flex;
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
@@ -39,6 +65,12 @@ nav a {
   color: #FFF;
 }
 
+.nav-link-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
 form {
   padding: 1rem;
   border: 1px solid #CCC;
@@ -46,10 +78,125 @@ form {
   margin: 1rem auto;
 }
 
+button {
+  border-radius: 8px;
+  color: white;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
 
 /* automatically added by NavLink component */
 .active {
   color: #EEBC32;
   font-weight: bold;
   font-style: italic;
+}
+/* Home Page CSS, if the user is logged in */
+#access-transit {
+  text-align: center;
+}
+
+#home-flex-container {
+  display: flex;
+  justify-content: center;
+}
+
+#access-transit-map {
+  display: flex;
+  background-color: black;
+  width: 700px;
+  height: 500px;
+}
+
+#transit-cards-structure {
+  display: flex;
+  background-color: gray;
+  justify-content: center;
+  padding: 20px;
+}
+
+#transit-card-title {
+  margin: 0 auto;
+  height: 100px;
+}
+
+#transit-cards-container {
+ display: flex;
+ background-color: black;
+ width: 700px;
+ height: 500px;
+ padding: 30px;
+}
+
+#transit-cards {
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+}
+
+/* Not logged in CSS */
+#welcome-portion {
+  flex-direction: column;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+#welcome-button-container {
+  width: 500px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#site-title-not-logged-in {
+  font-size: 50px;
+}
+
+#happy-people-image-container {
+   display: flex;
+   justify-content: space-around;
+   width: 1000px;
+   margin: 35px;
+}
+
+#happy-people {
+  width: 200px;
+  height: 200px;
+  background-color: black;
+}
+
+#select-language-button {
+  margin: 10px;
+  font-size: 35px;
+}
+
+#site-description-container {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 400px;
+  align-items: center;
+}
+
+#site-description {
+  margin: 20px;
+  text-align: center;
+  font-size: 30px;
 }

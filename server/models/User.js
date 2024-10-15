@@ -85,7 +85,7 @@ class User {
   static async updateLanguagePreference(userId, selectedLanguage) {
     // SQL query to update the user's language preference
     const query = `
-      UPDATE users
+      UPDATE user
       SET language_preference = ?
       WHERE user_id = ?;
     `;
@@ -142,6 +142,21 @@ class User {
     const result = await query;
     return result;
   }
+
+  static async isUserSignedIn(username) {
+    // SQL query to check if the user is signed in
+    const query = `SELECT logged_in FROM users WHERE username = ?`;
+  
+    // Execute the query with the provided username
+    const result = await knex.raw(query, [username]);
+  
+    // Extract the logged-in status
+    const isLoggedIn = result.rows[0]?.logged_in;
+  
+    // Return true if the user is logged in, otherwise false
+    return isLoggedIn === true;
+  }
+  
 }
 
 module.exports = User;

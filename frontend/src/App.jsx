@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import SignUpPage from './pages/SignUp';
 import LoginPage from './pages/Login';
 import About from './pages/About';
+import Services from './pages/Services';
+import SeeStatus from './pages/SeeStatus';
 import SiteHeadingAndNav from './components/SiteHeadingAndNav';
 import NotFoundPage from './pages/NotFound';
 import UserContext from './contexts/current-user-context';
@@ -27,6 +29,8 @@ export default function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/sign-up' element={<SignUpPage />} />
         <Route path='/users' element={<UsersPage />} />
+        <Route path='/services' element={<Services />} />
+        <Route path='/see-status' element={<SeeStatus />} />
         <Route path='/about' element={<About />} />
         <Route path='/users/:id' element={<UserPage />} />
         <Route path='*' element={<NotFoundPage />} />

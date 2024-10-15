@@ -33,7 +33,6 @@ app.post('/api/login', authControllers.loginUser);
 app.delete('/api/logout', authControllers.logoutUser);
 
 
-
 ///////////////////////////////
 // User Routes
 ///////////////////////////////
