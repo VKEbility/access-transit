@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom"; // import NavLink from react-router-dom
+import siteLogo from '../assets/SiteLogo.png';
 
 const NavBar = () => {
   // return a nav with a ul and li for each NavLink; notice the use of NavLink from react-router-dom
   // the to prop is the path you want to go to
   return (
     <header>
-          <img src="/assets/SiteLogo.png"></img>
+          <a href='/'><img src={siteLogo} alt="Site Logo" /></a>
           <a id='logo' href='/'>AccessTransit</a>
           <nav className="nav-bar">
          {/* <li className="nav-link"><NavLink to='/'>Home</NavLink></li> */}
