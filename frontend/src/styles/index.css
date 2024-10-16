@@ -10,21 +10,20 @@ html {
   height: 100%;
 }
 
+.nav-link {
+  color: black;
+}
+
 a { 
-  color:black;
+  text-decoration: none;
+  color: white;
 } /* Globally */
 
 /* Each state */
-
 a:visited { text-decoration: none; color: black }
-a:hover { text-decoration: none; color: black }
-a:focus { text-decoration: none; color: black}
+a:hover { text-decoration: none; color: white }
+a:focus { text-decoration: none; color: white}
 a:hover, a:active { text-decoration: none; color:black }
-
-/* Welcome Log In Button */
-#log-in-redirection {
-  color: black;
-}
 
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -65,7 +64,10 @@ nav ul {
 
 nav a {
   display: block;
-  color: #FFF;
+}
+
+.nav-link {
+  color: black;
 }
 
 .nav-link-container {
@@ -150,6 +152,7 @@ button:focus-visible {
 }
 
 #transit-cards {
+  display: flex;
   background-color: black;
   width: 200px;
   height: 200px;
@@ -162,6 +165,36 @@ button:focus-visible {
   align-items: center;
 }
 
+#accessibility-icons-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+#wheelchair-icon {
+ width: 50px;
+ height: 50px;
+ background-color: white;
+}
+
+#elevator-icon {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+ }
+
+#escalators-icon {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+ }
+#train-logo-container {
+  display: flex;
+  align-items: center;
+  width: 30px;
+  height: 40px;
+
+}
 /* Not logged in CSS */
 #welcome-portion {
   flex-direction: column;
@@ -175,6 +208,9 @@ button:focus-visible {
   width: 500px;
   display: flex;
   justify-content: space-evenly;
+}
+#welcome-button-links {
+  color: white;
 }
 
 #site-title-not-logged-in {

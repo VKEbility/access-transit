@@ -156,7 +156,8 @@ class User {
     // Return true if the user is logged in, otherwise false
     return isLoggedIn === true;
   }
-  
+  /// When a user clicks on an icon, the switch switches
+  /// frontend is going 
 }
 
 module.exports = User;

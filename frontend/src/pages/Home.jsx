@@ -1,44 +1,21 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import CurrentUserContext from '../contexts/current-user-context';
 import NavBar from '../components/NavBar';
 
+
+// import GetIcons from '../components/TrainLogo';
 export default function HomePage() {
   const { currentUser } = useContext(CurrentUserContext)
-  // const [isAuthorized, setIsLoggedIn] = useState(false); // Track login status
-  // const [username, setUsername] = useState(''); // Track the username
-  // const [loading, setLoading] = useState(true); // Track loading state
-
-  // Fetch the login status from the backend API when the component mounts
-  // useEffect(() => {
-  //   const checkSignInStatus = async () => {
-  //     try {
-  //       const response = await fetch('/api/check-signin'); //dont need; use usrontext to determine if user is authenticated with cookies
-  //       const data = await response.json();
-        
-  //       if (data.isAuthorized) {
-  //         setIsLoggedIn(true); // User is signed in
-  //         setUsername(data.username); // Store the username
-  //       } else {
-  //         setIsLoggedIn(false); // User is not signed in
-  //       }
-  //       setLoading(false); // Loading is done
-  //     } catch (error) {
-  //       console.error('Error checking sign-in status:', error);
-  //       setLoading(false); // Ensure loading ends even on error
-  //     }
-  //   };
-
-  //   checkSignInStatus();
-  // }, []); // Empty array means this effect runs once when the component mounts
-
-  // If loading, show a loading spinner or message
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
-
+  const trainLogos = [
+    '/train-icons/1.svg',
+    '/train-icons/2.svg',
+    '/train-icons/3.svg',
+    '/train-icons/4.svg',
+    
+  ]
   return (
     <>
-      {currentUser && <NavBar/> ? (
+      {currentUser ? (
         <>
         <h1 id="site-title-logged-in">Welcome to #Access Transit</h1>
   <div id="home-flex-container">
@@ -49,16 +26,30 @@ export default function HomePage() {
   <h1 id="transit-card-title">Cards</h1>
   <div id="transit-cards-structure">
     <div id="transit-cards-container">
-      <div id="transit-cards">
-        <img id="train-logo" src="/train-icons/1-digit.svg"></img>
-  
-        <div className="train-logos-container">
-    
+    <div id="transit-cards">
+        <div id="train-logo-container">
+          {trainLogos.map((logoPath, index) => (
+            <img
+              key={index}
+              src={logoPath}
+              alt={`Train logo ${index + 1}`}
+              className="train-logo"
+            />
+          ))}
+        </div>
+          {/* Use the GetIcons component and pass the current trainLineName */}
+          {/*<GetIcons/>*/}
+          
+          {/* Add some buttons or controls to change trainLineName dynamically if needed */}
+          <div id="accessibility-icons-container">
+            <div id="wheelchair-icon">Wheelchair</div>
+            <div id="elevator-icon">Elevator</div>
+            <div id="escalators-icon">Escalators</div>
+          </div>
       
-    </div>
-      </div>
-    </div>
-  </div>
+         </div>
+         </div>
+     </div>
 </>
   ) : (
     // Not logged in version
@@ -80,9 +71,9 @@ export default function HomePage() {
 
           </div>
          </div>
-        <p>Please <a id="log-in-redirection" href="/login">log in</a> to access your account.</p>
+        <p>Please <button><a id="welcome-button-links"href="/login">log in</a></button> to access your account.</p>
         <div id="site-description-container">
-          <p id="site-description">The most trusted source, real time status of yout favorite MTA <strong> elevators,
+          <p id="site-description">The most trusted source, real time status of your favorite MTA <strong> elevators,
             escalators, ADA stations</strong> and <strong> subway alerts </strong> in YOUR language</p>
             <p id="site-description">
               Status updated by users like you
