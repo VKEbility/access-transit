@@ -1,6 +1,10 @@
+import AccessibleStations from '../components/AccessibleStations';
+import EquipmentStatus from '../components/EquipmentStatus';
+
 export default function HomePage() {
   return <>
     <h1>Home</h1>
-    <p>Put something interesting here!</p>
+    <p>Cool stuff goes here!</p>
   </>
-}
+};
+
