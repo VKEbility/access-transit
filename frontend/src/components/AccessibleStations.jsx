@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {fetchHandler} from '../utils/fetchingUtils.js';
+// import {fetchHandler} from '../utils/fetchingUtils.js';
 
 export default function AccessibleStations() {
   const [accessibleTrainStations, setTrainStations] = useState([]);
@@ -13,8 +13,8 @@ export default function AccessibleStations() {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+        
         const data = await response.json();
-
         // Push data into accessibleArr
         const newAccessibleArr = [];
         data.forEach(trainStation => {
