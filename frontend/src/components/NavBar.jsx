@@ -9,6 +9,7 @@ const NavBar = () => {
         <ul className="nav-link-container">
           <a id='logo' href='/'>AccessTransit</a>
           <li><NavLink to='/'>Home</NavLink></li>
+          <li className="nav-link"><NavLink to='/accessible-stations'>Accessible Stations</NavLink></li>
           <li className="nav-link"><NavLink to='/about'>About</NavLink></li>
           <li className="nav-link"><NavLink to='/login'>Login</NavLink></li>
           <li className="nav-link"><NavLink to='/sign-up'>Sign Up</NavLink></li>

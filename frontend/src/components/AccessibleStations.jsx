@@ -37,6 +37,25 @@ export default function AccessibleStations() {
     doFetch();
   }, []);
 
-  console.log("Accessible Object: ", accessibleObj); // This will show the entered data 
+  // console.log("Accessible Object: ", accessibleObj); // This will show the entered data 
+
+  return (
+    <div>
+      <h1>Accessible Stations</h1>
+      <ul>
+        {
+          accessibleTrainStations.length > 0
+            ? accessibleTrainStations.map((trainStation) => (
+              <li key={trainStation.gtfs_stop_id}>
+                <p>Station ID: {trainStation.station_id}</p>
+                <p>Stop Name: {trainStation.stop_name}</p>
+              </li>
+            ))
+            : <p>Train Stations Are Not Found</p>
+        }
+      </ul>
+    </div>
+  )
+
 }
 
