@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 export default function EquipmentStatus() {
   const [equipmentStatuses, setEquipmentStatus] = useState([]);
-  const [statusesArr, setStatusArr] = useState([]);
+  const [statusesObj, setStatusObj] = useState([]);
 
   useEffect(() => {
     const doFetch = async () => {
@@ -16,14 +16,14 @@ export default function EquipmentStatus() {
 
         const data = await response.json();
         // Push data into accessibleArr
-        const accessibleEquipmentArr = [];
+        const accessibleEquipmentObj = {};
         data.forEach(equipment => {
-          accessibleEquipmentArr.push(equipment);
+          accessibleEquipmentObj[equipment.equipmentno] = [equipment.equipmenttype, equipment.stationcomplexid, equipment.isactive];
         });
 
         // Update state
         setEquipmentStatus(data);
-        setStatusArr(accessibleEquipmentArr);
+        setStatusObj(accessibleEquipmentObj);
       } catch (error) {
         console.log(error.message);
       }
@@ -32,6 +32,6 @@ export default function EquipmentStatus() {
     doFetch();
   }, []);
 
-  console.log("Equipments and their statuses: ", statusesArr); // This will show the pushed data 
+  console.log("Equipments and their statuses: ", statusesObj); // This will show the pushed data 
 }
 
