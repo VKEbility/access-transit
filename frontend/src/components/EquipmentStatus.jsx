@@ -15,10 +15,14 @@ export default function EquipmentStatus() {
         }
 
         const data = await response.json();
-        // Push data into accessibleArr
         const accessibleEquipmentObj = {};
+        // Push data into statusesObj
         data.forEach(equipment => {
-          accessibleEquipmentObj[equipment.equipmentno] = [equipment.equipmenttype, equipment.stationcomplexid, equipment.isactive];
+          accessibleEquipmentObj[equipment.equipmentno] = [
+            equipment.equipmenttype, 
+            equipment.stationcomplexid, 
+            equipment.isactive
+          ];
         });
 
         // Update state
@@ -32,6 +36,6 @@ export default function EquipmentStatus() {
     doFetch();
   }, []);
 
-  console.log("Equipments and their statuses: ", statusesObj); // This will show the pushed data 
+  console.log("Equipments and their statuses: ", statusesObj); // This will show the entered data 
 }
 

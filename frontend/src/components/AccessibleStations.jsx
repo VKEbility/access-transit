@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 export default function AccessibleStations() {
   const [accessibleTrainStations, setTrainStations] = useState([]);
-  const [accessibleArr, setAccessibleArr] = useState([]);
+  const [accessibleObj, setAccessibleObj] = useState([]);
 
   useEffect(() => {
     const doFetch = async () => {
@@ -15,15 +15,20 @@ export default function AccessibleStations() {
         }
         
         const data = await response.json();
-        // Push data into accessibleArr
-        const newAccessibleArr = [];
+        const newAccessibleObj = {};
+        // Push data into accessibleObj
         data.forEach(trainStation => {
-          newAccessibleArr.push(trainStation);
+          newAccessibleObj[trainStation.complex_id] = [
+            trainStation.ada, 
+            trainStation.station_id, 
+            trainStation.gtfs_stop_id, 
+            trainStation.stop_name
+          ];
         });
 
         // Update state
         setTrainStations(data);
-        setAccessibleArr(newAccessibleArr);
+        setAccessibleObj(newAccessibleObj);
       } catch (error) {
         console.log(error.message);
       }
@@ -32,6 +37,6 @@ export default function AccessibleStations() {
     doFetch();
   }, []);
 
-  console.log("Accessible Array: ", accessibleArr); // This will show the pushed data 
+  console.log("Accessible Object: ", accessibleObj); // This will show the entered data 
 }
 
