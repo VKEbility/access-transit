@@ -119,6 +119,18 @@ button:focus-visible {
 #home-flex-container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+#transitSearch {
+  width: 600px;
+  height: 50px;
+  margin: 10px;
+}
+
+#train-estimate {
+  color: white;
 }
 
 #access-transit-map {
@@ -140,6 +152,7 @@ button:focus-visible {
 
 #transit-cards-container {
  display: flex;
+ flex-wrap: wrap;
  background-color:#C7CC65;
  width: 700px;
  height: 500px;
@@ -151,13 +164,15 @@ button:focus-visible {
   height: 50px;
 }
 
-#transit-cards {
+.transit-cards {
   display: flex;
   background-color: black;
-  width: 200px;
+  flex-direction: column;
+  width: 190px;
   height: 200px;
   margin: 10px;
   padding: 10px;
+  justify-content: space-around;
 }
 
 #site-logo-and-title-container {
@@ -169,6 +184,10 @@ button:focus-visible {
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
+}
+
+#accessibility-icons {
+  color: white;
 }
 
 #wheelchair-icon {
@@ -188,13 +207,14 @@ button:focus-visible {
   height: 50px;
   background-color: white;
  }
-#train-logo-container {
+
+.train-logo {
   display: flex;
   align-items: center;
-  width: 30px;
+  width: 50px;
   height: 40px;
-
 }
+
 /* Not logged in CSS */
 #welcome-portion {
   flex-direction: column;
