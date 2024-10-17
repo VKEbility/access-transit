@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import ADAStations from './pages/ADAStations';
+import ADAStations from './pages/AllADAStations';
 import SignUpPage from './pages/SignUp';
 import LoginPage from './pages/Login';
 import About from './pages/About';
