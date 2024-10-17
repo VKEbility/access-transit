@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
-import CurrentUserContext from "../contexts/current-user-context";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 import { createUser } from "../adapters/user-adapter";
 
 // Controlling the sign up form is a good idea because we want to add (eventually)
