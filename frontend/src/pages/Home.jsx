@@ -4,7 +4,8 @@ import { FiAlertTriangle } from "react-icons/fi";
 import { FaWheelchair } from "react-icons/fa";
 import { MdOutlineElevator } from "react-icons/md";
 import { GiEscalator } from "react-icons/gi";
-
+import AccessibleStations from '../components/AccessibleStations';
+import EquipmentStatus from '../components/EquipmentStatus';
 
 // import GetIcons from '../components/TrainLogo';
 export default function HomePage() {

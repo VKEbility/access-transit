@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import AdaStations from './pages/AdaStations';
 import SignUpPage from './pages/SignUp';
 import LoginPage from './pages/Login';
 import About from './pages/About';
@@ -26,6 +27,7 @@ export default function App() {
     <main>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/accessible-stations' element={<AdaStations />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/sign-up' element={<SignUpPage />} />
         <Route path='/users' element={<UsersPage />} />
