@@ -1,9 +1,8 @@
-export default function About() {
+export default function OurHeroes() {
   return (
     <>
-      <h1>About</h1>
+      <h1>Our Heroes</h1>
       <p>Put something interesting here!</p>
     </>
   );
 };
-

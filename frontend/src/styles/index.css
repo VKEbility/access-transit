@@ -14,16 +14,34 @@ html {
   color: black;
 }
 
-a { 
+a {
   text-decoration: none;
   color: white;
-} /* Globally */
+}
+
+/* Globally */
 
 /* Each state */
-a:visited { text-decoration: none; color: black }
-a:hover { text-decoration: none; color: white }
-a:focus { text-decoration: none; color: white}
-a:hover, a:active { text-decoration: none; color:black }
+a:visited {
+  text-decoration: none;
+  color: black
+}
+
+a:hover {
+  text-decoration: none;
+  color: white
+}
+
+a:focus {
+  text-decoration: none;
+  color: white
+}
+
+a:hover,
+a:active {
+  text-decoration: none;
+  color: black
+}
 
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -31,7 +49,8 @@ body {
   height: 100%;
 }
 
-input, label {
+input,
+label {
   display: block;
 }
 
@@ -111,6 +130,7 @@ button:focus-visible {
   font-weight: bold;
   font-style: italic;
 }
+
 /* Home Page CSS, if the user is logged in */
 #access-transit {
   text-align: center;
@@ -129,8 +149,8 @@ button:focus-visible {
   margin: 10px;
 }
 
-#train-estimate {
-  color: white;
+#estimated-arrival-time {
+  color: red;
 }
 
 #access-transit-map {
@@ -151,22 +171,22 @@ button:focus-visible {
 }
 
 #transit-cards-container {
- display: flex;
- flex-wrap: wrap;
- background-color:#C7CC65;
- width: 700px;
- height: 500px;
- padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #C7CC65;
+  width: 700px;
+  height: 500px;
+  padding: 30px;
 }
 
-#train-logo {
+.transit-logo {
   width: 50px;
   height: 50px;
 }
 
-.transit-cards {
+.transit-card {
   display: flex;
-  background-color: black;
+  background-color: wheat;
   flex-direction: column;
   width: 190px;
   height: 200px;
@@ -186,29 +206,11 @@ button:focus-visible {
   align-items: flex-end;
 }
 
-#accessibility-icons {
+#accessibility-icon {
   color: white;
 }
 
-#wheelchair-icon {
- width: 50px;
- height: 50px;
- background-color: white;
-}
-
-#elevator-icon {
-  width: 50px;
-  height: 50px;
-  background-color: white;
- }
-
-#escalators-icon {
-  width: 50px;
-  height: 50px;
-  background-color: white;
- }
-
-.train-logo {
+.transit-logo {
   display: flex;
   align-items: center;
   width: 50px;
@@ -224,27 +226,34 @@ button:focus-visible {
   margin-top: 30px;
 }
 
+#welcome-header {
+  flex-direction: column;
+  display: flex;
+}
+
 #welcome-button-container {
   width: 500px;
   display: flex;
   justify-content: space-evenly;
 }
-#welcome-button-links {
+
+#welcome-button-link {
   color: white;
 }
 
 #site-title-not-logged-in {
   font-size: 50px;
+  display: flex;
 }
 
-#happy-people-image-container {
-   display: flex;
-   justify-content: space-around;
-   width: 1000px;
-   margin: 35px;
+#satisfied-users-image-container {
+  display: flex;
+  justify-content: space-around;
+  width: 1000px;
+  margin: 35px;
 }
 
-#happy-people {
+.satisfied-users {
   width: 200px;
   height: 200px;
   background-color: black;
