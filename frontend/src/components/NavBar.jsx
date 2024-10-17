@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"; // import NavLink from react-router-dom
-import siteLogo from '../assets/SiteLogo.png';
+import siteLogo from '../assets/images/logo.svg';
 
 const NavBar = () => {
   // return a nav with a ul and li for each NavLink; notice the use of NavLink from react-router-dom
@@ -7,8 +7,8 @@ const NavBar = () => {
   return (
     <header>
       <div id="site-logo-and-title-container">
-          <a href='/'><img src={siteLogo} alt="Site Logo" /></a>
-          <a id='logo' href='/'>AccessTransit</a>
+        <a href='/'><img src={siteLogo} alt="Site Logo" /></a>
+        <a id='logo' href='/'>AccessTransit</a>
       </div>
       <nav className="nav-bar">
         <ul className="nav-link-container">
