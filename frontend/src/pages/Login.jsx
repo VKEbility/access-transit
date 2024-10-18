@@ -11,27 +11,27 @@ export default function LoginPage() {
   // users shouldn't be able to see the login page if they are already logged in.
   // if the currentUser exists in the context, navigate the user to 
   // the /users/:id page for that user, using the currentUser.id value
-  if (currentUser) return <Navigate to={`/users/${currentUser.id}`} />;
+  if (currentUser) return <Navigate to={`/`} />;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrorText('');
     const formData = new FormData(event.target);
     const [user, error] = await logUserIn(Object.fromEntries(formData));
-    if (error) return setErrorText(error.message);
+    if (error) return setErrorText(error.msg);
     setCurrentUser(user);
-    navigate(`/users/${user.id}`);
+    navigate(`/`);
   };
 
   return <>
     <h1>Login</h1>
     <form onSubmit={handleSubmit} aria-labelledby="login-heading">
       <h2 id='login-heading'>Log back in!</h2>
-      <label htmlFor="username">Username</label>
-      <input type="text" autoComplete="username" id="username" name="username" />
+      <label htmlFor="email-or-username">Login</label>
+      <input type="text" autoComplete="email" id="email-or-username" name="emailOrUsername" placeholder="Enter email or username" />
 
       <label htmlFor="password">Password</label>
-      <input type="password" autoComplete="current-password" id="password" name="password" />
+      <input type="password" autoComplete="current-password" id="password" name="password" placeholder="Enter password" />
 
       <button>Log in!</button>
     </form>
