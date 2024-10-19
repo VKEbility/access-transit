@@ -18,6 +18,7 @@ export default function EquipmentStatus() {
 
         const data = await response.json();
         const accessibleEquipmentObj = {};
+        
         // Push data into statusesObj
         data.forEach(equipment => {
           accessibleEquipmentObj[equipment.equipmentno] = [

@@ -18,6 +18,7 @@ export default function AccessibleStations() {
         
         const data = await response.json();
         const newAccessibleObj = {};
+        
         // Push data into accessibleObj
         data.forEach(trainStation => {
           newAccessibleObj[trainStation.complex_id] = [
