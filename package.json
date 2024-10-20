@@ -5,7 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "kickstart": "cd frontend && npm i && npm run build && cd ../server && npm i && npm run migrate && npm run seed",
-    "deploy": "npm run clean && cd frontend && npm ci --include=dev && npx vite build && cd ../server && npm ci && npm run migrate && npm run seed",
+    "deploy": "cd frontend && npm ci --include=dev && npx vite build && cd ../server && npm ci && npm run migrate && npx knex migrate:status",
     "build:frontend": "cd frontend && npm i && npm run build",
     "migrate": "cd server && npm run migrate",
     "seed": "cd server && npm run seed",
