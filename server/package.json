@@ -11,6 +11,7 @@
     "migrate": "knex migrate:latest",
     "migrate:make": "knex migrate:make",
     "migrate:rollback": "knex migrate:rollback",
+    "migrate:status": "knex migrate:status",
     "seed": "knex seed:run",
     "seed:make": "knex seed:make"
   },

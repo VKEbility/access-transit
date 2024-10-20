@@ -5,16 +5,30 @@ const User = require('../models/User');
 // is valid, it adds the userId to the cookie (allowing them to stay logged in)
 // and sends back the user object.
 exports.loginUser = async (req, res) => {
-  const { username, password } = req.body // the req.body value is provided by the client
+  const { emailOrUsername, password } = req.body //the req.body value is provided by the client
+  try {
+    console.log('Login attempt:', emailOrUsername); //log the login attempt
+    let user;
 
-  const user = await User.findByUsername(username);
-  if (!user) return res.sendStatus(404);
+    if (emailOrUsername.includes('@')) {
+      user = await User.findByEmail(emailOrUsername);
+      if (!user) return res.status(404).send({ msg: 'User by that email not found' });
+    } else {
+      user = await User.findByUsername(emailOrUsername);
+      if (!user) return res.status(404).send({ msg: 'User by that username not found' });
+    }
 
-  const isPasswordValid = await user.isValidPassword(password);
-  if (!isPasswordValid) return res.sendStatus(401);
+    const isPasswordValid = await user.isValidPassword(password);
+    if (!isPasswordValid) return res.status(401).send({ msg: 'Invalid password' });
 
-  req.session.userId = user.id;
-  res.send(user);
+    console.log(`User login detected:' ${user.id}`);
+    req.session.userId = user.id;
+
+    res.send(user); //sends status code 200 by default
+  } catch (err) {
+    console.error('Login error:', err);
+    res.status(500).send({ msg: 'Internal: An unexpected error occurred during login' });
+  };
 };
 
 // This controller sets `req.session` to null, destroying the cookie 
@@ -27,8 +41,22 @@ exports.logoutUser = (req, res) => {
 // This controller returns 401 if the client is NOT logged in (doesn't have a cookie)
 // or returns the user based on the userId stored on the client's cookie
 exports.showMe = async (req, res) => {
-  if (!req.session.userId) return res.sendStatus(401);
+  try {
+    console.log('Session data:', req.session); // log session details
+    if (!req.session.userId) {
+      console.log('User not authenticated');
+      return res.status(401).send({ msg: 'User not authenticated' });
+    }
+    const user = await User.find(req.session.userId);
 
-  const user = await User.find(req.session.userId);
-  res.send(user);
+    if (!user) {
+      console.log('Guest user detected: user does not have an account yet');
+      return res.status(404).send({ msg: 'No user logged in' });
+    }
+
+    res.send(user);
+  } catch (err) {
+    console.error(`Error fetching user data:`, err);
+    res.status(500).send({ msg: 'Internal: An unexpected error occurred while fetching session user data' });
+  };
 };
