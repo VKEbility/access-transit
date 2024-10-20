@@ -13,6 +13,7 @@ import UserContext from './contexts/CurrentUserContext';
 import { checkForLoggedInUser } from './adapters/auth-adapter';
 import UsersPage from './pages/Users';
 import UserPage from './pages/User';
+import Favorites from './pages/Favorites';
 
 export default function App() {
   const { setCurrentUser } = useContext(UserContext);
@@ -33,6 +34,7 @@ export default function App() {
         <Route path='/sign-up' element={<SignUpPage />} />
         <Route path='/users' element={<UsersPage />} />
         <Route path='/users/:id' element={<UserPage />} />
+        <Route path='/favorites' element={<Favorites />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </main>

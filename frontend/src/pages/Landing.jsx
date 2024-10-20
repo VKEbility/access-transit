@@ -67,7 +67,7 @@ export default function LandingPage() {
         />
       </div>
       <div id="transit-card-title">
-        <h2>Cards</h2>
+        <h2 id="section-title">Cards</h2>
         <div id="transit-cards-structure">
           <div id="transit-cards-container">
             {loadedTrainIcons.map((path, i) => (

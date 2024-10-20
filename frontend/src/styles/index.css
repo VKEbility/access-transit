@@ -217,6 +217,25 @@ button:focus-visible {
   height: 40px;
 }
 
+#section-title {
+  margin-left: 30px;
+}
+
+#favorite-card-container {
+  display: flex;
+  background-color: black;
+  justify-content: center;
+  padding: 20px;
+  margin: 30px;
+}
+
+#favorites-container {
+  display: flex;
+  background-color: gray;
+  width: 500px;
+  height: 500px;
+}
+
 /* Not logged in CSS */
 #welcome-portion {
   flex-direction: column;
