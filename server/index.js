@@ -73,7 +73,6 @@ app.get('*', (req, res, next) => {
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
-
 ///////////////////////////////
 // Start Listening
 ///////////////////////////////

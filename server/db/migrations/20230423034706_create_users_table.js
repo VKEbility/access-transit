@@ -7,6 +7,9 @@ exports.up = (knex) => {
     table.increments();
     table.string('username').notNullable().unique();
     table.string('password_hash').notNullable();
+    table.string('email').notNullable().unique();
+    table.string('language').notNullable();
+    table.integer('hero_count').defaultTo(0);
   })
 };
 

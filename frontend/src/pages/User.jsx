@@ -16,7 +16,7 @@ export default function UserPage() {
   useEffect(() => {
     const loadUser = async () => {
       const [user, error] = await getUser(id);
-      if (error) return setErrorText(error.message);
+      if (error) return setErrorText(error.msg);
       setUserProfile(user);
     };
 
@@ -37,14 +37,17 @@ export default function UserPage() {
   // But we also have to consider that we may NOT be on the current users page
   const profileUsername = isCurrentUserProfile ? currentUser.username : userProfile.username;
 
-  return <>
-    <h1>{profileUsername}</h1>
-    {!!isCurrentUserProfile && <button onClick={handleLogout}>Log Out</button>}
-    <p>If the user had any data, here it would be</p>
-    <p>Fake Bio or something</p>
-    {
-      !!isCurrentUserProfile
-      && <UpdateUsernameForm currentUser={currentUser} setCurrentUser={setCurrentUser} />
-    }
-  </>;
+  return (
+    <>
+      <h1>{profileUsername}</h1>
+      {!!isCurrentUserProfile && <button onClick={handleLogout}>Log Out</button>}
+      <p>If the user had any data, here it would be</p>
+      <p>Fake Bio or something</p>
+
+      {
+        !!isCurrentUserProfile
+        && <UpdateUsernameForm currentUser={currentUser} setCurrentUser={setCurrentUser} />
+      }
+    </>
+  )
 }
