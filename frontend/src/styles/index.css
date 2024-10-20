@@ -50,11 +50,13 @@ body {
 }
 
 input,
-label {
+label,
+select {
   display: block;
 }
 
-input {
+input,
+select {
   margin-bottom: 1rem;
 }
 
@@ -276,4 +278,37 @@ button:focus-visible {
   margin: 20px;
   text-align: center;
   font-size: 30px;
+}
+
+input:invalid {
+  background-color: ivory;
+  border: none;
+  outline: 2px solid red;
+  border-radius: 5px;
+}
+
+.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  75% {
+    transform: translateX(-5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
