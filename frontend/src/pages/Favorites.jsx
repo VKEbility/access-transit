@@ -13,6 +13,24 @@ export default function Favorites() {
             <div id="favorite-card">
             {/* favorite stations */}
             </div>
+            <div id="favorite-card">
+            {/* favorite stations */}
+            </div>
+            <div id="favorite-card">
+            {/* favorite stations */}
+            </div>
+            <div id="favorite-card">
+            {/* favorite stations */}
+            </div>
+            <div id="favorite-card">
+            {/* favorite stations */}
+            </div>
+            <div id="favorite-card">
+            {/* favorite stations */}
+            </div>
+            <div id="favorite-card">
+            {/* favorite stations */}
+            </div>
           </div>
         </div>
       </>
