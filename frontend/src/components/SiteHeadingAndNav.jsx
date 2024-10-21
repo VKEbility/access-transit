@@ -23,6 +23,7 @@ export default function SiteHeadingAndNav() {
               <li className="nav-link"><NavLink to="/alerts">Service Alerts</NavLink></li>
               <li className="nav-link"><NavLink to='/users' end={true}>Users</NavLink></li>
               <li className="nav-link"><NavLink to={`/users/${currentUser.id}`}>{currentUser.username}</NavLink></li>
+              <li className="nav-link"><NavLink to="/favorites">Favorites</NavLink></li>
             </>
           ) : (
             <>
