@@ -7,6 +7,7 @@ export default function SiteHeadingAndNav() {
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
+    <>
     <header>
       <div id="site-logo-and-title-container">
         <a href='/'><img src={siteLogo} alt="Site Logo" /></a>
@@ -34,5 +35,7 @@ export default function SiteHeadingAndNav() {
         </ul>
       </nav>
     </header>
+    <hr></hr>
+    </>
   )
 }
