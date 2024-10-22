@@ -285,6 +285,7 @@ svg {
 #accessibility-icons-container {
   /* background-color: #070707; /* separating for dev purposes */
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: flex-end;
   margin: 10px;

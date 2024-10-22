@@ -35,6 +35,7 @@ export default function SiteHeadingAndNav() {
                 <li className="nav-link"><NavLink to='/about'>About</NavLink></li>
                 <li className="nav-link"><NavLink to="/alerts">Service Alerts</NavLink></li>
                 <li className="nav-link"><NavLink to="/our-heroes">Our Heroes</NavLink></li>
+                <li className="nav-link"><NavLink to="/favorites">Favorites</NavLink></li>
                 <li className="nav-link"><DropdownMenu title="Settings" items={dropdownItems} /></li>
               </>
             ) : (
