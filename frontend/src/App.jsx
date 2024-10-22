@@ -34,6 +34,7 @@ export default function App() {
         <Route path='/sign-up' element={<SignUpPage />} />
         <Route path='/users' element={<UsersPage />} />
         <Route path='/users/:id' element={<UserPage />} />
+        <Route path='/users/:id/settings' element={<UserPage />} />
         <Route path='/favorites' element={<Favorites />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
