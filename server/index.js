@@ -14,6 +14,7 @@ const checkAuthentication = require('./middleware/checkAuthentication');
 // controller imports
 const authControllers = require('./controllers/authControllers');
 const userControllers = require('./controllers/userControllers');
+const favControllers = require('./controllers/favControllers');
 const app = express();
 
 const serveAccessibleStations = async (req, res, next) => {
@@ -61,6 +62,14 @@ app.patch('/api/users/:id', checkAuthentication, userControllers.updateUser);
 ///////////////////////////////
 app.get('/api/accessible', serveAccessibleStations);
 
+
+///////////////////////////////
+// Favorites Route
+///////////////////////////////
+
+app.get('/api/users/:id/favorites', checkAuthentication, favControllers.listFavs);
+app.post('/api/users/:id/favorites', checkAuthentication, favControllers.addFav);
+app.delete('/api/users/:id/favorites/:train_id', checkAuthentication, favControllers.removeFav);
 
 ///////////////////////////////
 // Fallback Route
