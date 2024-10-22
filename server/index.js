@@ -64,7 +64,7 @@ app.get('/api/accessible', serveAccessibleStations);
 
 
 ///////////////////////////////
-// Favorites Route
+// Favorites Routes
 ///////////////////////////////
 
 // must check which user want to do an action first! 
