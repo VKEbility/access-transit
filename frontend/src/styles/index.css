@@ -8,10 +8,10 @@ html, body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   background-repeat: no-repeat; /* Prevents the background from repeating */
   background-size: cover;
-  min-width:100%; 
-  min-height:100%; 
-  width:auto; 
-  height:auto;
+  min-width: 100%; 
+  min-height: 100%; 
+  width: auto; 
+  height: auto;
 }
 
 #root {
