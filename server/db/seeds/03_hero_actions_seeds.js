@@ -3,7 +3,6 @@
  * @returns { Promise<void> } 
  */
 exports.seed = async function (knex) {
-  // Deletes ALL existing entries
   await knex('hero_actions').del();
 
   const accessibilityStatus = await knex('accessibility_status').select('id', 'user_id');
