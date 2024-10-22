@@ -183,8 +183,9 @@ button:focus-visible {
 #transit-cards-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   background-color: #C7CC65;
-  width: 700px;
+  width: 800px;
   padding: 30px;
   border: black solid 5px;
   border-radius: 35px;
@@ -200,11 +201,23 @@ button:focus-visible {
   background-color: wheat;
   flex-direction: column;
   width: 190px;
-  height: 200px;
   margin: 10px;
-  padding: 10px;
+  padding: 20px;
   border-radius: 20px;
   justify-content: space-around;
+}
+
+#card-button {
+ width: 30px;
+ height: 30px;
+}
+
+svg {
+   display: flex;
+}
+
+.favorite-button {
+  width: 50px;
 }
 
 #site-logo-and-title-container {
@@ -216,6 +229,7 @@ button:focus-visible {
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
+  margin: 10px;
 }
 
 #accessibility-icon {
