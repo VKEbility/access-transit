@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 // import {fetchHandler} from '../utils/fetchingUtils.js';
 
 export default function AccessibleStations() {
+  // to keep track of the state of train station when fetching 
   const [accessibleTrainStations, setTrainStations] = useState([]);
+  // to keep track of the train station being added to the rendered object 
   const [accessibleObj, setAccessibleObj] = useState([]);
 
   useEffect(() => {
@@ -16,6 +18,7 @@ export default function AccessibleStations() {
         
         const data = await response.json();
         const newAccessibleObj = {};
+        
         // Push data into accessibleObj
         data.forEach(trainStation => {
           newAccessibleObj[trainStation.complex_id] = [
@@ -26,7 +29,7 @@ export default function AccessibleStations() {
           ];
         });
 
-        // Update state
+        // Update states
         setTrainStations(data);
         setAccessibleObj(newAccessibleObj);
       } catch (error) {

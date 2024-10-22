@@ -1,9 +1,17 @@
-html {
-  height: 100vh;
-  margin: 0;
+html, body {
+  display: block;
   flex-shrink: 0;
-  background: linear-gradient(180deg, #FCFFF0 0%, #91B500 100%);
+  background: linear-gradient(180deg, #FFB700 0%, #CA006C 100%);
   background-blend-mode: color;
+  margin: 0;
+  padding: 0;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-repeat: no-repeat; /* Prevents the background from repeating */
+  background-size: cover;
+  min-width:100%; 
+  min-height:100%; 
+  width:auto; 
+  height:auto;
 }
 
 #root {
@@ -18,29 +26,13 @@ a {
   text-decoration: none;
   color: white;
 }
-
 /* Globally */
 
 /* Each state */
-a:visited {
-  text-decoration: none;
-  color: black
-}
-
-a:hover {
-  text-decoration: none;
-  color: white
-}
-
-a:focus {
-  text-decoration: none;
-  color: white
-}
-
 a:hover,
 a:active {
   text-decoration: none;
-  color: black
+  color: black;
 }
 
 body {
@@ -89,6 +81,19 @@ nav a {
 
 .nav-link {
   color: black;
+  transition: all 0.23s ease-in-out;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+
+hr {
+  width: 1100px;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+  color: #E50064;
+  border-bottom: 0.15em solid #E50064;
 }
 
 .nav-link-container {
@@ -128,7 +133,7 @@ button:focus-visible {
 
 /* automatically added by NavLink component */
 .active {
-  color: #EEBC32;
+  color: black;
   font-weight: bold;
   font-style: italic;
 }
@@ -148,11 +153,12 @@ button:focus-visible {
 #transitSearch {
   width: 600px;
   height: 50px;
-  margin: 10px;
+  margin: 30px;
+  border-radius: 15px;
 }
 
 #estimated-arrival-time {
-  color: red;
+  color: black;
 }
 
 #access-transit-map {
@@ -160,6 +166,8 @@ button:focus-visible {
   background-color: gray;
   width: 700px;
   height: 500px;
+  border: black solid 10px;
+  border-radius: 35px;
 }
 
 #transit-cards-structure {
@@ -177,8 +185,9 @@ button:focus-visible {
   flex-wrap: wrap;
   background-color: #C7CC65;
   width: 700px;
-  height: 500px;
   padding: 30px;
+  border: black solid 5px;
+  border-radius: 35px;
 }
 
 .transit-logo {
@@ -194,6 +203,7 @@ button:focus-visible {
   height: 200px;
   margin: 10px;
   padding: 10px;
+  border-radius: 20px;
   justify-content: space-around;
 }
 
@@ -217,6 +227,43 @@ button:focus-visible {
   align-items: center;
   width: 50px;
   height: 40px;
+}
+
+#site-title-logged-in {
+  margin-left: 30px;
+}
+
+#section-title {
+  margin-left: 60px;
+  display: inline-block;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+
+#favorite-card-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin: 30px;
+}
+
+#favorites-container {
+  display: flex;
+  background-color: gray;
+  padding: 30px;
+  width: 1000px;
+  flex-wrap: wrap;
+  border-radius: 20px;
+  justify-content: space-around;
+}
+
+#favorite-card {
+  display: flex;
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+  background-color: white;
+  border-radius: 20px;
 }
 
 /* Not logged in CSS */

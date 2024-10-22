@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 // import {fetchHandler} from '../utils/fetchingUtils.js';
 
 export default function EquipmentStatus() {
+  // to keep track of the state of equipment when fetching 
   const [equipmentStatuses, setEquipmentStatus] = useState([]);
+  // to keep track of the equipment being added to the rendered object 
   const [statusesObj, setStatusObj] = useState([]);
 
   useEffect(() => {
@@ -16,6 +18,7 @@ export default function EquipmentStatus() {
 
         const data = await response.json();
         const accessibleEquipmentObj = {};
+        
         // Push data into statusesObj
         data.forEach(equipment => {
           accessibleEquipmentObj[equipment.equipmentno] = [
@@ -25,7 +28,7 @@ export default function EquipmentStatus() {
           ];
         });
 
-        // Update state
+        // Update states
         setEquipmentStatus(data);
         setStatusObj(accessibleEquipmentObj);
       } catch (error) {

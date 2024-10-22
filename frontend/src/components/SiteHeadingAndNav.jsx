@@ -7,6 +7,7 @@ export default function SiteHeadingAndNav() {
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
+    <>
     <header>
       <div id="site-logo-and-title-container">
         <a href='/'><img src={siteLogo} alt="Site Logo" /></a>
@@ -23,6 +24,7 @@ export default function SiteHeadingAndNav() {
               <li className="nav-link"><NavLink to="/alerts">Service Alerts</NavLink></li>
               <li className="nav-link"><NavLink to='/users' end={true}>Users</NavLink></li>
               <li className="nav-link"><NavLink to={`/users/${currentUser.id}`}>{currentUser.username}</NavLink></li>
+              <li className="nav-link"><NavLink to="/favorites">Favorites</NavLink></li>
             </>
           ) : (
             <>
@@ -33,5 +35,7 @@ export default function SiteHeadingAndNav() {
         </ul>
       </nav>
     </header>
+    <hr></hr>
+    </>
   )
 }
