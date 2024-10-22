@@ -1,93 +1,73 @@
-html, body {
-  display: block;
-  flex-shrink: 0;
-  background: linear-gradient(180deg, #FFB700 0%, #CA006C 100%);
-  background-blend-mode: color;
-  margin: 0;
+/* global reset */
+* {
   padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* root */
+:root {
+  /* background-color: #EAEAEA; /* separating for dev purposes */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-repeat: no-repeat; /* Prevents the background from repeating */
-  background-size: cover;
-  min-width:100%; 
-  min-height:100%; 
-  width:auto; 
-  height:auto;
-}
-
-#root {
-  height: 100%;
-}
-
-.nav-link {
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
   color: black;
+  background: linear-gradient(135deg, #ffffff 0%, #fffce5 50%, #f1f7d1 100%);
+  display: flex;
+  flex-direction: column;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* react root app */
+#root {
+  /* separating for dev purposes: #E1E1E1; */
+}
+
+/* body styling */
+body {
+  /* background-color: #c9a2a2; /* separating for dev purposes */
+  min-width: 320px;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: inherit;
+  width: auto;
+  height: auto;
+}
+
+/* links */
 a {
+  /* background-color: #D1D1D1; /* separating for dev purposes */
   text-decoration: none;
-  color: white;
-}
-/* Globally */
+  color: black;
 
-/* Each state */
+}
+
+/* links states */
 a:hover,
 a:active {
-  text-decoration: none;
   color: black;
 }
 
-body {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  margin: 0;
-  height: 100%;
-}
-
-input,
-label,
-select {
-  display: block;
-}
-
-input,
-select {
-  margin-bottom: 1rem;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1rem;
-}
-
-#logo {
-  display: flex;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
-  color: black
-}
-
-nav ul {
-  display: flex;
-  gap: 1rem;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-nav a {
-  display: block;
-}
-
+/* navigation links */
 .nav-link {
+  /* background-color: #C0C0C0; /* separating for dev purposes */
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
   color: black;
   transition: all 0.23s ease-in-out;
   overflow: hidden;
   backface-visibility: hidden;
-}
-
-hr {
-  width: 1100px;
+  cursor: pointer;
+  padding: 10px;
 }
 
 .nav-link:hover {
@@ -96,20 +76,71 @@ hr {
   border-bottom: 0.15em solid #E50064;
 }
 
+/* header */
+header {
+  /* background-color: #B2B2B2; /* separating for dev purposes */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+/* site logo */
+#site-logo-and-title-container {
+  /* background-color: #A1A1A1; /* separating for dev purposes */
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  margin: 0 40px;
+}
+
+#site-title {
+  width: 1rem;
+  height: auto;
+  margin-right: 10px;
+  transition: transform 0.2s ease;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* navigation */
+nav ul {
+  /* background-color: #999999; /* separating for dev purposes */
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+nav a {
+  /* background-color: #888888; /* separating for dev purposes */
+  display: block;
+}
+
 .nav-link-container {
+  /* background-color: #777777; /* separating for dev purposes */
   display: flex;
   width: 100%;
   align-items: center;
 }
 
+/* forms */
 form {
+  /* background-color: #666666; /* separating for dev purposes */
   padding: 1rem;
   border: 1px solid #CCC;
   width: 15rem;
   margin: 1rem auto;
 }
 
+/* buttons */
 button {
+  /* background-color: #555555; /* separating for dev purposes */
   border-radius: 8px;
   color: white;
   border: 1px solid transparent;
@@ -131,19 +162,36 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* automatically added by NavLink component */
-.active {
-  color: black;
-  font-weight: bold;
-  font-style: italic;
+/* input fields */
+input,
+label,
+select {
+  /* background-color: #444444; /* separating for dev purposes */
+  display: block;
 }
 
-/* Home Page CSS, if the user is logged in */
+input,
+select {
+  /* background-color: #333333; /* separating for dev purposes */
+  margin-bottom: 1rem;
+}
+
+input:invalid {
+  /* background-color: #222222; /* separating for dev purposes */
+  background-color: ivory;
+  border: none;
+  outline: 2px solid red;
+  border-radius: 5px;
+}
+
+/* home page */
 #access-transit {
+  /* background-color: #111111; /* separating for dev purposes */
   text-align: center;
 }
 
 #home-flex-container {
+  /* background-color: #0F0F0F; /* separating for dev purposes */
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -151,6 +199,7 @@ button:focus-visible {
 }
 
 #transitSearch {
+  /* background-color: #0E0E0E; /* separating for dev purposes */
   width: 600px;
   height: 50px;
   margin: 30px;
@@ -158,10 +207,12 @@ button:focus-visible {
 }
 
 #estimated-arrival-time {
+  /* background-color: #0D0D0D; /* separating for dev purposes */
   color: black;
 }
 
 #access-transit-map {
+  /* background-color: #0C0C0C; /* separating for dev purposes */
   display: flex;
   background-color: gray;
   width: 700px;
@@ -170,32 +221,27 @@ button:focus-visible {
   border-radius: 35px;
 }
 
+/* transit cards */
 #transit-cards-structure {
+  /* background-color: #0B0B0B; /* separating for dev purposes */
   display: flex;
   justify-content: center;
   padding: 20px;
 }
 
-#transit-card-title {
-  margin: 0 auto;
-}
-
 #transit-cards-container {
+  /* background-color: #0A0A0A; /* separating for dev purposes */
   display: flex;
   flex-wrap: wrap;
   background-color: #C7CC65;
-  width: 700px;
+  width: 100%;
   padding: 30px;
   border: black solid 5px;
   border-radius: 35px;
 }
 
-.transit-logo {
-  width: 50px;
-  height: 50px;
-}
-
 .transit-card {
+  /* background-color: #090909; /* separating for dev purposes */
   display: flex;
   background-color: wheat;
   flex-direction: column;
@@ -207,40 +253,35 @@ button:focus-visible {
   justify-content: space-around;
 }
 
-#site-logo-and-title-container {
-  display: flex;
-  align-items: center;
+#transit-card-title {
+  /* background-color: #080808; /* separating for dev purposes */
+  margin: 0 auto;
 }
 
+/* icons and logos */
 #accessibility-icons-container {
+  /* background-color: #070707; /* separating for dev purposes */
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
 }
 
 #accessibility-icon {
+  /* background-color: #060606; /* separating for dev purposes */
   color: white;
 }
 
 .transit-logo {
+  /* background-color: #050505; /* separating for dev purposes */
   display: flex;
   align-items: center;
   width: 50px;
   height: 40px;
 }
 
-#site-title-logged-in {
-  margin-left: 30px;
-}
-
-#section-title {
-  margin-left: 60px;
-  display: inline-block;
-  text-decoration: underline;
-  text-underline-offset: 8px;
-}
-
+/* favorites section */
 #favorite-card-container {
+  /* background-color: #040404; /* separating for dev purposes */
   display: flex;
   justify-content: center;
   padding: 20px;
@@ -248,16 +289,18 @@ button:focus-visible {
 }
 
 #favorites-container {
+  /* background-color: #030303; /* separating for dev purposes */
   display: flex;
   background-color: gray;
   padding: 30px;
-  width: 1000px;
+  width: 100%;
   flex-wrap: wrap;
   border-radius: 20px;
   justify-content: space-around;
 }
 
 #favorite-card {
+  /* background-color: #020202; /* separating for dev purposes */
   display: flex;
   width: 200px;
   height: 200px;
@@ -266,8 +309,9 @@ button:focus-visible {
   border-radius: 20px;
 }
 
-/* Not logged in CSS */
+/* user not logged in */
 #welcome-portion {
+  /* background-color: #010101; /* separating for dev purposes */
   flex-direction: column;
   height: 500px;
   display: flex;
@@ -276,26 +320,31 @@ button:focus-visible {
 }
 
 #welcome-header {
+  /* background-color: #000000; /* separating for dev purposes */
   flex-direction: column;
   display: flex;
 }
 
 #welcome-button-container {
+  /* background-color: #FFFFFF; /* separating for dev purposes */
   width: 500px;
   display: flex;
   justify-content: space-evenly;
 }
 
 #welcome-button-link {
+  /* background-color: #F0F0F0; /* separating for dev purposes */
   color: white;
 }
 
 #site-title-not-logged-in {
+  /* background-color: #EAEAEA; /* separating for dev purposes */
   font-size: 50px;
   display: flex;
 }
 
 #satisfied-users-image-container {
+  /* background-color: #D1D1D1; /* separating for dev purposes */
   display: flex;
   justify-content: space-around;
   width: 1000px;
@@ -303,17 +352,15 @@ button:focus-visible {
 }
 
 .satisfied-users {
+  /* background-color: #C0C0C0; /* separating for dev purposes */
   width: 200px;
   height: 200px;
   background-color: black;
 }
 
-#select-language-button {
-  margin: 10px;
-  font-size: 35px;
-}
-
+/* site description */
 #site-description-container {
+  /* background-color: #B2B2B2; /* separating for dev purposes */
   display: flex;
   flex-direction: column;
   width: 800px;
@@ -322,18 +369,13 @@ button:focus-visible {
 }
 
 #site-description {
+  /* background-color: #A1A1A1; /* separating for dev purposes */
   margin: 20px;
   text-align: center;
   font-size: 30px;
 }
 
-input:invalid {
-  background-color: ivory;
-  border: none;
-  outline: 2px solid red;
-  border-radius: 5px;
-}
-
+/* animations */
 .shake {
   animation: shake 0.5s;
 }
