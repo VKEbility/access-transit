@@ -1,4 +1,4 @@
-const basicFetchOptions = {
+export const basicFetchOptions = {
   method: 'GET',
   credentials: 'include',
 };
@@ -29,12 +29,11 @@ export const fetchHandler = async (url, options = {}) => {
     const isJson = (headers.get('content-type')?.includes('application/json'));
 
     if (!ok) {
-      const errorData = await (isJson ? response.json() : response.text()); //errorData is the msg obj our backend controller sends
-      throw new Error(errorData.msg || `Fetch failed with status - ${status}`, { cause: status }); //passing error.msg to catch block
+      const errorData = await (isJson ? response.json() : response.text());
+      throw new Error(errorData.msg || `Fetch failed with status - ${status}`, { cause: status });
     }
 
     const responseData = await (isJson ? response.json() : response.text());
-
     return [responseData, null];
   } catch (error) {
     console.warn(error);
