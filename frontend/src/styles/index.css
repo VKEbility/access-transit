@@ -260,6 +260,13 @@ svg {
   padding: 20px;
   margin: 30px;
 }
+/* Entire Favorites Page CSS */
+#favorites-page {
+  display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
 
 #favorites-container {
   display: flex;
