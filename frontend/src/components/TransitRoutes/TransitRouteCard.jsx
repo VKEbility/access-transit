@@ -3,6 +3,7 @@ import { FaWheelchair } from "react-icons/fa";
 import { MdOutlineElevator } from "react-icons/md";
 import { GiEscalator } from "react-icons/gi";
 import RouteIcon from '../TransitRoutes/RouteIcon';
+import CountdownTimer from '../../hooks/CountdownTimer';
 import '../../styles/routes.css';
 
 const accessibilityIcons = [
@@ -12,7 +13,7 @@ const accessibilityIcons = [
   { icon: FiAlertTriangle, label: 'Alert' }
 ];
 
-export default function TransitRouteCard({ route }) {
+export default function TransitRouteCard({ route, onTimerEnd }) {
   const itineraries = route.itineraries || [];
   const closestStop = itineraries[0]?.closestStop || {}; //rendering uptown stop for now
   const realtimeArrival = itineraries[0]?.realTimeArrivals[0] || {};
@@ -25,7 +26,7 @@ export default function TransitRouteCard({ route }) {
       <div className="transit-card" style={{ backgroundColor: isOutOfCommission ? '#d3d3d3' : `#${route.color}` }}>
         <div id="estimated-arrival-time">
           {departure ? (
-            '3 mins'
+            <CountdownTimer departure={departure} onComplete={onTimerEnd} /> //passing prop state down
           ) : 'N/A'}
         </div>
         <RouteIcon route={route} />

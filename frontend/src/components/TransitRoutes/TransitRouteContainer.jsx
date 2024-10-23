@@ -27,6 +27,10 @@ export default function NearbyRoutesContainer({ coords }) {
     }
   }, [firstLoad, coords]);
 
+  const handleTimerEnd = (transitId) => { //when time reaches transit departure time, removing the route card from the container by its transitId
+    setRoutes((prevRoutes) => prevRoutes.filter(route => route.transitId !== transitId)); //changing routes state by filtering the arr for only the routes that don't match the transitId
+  };
+
   return (
     <div>
       <button id="refresh-routes" onClick={loadNearbyRoutes}>Refresh</button>
@@ -37,7 +41,7 @@ export default function NearbyRoutesContainer({ coords }) {
           {loading && <p>Loading nearby routes...</p>}
           {routes.length > 0 ? (
             routes.map((route) => (
-              <TransitRouteCard key={route.transitId} route={route} />
+              <TransitRouteCard key={route.transitId} route={route} onTimerEnd={() => handleTimerEnd(route.transitId)} />
             ))
           ) : (
             <p>No nearby routes found.</p>
