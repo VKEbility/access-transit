@@ -14,7 +14,8 @@ const checkAuthentication = require('./middleware/checkAuthentication');
 // controller imports
 const authControllers = require('./controllers/authControllers');
 const userControllers = require('./controllers/userControllers');
-const adaStationsControllers = require('./controllers/adaStationsControllers')
+const adaStationsControllers = require('./controllers/adaStationsControllers');
+const serviceAlertsController = require('./controllers/serviceAlertsController');
 const app = express();
 
 // middleware
@@ -50,7 +51,8 @@ app.patch('/api/users/:id', checkAuthentication, userControllers.updateUser);
 // Transit Routes
 ///////////////////////////////
 app.get('/api/ada', adaStationsControllers.listADAStations);
-
+app.get('/api/service-alerts', serviceAlertsController.listAllAlerts);
+app.get('/api/service-alerts/:rt_stop_id', serviceAlertsController.showRouteAlerts);
 
 ///////////////////////////////
 // Fallback Route
