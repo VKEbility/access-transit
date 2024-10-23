@@ -3,7 +3,7 @@ const { fetchServiceAlerts } = require('../api-services/fetchServiceAlerts');
 exports.listAllAlerts = async (req, res) => {
   console.log('--ALERTS CONTROLLER INVOKED @listAllAlerts'); //to help debug;
   try {
-    const [alerts, err] = await fetchAlerts();
+    const [alerts, err] = await fetchServiceAlerts();
     if (err) return res.status(503).send({ msg: 'Service unavailable: Unable to retrieve service alerts' }); //in case MTA api is down
 
     console.log(`${alerts.alerts.length} service alerts retrieved`);
@@ -21,7 +21,7 @@ exports.showRouteAlerts = async (req, res) => {
   try {
     if (!rt_stop_id) return res.status(400).send({ msg: 'Missing route stop id' });
 
-    const [alerts, error] = await fetchAlerts(rt_stop_id);
+    const [alerts, error] = await fetchServiceAlerts(rt_stop_id);
     if (error) return res.status(503).send({ msg: 'Service unavailable: Unable to retrieve route alerts' }); //in case MTA api is down
 
     console.log(`${alerts.alerts.length} alerts retrieved for stop ${rt_stop_id}`);
