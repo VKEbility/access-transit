@@ -16,6 +16,8 @@ const authControllers = require('./controllers/authControllers');
 const userControllers = require('./controllers/userControllers');
 const adaStationsControllers = require('./controllers/adaStationsControllers');
 const serviceAlertsController = require('./controllers/serviceAlertsController');
+const nearbyRoutesControllers = require('./controllers/nearbyRoutesControllers');
+
 const app = express();
 
 // middleware
@@ -48,11 +50,17 @@ app.patch('/api/users/:id', checkAuthentication, userControllers.updateUser);
 
 
 ///////////////////////////////
-// Transit Routes
+// Route Services
 ///////////////////////////////
 app.get('/api/ada', adaStationsControllers.listADAStations);
 app.get('/api/service-alerts', serviceAlertsController.listAllAlerts);
 app.get('/api/service-alerts/:rt_stop_id', serviceAlertsController.showRouteAlerts);
+
+///////////////////////////////
+// Transit Routes
+///////////////////////////////
+app.post('/api/transit-routes', nearbyRoutesControllers.listNearbyRoutes);
+
 
 ///////////////////////////////
 // Fallback Route
