@@ -1,18 +1,21 @@
 import React, { useEffect, useState, Suspense } from 'react';
+import TransitHeader from '../components/Header/TransitHeader';
+
 const MapContainerComponent = React.lazy(() => import('../components/Map/Map'));
+const TransitRouteContainer = React.lazy(() => import('../components/TransitRoutes/TransitRouteContainer'));
 
 export default function LandingPage() {
   const [coords, setCoords] = useState({ lat: 40.7128, lon: -74.0060 }); //default coordinates set to nyc
 
+  const LoadingFallback = () => <div>Loading...</div>;
+
   return (
     <>
-      <header>
-        <h1 id="site-title-logged-in">Welcome to #AccessTransit</h1>
-      </header>
-      <Suspense fallback={<div>Loading map...</div>}>
+      <Suspense fallback={<LoadingFallback />}>
+        <TransitHeader />
         <MapContainerComponent setCoords={setCoords} />
+        <TransitRouteContainer coords={coords} setCoords={setCoords} />
       </Suspense>
-      <h2 id="section-title">Nearby Routes</h2>
     </>
   );
-}
+};
