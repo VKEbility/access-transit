@@ -1,17 +1,21 @@
-const basicFetchOptions = {
+const basicFetchOptions = (headers = {}) => ({
   method: 'GET',
   credentials: 'include',
-};
+  headers,
+});
 
 const deleteOptions = {
   method: 'DELETE',
   credentials: 'include',
 };
 
-const getPostOptions = (body) => ({
+const getPostOptions = (body, apiKey) => ({
   method: 'POST',
   credentials: 'include',
-  headers: { 'Content-Type': 'application/json' },
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${apiKey}`
+  },
   body: JSON.stringify(body),
 });
 
