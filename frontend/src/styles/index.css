@@ -193,14 +193,6 @@ input:invalid {
   text-align: center;
 }
 
-#home-flex-container {
-  /* background-color: #0F0F0F; /* separating for dev purposes */
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
 #transitSearch {
   /* background-color: #0E0E0E; /* separating for dev purposes */
   width: 600px;
@@ -212,64 +204,6 @@ input:invalid {
 #estimated-arrival-time {
   /* background-color: #0D0D0D; /* separating for dev purposes */
   color: black;
-}
-
-/* transit cards */
-#transit-cards-structure {
-  /* background-color: #0B0B0B; /* separating for dev purposes */
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-}
-
-#transit-cards-container {
-  /* background-color: #0A0A0A; /* separating for dev purposes */
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #C7CC65;
-  width: 100%;
-  padding: 30px;
-  border: black solid 5px;
-  border-radius: 35px;
-}
-
-.transit-card {
-  /* background-color: #090909; /* separating for dev purposes */
-  display: flex;
-  background-color: wheat;
-  flex-direction: column;
-  width: 190px;
-  height: 200px;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 20px;
-  justify-content: space-around;
-}
-
-#transit-card-title {
-  /* background-color: #080808; /* separating for dev purposes */
-  margin: 0 auto;
-}
-
-/* icons and logos */
-#accessibility-icons-container {
-  /* background-color: #070707; /* separating for dev purposes */
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
-}
-
-#accessibility-icon {
-  /* background-color: #060606; /* separating for dev purposes */
-  color: white;
-}
-
-.transit-logo {
-  /* background-color: #050505; /* separating for dev purposes */
-  display: flex;
-  align-items: center;
-  width: 50px;
-  height: 40px;
 }
 
 /* favorites section */

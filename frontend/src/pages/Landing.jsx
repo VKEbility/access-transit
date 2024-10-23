@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from 'react';
+import React, { useState, Suspense } from 'react';
 import TransitHeader from '../components/Header/TransitHeader';
 
 const MapContainerComponent = React.lazy(() => import('../components/Map/Map'));
@@ -18,4 +18,4 @@ export default function LandingPage() {
       </Suspense>
     </>
   );
-};
+}
