@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import DragMap from './DragMap';
 import 'leaflet/dist/leaflet.css';
 import '../styles/map.css';
 
@@ -33,6 +34,7 @@ export default function MapContainerComponent({ setCoords }) {
       <div className="map-container">
         <MapContainer center={position} zoom={16}>
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <DragMap position={position} setCoords={setCoords} />
           <Marker position={position} />
         </MapContainer>
       </div>
