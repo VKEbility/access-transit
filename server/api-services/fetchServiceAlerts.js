@@ -11,20 +11,20 @@ exports.fetchServiceAlerts = async (rt_stop_id) => {
   const allAlerts = data.entity.map(alertEntity => {
     const alert = alertEntity.alert;
     const alertId = alertEntity.id;
-    const headerText = alert.header_text?.translation?.find(t => t.language === 'en')?.text || null;
-    const descriptionText = alert.description_text?.translation?.find(t => t.language === 'en')?.text || null;
+    const headerText = alert.header_text?.translation?.find(t => t.language === 'en')?.text ?? null;
+    const descriptionText = alert.description_text?.translation?.find(t => t.language === 'en')?.text ?? null;
 
-    const activePeriod = alert.active_period?.map(unix => ({
+    const activePeriod = alert.active_period?.map(unix => ({ //time span alert will be in effect
       starting: unixConverter(unix.start),
-      ending: unixConverter(unix.end) || 'Ongoing'
+      ending: unixConverter(unix.end) ?? 'Ongoing'
     }));
 
     const mercuryAlert = alert['transit_realtime.mercury_alert'];
-    const alertType = mercuryAlert?.alert_type || null;
-    const renderTime = mercuryAlert?.display_before_active || null;
+    const alertType = mercuryAlert?.alert_type ?? null;
+    const renderTime = mercuryAlert?.display_before_active ?? null;
     const travelAlternatives = mercuryAlert?.station_alternative?.map(alt => {
       const affectedEntity = alt.affected_entity;
-      const notes = alt.notes?.translation?.find(t => t.language === 'en')?.text || null;
+      const notes = alt.notes?.translation?.find(t => t.language === 'en')?.text ?? null;
 
       return {
         agencyId: agencyName(affectedEntity.agency_id),
@@ -37,13 +37,13 @@ exports.fetchServiceAlerts = async (rt_stop_id) => {
       if (idx === 0) {
         accObj.metaData = {
           agencyId: agencyName(entity.agency_id),
-          rtLineId: entity.route_id || null, //entire affected line
+          rtLineId: entity.route_id ?? null, //entire affected line
           sortOrder: entity['transit_realtime.mercury_entity_selector']?.sort_order?.split(':').slice(2).join('') || null
         };
       } else if (entity.stop_id) {
         accObj.affectedStops.push({
-          alertId: alertId || null,
-          rtStopId: entity.stop_id || null
+          alertId: alertId ?? null,
+          rtStopId: entity.stop_id ?? null
         });
       }
       return accObj;
