@@ -1,20 +1,5 @@
 const { fetchHandler } = require('../../shared/fetchingUtils.cjs');
-
-const agencyName = (id) => {
-  switch (id) {
-    case 'MTASBWY': return 'MTA Subway';
-    case 'LI': return 'Long Island Rail Road';
-    case 'MTA NYCT':
-    case 'MTABC': return 'MTA Bus';
-    case 'MNR': return 'MTA Metro-North Railroad';
-    default: return null;
-  }
-};
-
-const unixConverter = (prop) => {
-  const readableTimestamp = new Date(prop * 1000).toLocaleString();
-  return readableTimestamp !== 'Invalid Date' ? readableTimestamp : null;
-}
+const { agencyName, unixConverter } = require('../utils/formatter-utils');
 
 exports.fetchServiceAlerts = async (rt_stop_id) => {
   // console.log('--ALERTS FETCH INVOKED @fetchServiceAlerts'); //to help debug;
