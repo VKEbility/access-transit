@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Suspense } from 'react';
-const MapContainerComponent = React.lazy(() => import('../components/Map'));
+const MapContainerComponent = React.lazy(() => import('../components/Map/Map'));
 
 export default function LandingPage() {
   const [coords, setCoords] = useState({ lat: 40.7128, lon: -74.0060 }); //default coordinates set to nyc

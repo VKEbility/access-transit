@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { MapContainer, Marker, TileLayer } from 'react-leaflet';
 import DragMap from './DragMap';
 import 'leaflet/dist/leaflet.css';
-import '../styles/map.css';
+import '../../styles/map.css';
 
 export default function MapContainerComponent({ setCoords }) {
   const [position, setPosition] = useState([40.7128, -74.0060]); ////setting where the location pin will be; defaulting to nyc

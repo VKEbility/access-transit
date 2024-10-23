@@ -7,7 +7,7 @@ import LoginPage from './pages/Login';
 import About from './pages/About';
 import OurHeroes from './pages/OurHeroes';
 import Alerts from './pages/Alerts';
-import SiteHeadingAndNav from './components/SiteHeadingAndNav';
+import SiteHeadingAndNav from './components/Header/SiteHeadingAndNav';
 import NotFoundPage from './pages/NotFound';
 import UserContext from './contexts/CurrentUserContext';
 import { checkForLoggedInUser } from './adapters/auth-adapter';
