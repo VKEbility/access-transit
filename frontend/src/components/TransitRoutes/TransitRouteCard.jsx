@@ -2,6 +2,7 @@ import { FiAlertTriangle } from "react-icons/fi";
 import { FaWheelchair } from "react-icons/fa";
 import { MdOutlineElevator } from "react-icons/md";
 import { GiEscalator } from "react-icons/gi";
+import RouteIcon from '../TransitRoutes/RouteIcon';
 import '../../styles/routes.css';
 
 const accessibilityIcons = [
@@ -27,6 +28,8 @@ export default function TransitRouteCard({ route }) {
             '3 mins'
           ) : 'N/A'}
         </div>
+        <RouteIcon route={route} />
+
         {closestStop.stopName && <div style={{ margin: 0 }}>{closestStop.stopName}</div>}
         <div style={{ margin: 0 }}>{longName}</div>
 
