@@ -147,10 +147,6 @@ export default function LandingPage() {
                 iconPath={path}
                 idx={i}
                 cardColor={cardColors[i]}
-<<<<<<< HEAD
-                // stationName={trainData[i]?.stationName || 'N/A'}
-                // direction={trainData[i]?.direction || 'Unknown'}
-                equipmentNo={trainData[i]?.equipmentNo || 'N/A'}
                 // stationName={trainData[i]?.stationName || 'N/A'}
                 // direction={trainData[i]?.direction || 'Unknown'}
                 equipmentNo={trainData[i]?.equipmentNo || 'N/A'}
@@ -158,8 +154,6 @@ export default function LandingPage() {
                 isFavorite={favorites.has(i)} // Check if this card is a favorite
                 toggleFavorite={() => toggleFavorite(i)} // Pass down toggle function
                 trainData={trainData}
-=======
->>>>>>> 090609a (merging eileens commits)
               />
             ))}
           </div>
