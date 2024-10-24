@@ -3,10 +3,10 @@ const knex = require('../db/knex');
 
 class Favorite {
 
-  static async addFav(user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat, equipmentNo) {
+  static async addFav(user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat) {
     // dynamically inserting values into a query to avoid SQL injection attacks 
-    const query = `INSERT INTO favorites (user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat, equipmentNo) 
-                  VALUES (?, ?, ?, ?, ?, ?) RETURNING *;`
+    const query = `INSERT INTO favorites (user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat) 
+                  VALUES (?, ?, ?, ?, ?) RETURNING *;`
     // console.log("hello", user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat);
     const result = await knex.raw(query, [user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat, equipmentNo]);
     // console.log("ROWS:", result.rows[0]);
