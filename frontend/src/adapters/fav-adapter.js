@@ -6,7 +6,6 @@ const baseUrl = '/api/users';
 //   const favorites = await knex('favorites').where({ user_id: id });
 //   return favorites;
 // };
-
 export const listFavs = async (user_id) => {
   // if favs is empty 
   const [favs, err] = await fetchHandler(`${baseUrl}/${user_id}/favorites`);
