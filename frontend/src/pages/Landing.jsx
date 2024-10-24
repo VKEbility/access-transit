@@ -1,12 +1,7 @@
 ////// Second Edition
-import React, { useEffect, useState } from 'react';
-import TransitCard from '/src/components/TransitCard';
-
-const trainIcons = [
-  '1', '2', '3', '4', '5', '6', '6d', '7', '7d', 'a', 'b', 
-  'c', 'd', 'e', 'f', 'g', 'h', 'j', 'l', 'm', 'n', 'q', 
-  'r', 's', 'sf', 'sir', 'sr', 't', 'w', 'z'
-];
+import React, { useContext, useEffect, useState } from 'react';
+import { accessibilityIcons, trainIcons } from '../components/TrainAndAccessibilityIcon';
+import { TransitCard } from '../components/TrainCard';
 
 export default function LandingPage() {
   const [loadedTrainIcons, setLoadedTrainIcons] = useState([]);
@@ -40,12 +35,13 @@ export default function LandingPage() {
       console.log('API Response:', data);
 
       // Extract relevant data: station name, direction, accessibility info, and alternative route
-      const formattedData = data.map(item => ({
-        stationName: item.station, // Station name
-        direction: item.trainno, // Using train number as direction // Alternative route instructions
+      const formattedData = data.map(station => ({
+        // stationName: item.station, // Station name
+        // direction: item.trainno, // Using train number as direction // Alternative route instructions
+        equipmentNo: station.equipmentno,
         accessibility: {
-          wheelchair: { isActive: item.ADA === 'Y' }, // Wheelchair accessible if ADA is 'Y'
-          elevator: { isActive: item.isactive === 'Y' }, // Elevator active status
+          wheelchair: { isActive: station.ADA === 'Y' }, // Wheelchair accessible if ADA is 'Y'
+          elevator: { isActive: station.isactive === 'Y' }, // Elevator active status
           escalator: { isActive: false }, // Placeholder, set according to your needs
           alert: { isActive: false } // Placeholder, set according to your needs
         }
@@ -66,15 +62,15 @@ export default function LandingPage() {
     const circle = svgDoc.querySelector('circle'); // Assuming the color is in the <circle> element
     return circle ? circle.getAttribute('fill') : '#FFFFFF'; // Default to white if no color
   };
-  
+
 
   const toggleFavorite = (index) => {
     setFavorites(prevFavorites => {
       const newFavorites = new Set(prevFavorites);
       if (newFavorites.has(index)) {
-        newFavorites.delete(index); // Remove from favorites
+        newFavorites.removeFav(index); // Remove from favorites
       } else {
-        newFavorites.add(index); // Add to favorites
+        newFavorites.addFav(index); // Add to favorites
       }
       return newFavorites;
     });
@@ -105,11 +101,13 @@ export default function LandingPage() {
                 iconPath={path}
                 idx={i}
                 cardColor={cardColors[i]}
-                stationName={trainData[i]?.stationName || 'N/A'}
-                direction={trainData[i]?.direction || 'Unknown'}
+                // stationName={trainData[i]?.stationName || 'N/A'}
+                // direction={trainData[i]?.direction || 'Unknown'}
+                equipmentNo={trainData[i]?.equipmentNo || 'N/A'}
                 accessibility={trainData[i]?.accessibility || {}}
                 isFavorite={favorites.has(i)} // Check if this card is a favorite
                 toggleFavorite={() => toggleFavorite(i)} // Pass down toggle function
+                trainData={trainData}
               />
             ))}
           </div>
