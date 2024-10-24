@@ -15,7 +15,7 @@ const checkAuthentication = require('./middleware/checkAuthentication');
 const authControllers = require('./controllers/authControllers');
 const userControllers = require('./controllers/userControllers');
 const favControllers = require('./controllers/favControllers');
-const heroCountControllers = require('./controllers/heroCountControllers');
+const heroController = require('./controllers/heroController');
 const app = express();
 
 const serveAccessibleStations = async (req, res, next) => {
