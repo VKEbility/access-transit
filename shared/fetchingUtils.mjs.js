@@ -3,6 +3,11 @@ export const basicFetchOptions = {
   credentials: 'include',
 };
 
+export const externalFetchOptions = (apiKey) => ({
+  method: 'GET',
+  headers: { 'Authorization': `Bearer ${apiKey}` }, //allowing any API key to be inserted dynamically
+});
+
 export const deleteOptions = {
   method: 'DELETE',
   credentials: 'include',

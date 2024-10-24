@@ -1,0 +1,17 @@
+.map-container {
+  display: flex;
+  width: 700px;
+  height: 500px;
+}
+
+#location-search {
+  /* background-color: #0E0E0E; /* separating for dev purposes */
+  width: 300px;
+  height: 30px;
+}
+
+#location-search-form {
+  padding: 1rem;
+  width: 15rem;
+  margin: 1rem auto;
+}

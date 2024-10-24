@@ -3,15 +3,23 @@ const basicFetchOptions = {
   credentials: 'include',
 };
 
+const externalFetchOptions = (apiKey) => ({
+  method: 'GET',
+  headers: { 'apiKey': apiKey },
+});
+
 const deleteOptions = {
   method: 'DELETE',
   credentials: 'include',
 };
 
-const getPostOptions = (body) => ({
+const getPostOptions = (body, apiKey) => ({
   method: 'POST',
   credentials: 'include',
-  headers: { 'Content-Type': 'application/json' },
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${apiKey}`
+  },
   body: JSON.stringify(body),
 });
 
@@ -43,6 +51,7 @@ const fetchHandler = async (url, options = {}) => {
 
 module.exports = {
   basicFetchOptions,
+  externalFetchOptions,
   deleteOptions,
   getPostOptions,
   getPatchOptions,
