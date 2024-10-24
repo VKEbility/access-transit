@@ -18,13 +18,6 @@ export const removeFav = async ({ user_id, gtfs_complex_id }) => {
   return [data, null];
 }
 
-// export const addFav = async ({ user_id.. blahblah}) => {
-//   if (!user_id || !blahbkah || !blah) console.log('NO stuff at addFavs');
-//   const [favs, err] = await fetchHandler(`${baseUrl}`, getPostOptions(blahblah)); //sending params in req body to the controller- destructure it from the req.body in controller
-//   if (err) return [null, err.msg];
-//   return [favs, null];
-// };
-
 export const addFav = async ({ user_id, gtfs_complex_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat }) => {
   // Check if all required parameters are provided
   if (!user_id || !gtfs_complex_id || !rt_stop_id || !stop_name || !gtfs_lon || !gtfs_lat) {

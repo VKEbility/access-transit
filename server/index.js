@@ -15,6 +15,7 @@ const checkAuthentication = require('./middleware/checkAuthentication');
 const authControllers = require('./controllers/authControllers');
 const userControllers = require('./controllers/userControllers');
 const favControllers = require('./controllers/favControllers');
+const heroCountControllers = require('./controllers/heroCountControllers');
 const app = express();
 
 const serveAccessibleStations = async (req, res, next) => {
@@ -73,6 +74,10 @@ app.get('/api/users/:id/favorites', checkAuthentication, favControllers.listFavs
 app.post('/api/users/:id/favorites', checkAuthentication, favControllers.addFav);
 app.delete('/api/users/:id/favorites/:train_id', checkAuthentication, favControllers.removeFav);
 
+///////////////////////////////
+// Herocount Route
+///////////////////////////////
+app.get('/api/users/hero_count', checkAuthentication, heroController.updateHeroCount);
 
 ///////////////////////////////
 // Fallback Route

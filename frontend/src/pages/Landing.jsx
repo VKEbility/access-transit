@@ -1,18 +1,6 @@
 ////// Second Edition
 import React, { useEffect, useState } from 'react';
-import { FiAlertTriangle } from "react-icons/fi";
-import { FaWheelchair } from "react-icons/fa";
-import { MdOutlineElevator } from "react-icons/md";
-import { GiEscalator } from "react-icons/gi";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import TransitCard from '/src/components/TransitCard';
-
-const accessibilityIcons = [
-  { icon: FaWheelchair, label: 'Wheelchair', key: 'wheelchair' },
-  { icon: MdOutlineElevator, label: 'Elevator', key: 'elevator' },
-  { icon: GiEscalator, label: 'Escalator', key: 'escalator' },
-  { icon: FiAlertTriangle, label: 'Alert', key: 'alert' }
-];
 
 const trainIcons = [
   '1', '2', '3', '4', '5', '6', '6d', '7', '7d', 'a', 'b', 

@@ -23,6 +23,7 @@ exports.addFav = async (req, res) => {
     // need these properties when adding a new favorite train station 
     const {gtfs_complex_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat} = req.body;
     const addFav = await Favorite.addFav(userId, gtfs_complex_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat);
+    console.log(favorites);
     res.send(addFav);
   }
   catch(err) {
