@@ -104,6 +104,9 @@ export default function LandingPage() {
                 // stationName={trainData[i]?.stationName || 'N/A'}
                 // direction={trainData[i]?.direction || 'Unknown'}
                 equipmentNo={trainData[i]?.equipmentNo || 'N/A'}
+                // stationName={trainData[i]?.stationName || 'N/A'}
+                // direction={trainData[i]?.direction || 'Unknown'}
+                equipmentNo={trainData[i]?.equipmentNo || 'N/A'}
                 accessibility={trainData[i]?.accessibility || {}}
                 isFavorite={favorites.has(i)} // Check if this card is a favorite
                 toggleFavorite={() => toggleFavorite(i)} // Pass down toggle function
