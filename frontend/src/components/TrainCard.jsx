@@ -10,42 +10,42 @@ export const TransitCard = ({ iconPath, idx, cardColor, equipmentNo, accessibili
 
   const user_id = currentUser;
   const handleAddingFav = (e) => {
-      e.preventDefault();
-      console.log("USERID", user_id);
-      console.log("HELLO", equipmentNo);
-      addFav(user_id, equipmentNo);
-      console.log('Liked');
+    e.preventDefault();
+    console.log("USERID", user_id);
+    console.log("HELLO", equipmentNo);
+    addFav(user_id, equipmentNo);
+    console.log('Liked');
   }
 
   return (
     <div
-    className="transit-card"
-    style={{ backgroundColor: cardColor }} 
-  >
-    <img
-      src={iconPath}
-      alt={`Transit logo ${idx + 1}`}
-      className="transit-logo"
-    />
-    {/* <p id="train-direction">Direction: {direction}</p>
+      className="transit-card"
+      style={{ backgroundColor: cardColor }}
+    >
+      <img
+        src={iconPath}
+        alt={`Transit logo ${idx + 1}`}
+        className="transit-logo"
+      />
+      {/* <p id="train-direction">Direction: {direction}</p>
     <p id="station-name">Station: {stationName}</p> */}
-    <p id="equipment-number">Equipment Number: {equipmentNo}</p>
-    <div id="accessibility-icons-container" aria-label="Accessibility Features">
-      {accessibilityIcons.map(({ icon: Icon, label, key }) => (
-        accessibility[key]?.isActive && (
-          <div key={label} className="accessibility-button" id="card-button">
-            <Icon aria-hidden="true" /> 
-          </div>
-        )
-      ))}
-      {isFavorite ? 
-      // already favorited? then unfavorite it 
-        <AiFillStar aria-hidden="true" type='button' /> 
-        : 
-        // not favorite? then favorite it 
-        <AiOutlineStar aria-hidden="true" type='button'  onClick={handleAddingFav}/>
-      }
+      <p id="equipment-number">Equipment Number: {equipmentNo}</p>
+      <div id="accessibility-icons-container" aria-label="Accessibility Features">
+        {accessibilityIcons.map(({ icon: Icon, label, key }) => (
+          accessibility[key]?.isActive && (
+            <div key={label} className="accessibility-button" id="card-button">
+              <Icon aria-hidden="true" />
+            </div>
+          )
+        ))}
+        {isFavorite ?
+          // already favorited? then unfavorite it 
+          <AiFillStar aria-hidden="true" type='button' />
+          :
+          // not favorite? then favorite it 
+          <AiOutlineStar aria-hidden="true" type='button' onClick={handleAddingFav} />
+        }
+      </div>
     </div>
-  </div>
   )
 }
