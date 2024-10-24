@@ -1,6 +1,6 @@
 ////// Second Edition
 import React, { useContext, useEffect, useState } from 'react';
-import {accessibilityIcons, trainIcons} from '../components/TrainAndAccessibilityIcon';
+import { accessibilityIcons, trainIcons } from '../components/TrainAndAccessibilityIcon';
 import { TransitCard } from '../components/TrainCard';
 
 export default function LandingPage() {
@@ -62,7 +62,7 @@ export default function LandingPage() {
     const circle = svgDoc.querySelector('circle'); // Assuming the color is in the <circle> element
     return circle ? circle.getAttribute('fill') : '#FFFFFF'; // Default to white if no color
   };
-  
+
 
   const toggleFavorite = (index) => {
     setFavorites(prevFavorites => {
