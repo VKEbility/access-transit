@@ -14,43 +14,14 @@ export const listFavs = async (user_id) => {
   return favs || [];
 };
 
-// export const addFav = async ({ user_id, rt_stop_id=1, stop_name="hello", gtfs_lon=12.34567, gtfs_lat=12.34567, equipmentNo}) => {
-//   const [addedFav, err] = await fetchHandler(`${baseUrl}/${user_id}/favorites`, getPostOptions({ user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat, equipmentNo }));
-if (err) return [null, err.msg];
-return [addedFav, null];
-// };
+export const addFav = async ({ user_id, rt_stop_id = 1, stop_name = "hello", gtfs_lon = 12.34567, gtfs_lat = 12.34567, equipmentNo }) => {
+  const [addedFav, err] = await fetchHandler(`${baseUrl}/${user_id}/favorites`, getPostOptions({ user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat, equipmentNo }));
+  if (err) return [null, err.msg];
+  return [addedFav, null];
+};
 
 export const removeFav = async ({ user_id, rt_stop_id }) => {
   const [data, err] = await fetchHandler(`${baseUrl}/${id}`, deleteOptions({ user_id, rt_stop_id }));
   if (err) return [null, err.msg];
   return [data, null];
 }
-
-export const addFav = async ({ user_id, gtfs_complex_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat }) => {
-  // Check if all required parameters are provided
-  if (!user_id || !gtfs_complex_id || !rt_stop_id || !stop_name || !gtfs_lon || !gtfs_lat) {
-    console.log('Missing parameters in addFav function');
-    return [null, 'Missing parameters'];
-  }
-
-  // Prepare request payload
-  const requestBody = {
-    user_id,
-    gtfs_complex_id,
-    rt_stop_id,
-    stop_name,
-    gtfs_lon,
-    gtfs_lat
-  };
-
-  // Send POST request to backend
-  const [favs, err] = await fetchHandler(`${baseUrl}/${user_id}/favorites`, getPostOptions(requestBody));
-
-  // Handle error if present
-  if (err) {
-    console.log('Error adding favorite:', err.msg);
-    return [null, err.msg];
-  }
-
-  return [favs, null];
-};
