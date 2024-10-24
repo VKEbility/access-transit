@@ -16,18 +16,8 @@ const authControllers = require('./controllers/authControllers');
 const userControllers = require('./controllers/userControllers');
 const favControllers = require('./controllers/favControllers');
 const heroController = require('./controllers/heroController');
+const adaStationsControllers = require('./controllers/adaStationsControllers')
 const app = express();
-
-const serveAccessibleStations = async (req, res, next) => {
-  // ada = 1 => only retrieve accessible stations 
-  const API_URL = `https://data.ny.gov/resource/39hk-dx4f.json?ada=1`;
-  const [data, error] = await fetchData(API_URL);
-  if (error) {
-    console.log(error.message);
-    return res.status(404).send(error);
-  }
-  res.send(data);
-}
 
 // middleware
 app.use(handleCookieSessions); // adds a session property to each request representing the cookie
@@ -59,9 +49,9 @@ app.patch('/api/users/:id', checkAuthentication, userControllers.updateUser);
 
 
 ///////////////////////////////
-// Train Routes
+// Transit Routes
 ///////////////////////////////
-app.get('/api/accessible', serveAccessibleStations);
+app.get('/api/ada', adaStationsControllers.listADAStations);
 
 
 ///////////////////////////////
