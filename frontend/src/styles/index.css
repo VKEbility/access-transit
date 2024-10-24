@@ -275,7 +275,8 @@ svg {
 #site-logo-and-title-container {
   display: flex;
   align-items: center;
-  
+}
+
 #transit-card-title {
   /* background-color: #080808; /* separating for dev purposes */
   margin: 0 auto;
@@ -285,7 +286,7 @@ svg {
 #accessibility-icons-container {
   /* background-color: #070707; /* separating for dev purposes */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
   align-items: flex-end;
   margin: 10px;

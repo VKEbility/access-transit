@@ -14,23 +14,8 @@ export default function Favorites() {
       </header>
 
       <div id="favorites-container">
-        {favorites.size === 0 ? (
-          <p>No favorites yet.</p>
-        ) : (
-          Array.from(favorites).map((favIdx) => (
-            <TransitCard
-              key={favIdx}
-              idx={favIdx}
-              iconPath={loadedTrainIcons[favIdx]} // Dynamically load icon based on favorite index
-              cardColor="#FFFFFF" // White background for favorite cards
-              stationName={trainData[favIdx]?.stationName || 'N/A'}
-              direction={trainData[favIdx]?.direction || 'Unknown'}
-              accessibility={trainData[favIdx]?.accessibility || {}}
-              isFavorite={true} // Always show filled star since it's in favorites
-              toggleFavorite={() => toggleFavorite(favIdx)} // Remove from favorites if clicked
-            />
-          ))
-        )}
+       
+
       </div>
     </div>
   );
