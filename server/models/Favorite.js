@@ -2,11 +2,11 @@ const knex = require('../db/knex');
 // import AccessibleStations from '../../frontend/src/components/AccessibleStations';
 
 class Favorite {
-  
-  static async addFav(user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat, equipmentNo) { 
+
+  static async addFav(user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat, equipmentNo) {
     // dynamically inserting values into a query to avoid SQL injection attacks 
     const query = `INSERT INTO favorites (user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat, equipmentNo) 
-                  VALUES (?, ?, ?, ?, ?, ?) RETURNING *;` 
+                  VALUES (?, ?, ?, ?, ?, ?) RETURNING *;`
     // console.log("hello", user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat);
     const result = await knex.raw(query, [user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat, equipmentNo]);
     // console.log("ROWS:", result.rows[0]);
@@ -20,6 +20,9 @@ class Favorite {
     return result.rows[0];
   }
 
+  static async removeFav(user_id, rt_stop_id) {
+    const query = `DELETE FROM favorites WHERE user_id = ? AND rt_stop_id = ?;`;
+    const result = await knex.raw(query, [user_id, rt_stop_id]);
   static async removeFav(user_id, rt_stop_id) {
     const query = `DELETE FROM favorites WHERE user_id = ? AND rt_stop_id = ?;`;
     const result = await knex.raw(query, [user_id, rt_stop_id]);
