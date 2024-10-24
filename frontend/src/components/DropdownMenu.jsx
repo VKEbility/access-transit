@@ -1,7 +1,7 @@
 // src/Dropdown.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Dropdown.css';
+import '../styles/dropdowns.css';
 
 export default function Dropdown({ title, items }) {
   const [isOpen, setIsOpen] = useState(false);

@@ -29,10 +29,10 @@ export default function SiteHeadingAndNav() {
         <nav className="nav-bar">
           <ul className="nav-link-container">
             <li className="nav-link"><NavLink to='/'>Home</NavLink></li>
+            <li className="nav-link"><NavLink to='/about'>About</NavLink></li>
             <li className="nav-link"><NavLink to='/accessible-stations'>ADA Stations</NavLink></li>
             {currentUser ? (
               <>
-                <li className="nav-link"><NavLink to='/about'>About</NavLink></li>
                 <li className="nav-link"><NavLink to="/alerts">Service Alerts</NavLink></li>
                 <li className="nav-link"><NavLink to="/our-heroes">Our Heroes</NavLink></li>
                 <li className="nav-link"><NavLink to="/favorites">Favorites</NavLink></li>

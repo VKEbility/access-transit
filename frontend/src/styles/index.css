@@ -87,8 +87,7 @@ header {
   /* background-color: #B2B2B2; /* separating for dev purposes */
   display: flex;
   flex-wrap: wrap;
-  gap: 10rem;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 0.5rem 1rem;
 }
@@ -105,9 +104,11 @@ header {
   margin: 0 40px;
 }
 
+#site-logo {
+  height: 60px;
+}
+
 #site-title {
-  width: 1rem;
-  height: auto;
   margin-right: 10px;
   transition: transform 0.2s ease;
   font-size: 1.8rem;
@@ -119,7 +120,6 @@ header {
 nav ul {
   /* background-color: #999999; /* separating for dev purposes */
   display: flex;
-  gap: 1rem;
   list-style: none;
 }
 
@@ -139,7 +139,6 @@ nav a {
 form {
   /* background-color: #666666; /* separating for dev purposes */
   padding: 1rem;
-  border: 1px solid #CCC;
   width: 15rem;
   margin: 1rem auto;
 }
@@ -204,27 +203,9 @@ input:invalid {
   align-items: center;
 }
 
-#transitSearch {
-  /* background-color: #0E0E0E; /* separating for dev purposes */
-  width: 600px;
-  height: 50px;
-  margin: 30px;
-  border-radius: 15px;
-}
-
 #estimated-arrival-time {
   /* background-color: #0D0D0D; /* separating for dev purposes */
   color: black;
-}
-
-#access-transit-map {
-  /* background-color: #0C0C0C; /* separating for dev purposes */
-  display: flex;
-  background-color: gray;
-  width: 700px;
-  height: 500px;
-  border: black solid 10px;
-  border-radius: 35px;
 }
 
 /* transit cards */
