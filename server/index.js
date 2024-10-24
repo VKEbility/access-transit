@@ -17,6 +17,7 @@ const userControllers = require('./controllers/userControllers');
 const adaStationsControllers = require('./controllers/adaStationsControllers');
 const serviceAlertsController = require('./controllers/serviceAlertsController');
 const nearbyRoutesControllers = require('./controllers/nearbyRoutesControllers');
+const mapControllers = require('./controllers/mapControllers');
 
 const app = express();
 
@@ -55,6 +56,8 @@ app.patch('/api/users/:id', checkAuthentication, userControllers.updateUser);
 app.get('/api/ada', adaStationsControllers.listADAStations);
 app.get('/api/service-alerts', serviceAlertsController.listAllAlerts);
 app.get('/api/service-alerts/:rt_stop_id', serviceAlertsController.showRouteAlerts);
+app.post('/api/map-search', mapControllers.searchLocation);
+
 
 ///////////////////////////////
 // Transit Routes
