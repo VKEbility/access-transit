@@ -21,8 +21,8 @@ exports.addFav = async (req, res) => {
     // since we're checking which user this action is being done to 
     const { userId } = req.session;
     // need these properties when adding a new favorite train station 
-    const {gtfs_complex_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat} = req.body;
-    const addFav = await Favorite.addFav(userId, gtfs_complex_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat);
+    const {rt_stop_id, stop_name, gtfs_lon, gtfs_lat} = req.body;
+    const addFav = await Favorite.addFav(userId, rt_stop_id, stop_name, gtfs_lon, gtfs_lat);
     res.send(addFav);
   }
   catch(err) {
@@ -36,8 +36,8 @@ exports.removeFav = async (req, res) => {
     // since we're checking which user this action is being done to 
     const { userId } = req.session;
     // need gtfs_complex_id as it's a unique indicator of which train station is being removed from the list 
-    const {gtfs_complex_id} = req.body;
-    const removeFav = await Favorite.removeFav(userId, gtfs_complex_id);
+    const {rt_stop_id} = req.body;
+    const removeFav = await Favorite.removeFav(userId, rt_stop_id);
     res.send(removeFav);
   }
   catch(err) {

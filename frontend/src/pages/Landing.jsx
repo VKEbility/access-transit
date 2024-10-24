@@ -1,50 +1,8 @@
 ////// Second Edition
-import React, { useEffect, useState } from 'react';
-import { FiAlertTriangle } from "react-icons/fi";
-import { FaWheelchair } from "react-icons/fa";
-import { MdOutlineElevator } from "react-icons/md";
-import { GiEscalator } from "react-icons/gi";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-
-const accessibilityIcons = [
-  { icon: FaWheelchair, label: 'Wheelchair', key: 'wheelchair' },
-  { icon: MdOutlineElevator, label: 'Elevator', key: 'elevator' },
-  { icon: GiEscalator, label: 'Escalator', key: 'escalator' },
-  { icon: FiAlertTriangle, label: 'Alert', key: 'alert' }
-];
-
-const trainIcons = [
-  '1', '2', '3', '4', '5', '6', '6d', '7', '7d', 'a', 'b', 
-  'c', 'd', 'e', 'f', 'g', 'h', 'j', 'l', 'm', 'n', 'q', 
-  'r', 's', 'sf', 'sir', 'sr', 't', 'w', 'z'
-];
-
-const TransitCard = ({ iconPath, idx, cardColor, stationName, direction, accessibility, isFavorite, toggleFavorite }) => (
-  <div
-    className="transit-card"
-    style={{ backgroundColor: cardColor }} 
-  >
-    <img
-      src={iconPath}
-      alt={`Transit logo ${idx + 1}`}
-      className="transit-logo"
-    />
-    <p id="train-direction">Direction: {direction}</p>
-    <p id="station-name">Station: {stationName}</p>
-    <div id="accessibility-icons-container" aria-label="Accessibility Features">
-      {accessibilityIcons.map(({ icon: Icon, label, key }) => (
-        accessibility[key]?.isActive && (
-          <div key={label} className="accessibility-button" id="card-button">
-            <Icon aria-hidden="true" /> 
-          </div>
-        )
-      ))}
-       <div onClick={toggleFavorite} className="favorite-button" id="card-button">
-      {isFavorite ? <AiFillStar aria-hidden="true" /> : <AiOutlineStar aria-hidden="true" />}
-    </div>
-    </div>
-  </div>
-);
+import React, { useContext, useEffect, useState } from 'react';
+import {accessibilityIcons, trainIcons} from '../components/TrainAndAccessibilityIcon';
+import { listFavs, addFav, removeFav } from '../adapters/fav-adapter';
+import { TransitCard } from '../components/TrainCard';
 
 export default function LandingPage() {
   const [loadedTrainIcons, setLoadedTrainIcons] = useState([]);
@@ -110,9 +68,9 @@ export default function LandingPage() {
     setFavorites(prevFavorites => {
       const newFavorites = new Set(prevFavorites);
       if (newFavorites.has(index)) {
-        newFavorites.delete(index); // Remove from favorites
+        newFavorites.removeFav(index); // Remove from favorites
       } else {
-        newFavorites.add(index); // Add to favorites
+        newFavorites.addFav(index); // Add to favorites
       }
       return newFavorites;
     });
@@ -148,6 +106,7 @@ export default function LandingPage() {
                 accessibility={trainData[i]?.accessibility || {}}
                 isFavorite={favorites.has(i)} // Check if this card is a favorite
                 toggleFavorite={() => toggleFavorite(i)} // Pass down toggle function
+                trainData={trainData}
               />
             ))}
           </div>

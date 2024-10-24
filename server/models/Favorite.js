@@ -3,12 +3,12 @@ const knex = require('../db/knex');
 
 class Favorite {
   
-  static async addFav(user_id, gtfs_complex_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat) { 
+  static async addFav(user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat) { 
     // dynamically inserting values into a query to avoid SQL injection attacks 
-    const query = `INSERT INTO favorites (user_id, gtfs_complex_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat, created_at, updated_at) 
-                  VALUES (?, ?, ?, ?, ?, ?, NOW(), NOW()) RETURNING *;` 
-    // console.log(user_id, gtfs_complex_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat)
-    const result = await knex.raw(query, [user_id, gtfs_complex_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat]);
+    const query = `INSERT INTO favorites (user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat) 
+                  VALUES (?, ?, ?, ?, ?) RETURNING *;` 
+    // console.log("hello", user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat);
+    const result = await knex.raw(query, [user_id, rt_stop_id, stop_name, gtfs_lon, gtfs_lat]);
     // console.log("ROWS:", result.rows[0]);
     return result.rows[0];
   }
@@ -20,9 +20,9 @@ class Favorite {
     return result.rows[0];
   }
 
-  static async removeFav(user_id, gtfs_complex_id) {
-    const query = `DELETE FROM favorites WHERE user_id = ? AND gtfs_complex_id = ?;`;
-    const result = await knex.raw(query, [user_id, gtfs_complex_id]);
+  static async removeFav(user_id, rt_stop_id) {
+    const query = `DELETE FROM favorites WHERE user_id = ? AND rt_stop_id = ?;`;
+    const result = await knex.raw(query, [user_id, rt_stop_id]);
     // console.log("DELETE:", result.rows[0]);
     return result.rows[0];
   }
