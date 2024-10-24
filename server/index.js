@@ -15,6 +15,7 @@ const checkAuthentication = require('./middleware/checkAuthentication');
 const authControllers = require('./controllers/authControllers');
 const userControllers = require('./controllers/userControllers');
 const adaStationsControllers = require('./controllers/adaStationsControllers')
+const favControllers = require('./controllers/favControllers');
 const app = express();
 
 // middleware
@@ -53,6 +54,17 @@ app.get('/api/ada', adaStationsControllers.listADAStations);
 
 
 ///////////////////////////////
+// Favorites Routes
+///////////////////////////////
+
+// must check which user want to do an action first! 
+// then do the action (list, add, or remove)! 
+app.get('/api/users/:id/favorites', checkAuthentication, favControllers.listFavs);
+app.post('/api/users/:id/favorites', checkAuthentication, favControllers.addFav);
+app.delete('/api/users/:id/favorites/:train_id', checkAuthentication, favControllers.removeFav);
+
+
+///////////////////////////////
 // Fallback Route
 ///////////////////////////////
 
@@ -62,6 +74,7 @@ app.get('*', (req, res, next) => {
   if (req.originalUrl.startsWith('/api')) return next();
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
+
 
 ///////////////////////////////
 // Start Listening
