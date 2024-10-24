@@ -1,7 +1,6 @@
 ////// Second Edition
 import React, { useContext, useEffect, useState } from 'react';
 import {accessibilityIcons, trainIcons} from '../components/TrainAndAccessibilityIcon';
-import { listFavs, addFav, removeFav } from '../adapters/fav-adapter';
 import { TransitCard } from '../components/TrainCard';
 
 export default function LandingPage() {
@@ -36,12 +35,13 @@ export default function LandingPage() {
       console.log('API Response:', data);
 
       // Extract relevant data: station name, direction, accessibility info, and alternative route
-      const formattedData = data.map(item => ({
-        stationName: item.station, // Station name
-        direction: item.trainno, // Using train number as direction // Alternative route instructions
+      const formattedData = data.map(station => ({
+        // stationName: item.station, // Station name
+        // direction: item.trainno, // Using train number as direction // Alternative route instructions
+        equipmentNo: station.equipmentno,
         accessibility: {
-          wheelchair: { isActive: item.ADA === 'Y' }, // Wheelchair accessible if ADA is 'Y'
-          elevator: { isActive: item.isactive === 'Y' }, // Elevator active status
+          wheelchair: { isActive: station.ADA === 'Y' }, // Wheelchair accessible if ADA is 'Y'
+          elevator: { isActive: station.isactive === 'Y' }, // Elevator active status
           escalator: { isActive: false }, // Placeholder, set according to your needs
           alert: { isActive: false } // Placeholder, set according to your needs
         }
@@ -101,8 +101,9 @@ export default function LandingPage() {
                 iconPath={path}
                 idx={i}
                 cardColor={cardColors[i]}
-                stationName={trainData[i]?.stationName || 'N/A'}
-                direction={trainData[i]?.direction || 'Unknown'}
+                // stationName={trainData[i]?.stationName || 'N/A'}
+                // direction={trainData[i]?.direction || 'Unknown'}
+                equipmentNo={trainData[i]?.equipmentNo || 'N/A'}
                 accessibility={trainData[i]?.accessibility || {}}
                 isFavorite={favorites.has(i)} // Check if this card is a favorite
                 toggleFavorite={() => toggleFavorite(i)} // Pass down toggle function

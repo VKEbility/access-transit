@@ -21,8 +21,8 @@ exports.addFav = async (req, res) => {
     // since we're checking which user this action is being done to 
     const { userId } = req.session;
     // need these properties when adding a new favorite train station 
-    const {rt_stop_id, stop_name, gtfs_lon, gtfs_lat} = req.body;
-    const addFav = await Favorite.addFav(userId, rt_stop_id, stop_name, gtfs_lon, gtfs_lat);
+    const {rt_stop_id, stop_name, gtfs_lon, gtfs_lat, equipmentNo} = req.body;
+    const addFav = await Favorite.addFav(userId, rt_stop_id, stop_name, gtfs_lon, gtfs_lat, equipmentNo);
     res.send(addFav);
   }
   catch(err) {
