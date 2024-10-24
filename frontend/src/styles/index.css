@@ -9,11 +9,12 @@
 :root {
   /* background-color: #EAEAEA; /* separating for dev purposes */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-repeat: no-repeat; /* Prevents the background from repeating */
+  background-repeat: no-repeat;
+  /* Prevents the background from repeating */
   background-size: cover;
-  min-width: 100%; 
-  min-height: 100%; 
-  width: auto; 
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
   height: auto;
   line-height: 1.5;
   font-weight: 400;
@@ -36,8 +37,8 @@
 /* body styling */
 body {
   /* background-color: #c9a2a2; /* separating for dev purposes */
-  min-width: 320px;
-  min-height: 40vh;
+  min-width: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -109,11 +110,17 @@ header {
 }
 
 #site-title {
+  width: auto;
+  height: auto;
   margin-right: 10px;
   transition: transform 0.2s ease;
   font-size: 1.8rem;
   font-weight: 700;
   line-height: 1;
+}
+
+#site-logo {
+  width: auto;
 }
 
 /* navigation */
@@ -195,95 +202,17 @@ input:invalid {
   text-align: center;
 }
 
-#home-flex-container {
-  /* background-color: #0F0F0F; /* separating for dev purposes */
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+#transitSearch {
+  /* background-color: #0E0E0E; /* separating for dev purposes */
+  width: 600px;
+  height: 50px;
+  margin: 30px;
+  border-radius: 15px;
 }
 
 #estimated-arrival-time {
   /* background-color: #0D0D0D; /* separating for dev purposes */
   color: black;
-}
-
-/* transit cards */
-#transit-cards-structure {
-  /* background-color: #0B0B0B; /* separating for dev purposes */
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-}
-
-#transit-cards-container {
-  /* background-color: #0A0A0A; /* separating for dev purposes */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  background-color: #C7CC65;
-  width: 800px;
-  padding: 30px;
-  border: black solid 5px;
-  border-radius: 35px;
-}
-
-.transit-card {
-  /* background-color: #090909; /* separating for dev purposes */
-  display: flex;
-  background-color: wheat;
-  flex-direction: column;
-  width: 190px;
-  margin: 10px;
-  padding: 20px;
-  border-radius: 20px;
-  justify-content: space-around;
-}
-
-#card-button {
- width: 30px;
- height: 30px;
-}
-
-svg {
-   display: flex;
-}
-
-.favorite-button {
-  width: 50px;
-}
-
-#site-logo-and-title-container {
-  display: flex;
-  align-items: center;
-}
-
-#transit-card-title {
-  /* background-color: #080808; /* separating for dev purposes */
-  margin: 0 auto;
-}
-
-/* icons and logos */
-#accessibility-icons-container {
-  /* background-color: #070707; /* separating for dev purposes */
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: flex-end;
-  margin: 10px;
-}
-
-#accessibility-icon {
-  /* background-color: #060606; /* separating for dev purposes */
-  color: white;
-}
-
-.transit-logo {
-  /* background-color: #050505; /* separating for dev purposes */
-  display: flex;
-  align-items: center;
-  width: 50px;
-  height: 40px;
 }
 
 /* favorites section */
@@ -294,12 +223,13 @@ svg {
   padding: 20px;
   margin: 30px;
 }
+
 /* Entire Favorites Page CSS */
 #favorites-page {
   display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 #favorites-container {

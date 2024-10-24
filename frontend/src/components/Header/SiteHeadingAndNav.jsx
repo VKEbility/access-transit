@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { useContext, useState } from "react";
-import { logUserOut } from "../adapters/auth-adapter";
-import CurrentUserContext from "../contexts/CurrentUserContext";
+import { logUserOut } from "../../adapters/auth-adapter";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import DropdownMenu from "./DropdownMenu";
-import siteLogo from '../assets/images/logo.svg';
+import siteLogo from '../../assets/images/logo.svg';
 
 export default function SiteHeadingAndNav() {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
