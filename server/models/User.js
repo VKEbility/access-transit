@@ -117,6 +117,19 @@ class User {
     return updatedUser ? new User(updatedUser) : null;
   }
 
+  static async getHeroCount(id) {
+    const query = `
+      SELECT * FROM users 
+      ORDER BY "hero_count" 
+      DESC LIMIT 300 
+      OFFSET 0
+    `;
+
+    const result = await knex.raw(query, [id]);
+    const heroCount = result.rows[0];
+    return heroCount ? new User(heroCount) : null;
+  }
+
   static async incrementHeroCount(id) {
     const query = `
       UPDATE users
@@ -124,6 +137,7 @@ class User {
       WHERE id=?
       RETURNING *
     `;
+
     const result = await knex.raw(query, [id]);
     const updatedUser = result.rows[0];
     return updatedUser ? new User(updatedUser) : null;

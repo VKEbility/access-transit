@@ -1,10 +1,11 @@
 ////// Second Edition
 import React, { useContext, useEffect, useState } from 'react';
-import {accessibilityIcons, trainIcons} from '../components/TrainAndAccessibilityIcon';
+import { accessibilityIcons, trainIcons } from '../components/TrainAndAccessibilityIcon';
 import { TransitCard } from '../components/TrainCard';
 
 export default function LandingPage() {
   const [loadedTrainIcons, setLoadedTrainIcons] = useState([]);
+  const [coords, setCoords] = useState({ lat: 40.7128, lon: -74.0060 }); //passing coords as props to nested components that will use them for data fetching throughout our frontend 
   const [cardColors, setCardColors] = useState([]);
   const [trainData, setTrainData] = useState([]);
   const [favorites, setFavorites] = useState(new Set()); // Track favorite stations by index
@@ -62,7 +63,7 @@ export default function LandingPage() {
     const circle = svgDoc.querySelector('circle'); // Assuming the color is in the <circle> element
     return circle ? circle.getAttribute('fill') : '#FFFFFF'; // Default to white if no color
   };
-  
+
 
   const toggleFavorite = (index) => {
     setFavorites(prevFavorites => {
@@ -79,22 +80,19 @@ export default function LandingPage() {
   return (
     <>
       <header>
-        <h1 id="site-title-logged-in">Welcome to #Access Transit</h1>
+        <h1 id="site-title-logged-in">Welcome to #AccessTransit</h1>
       </header>
       <div id="home-flex-container">
-        <div id="access-transit-map"></div>
-        <input
-          type="text"
-          placeholder="Where to?"
-          id="transitSearch"
-          name="transitSearch"
-          aria-label="Transit Search"
-        />
+        <div id="access-transit-map">
+          <MapContainerComponent setCoords={setCoords} />
+          <LocationSearch setCoords={setCoords} />
+        </div>
       </div>
       <div id="transit-card-title">
-        <h2 id="section-title">Cards</h2>
+        <h2 id="section-title">Nearby Routes</h2>
         <div id="transit-cards-structure">
           <div id="transit-cards-container">
+            <NearbyRoutesContainer coords={coords} setCoords={setCoords} />
             {loadedTrainIcons.map((path, i) => (
               <TransitCard
                 key={i}
