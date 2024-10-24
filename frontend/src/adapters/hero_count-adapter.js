@@ -1,4 +1,4 @@
-import { fetchHandler, getPostOptions } from "../utils/fetchingUtils";
+import { fetchHandler, getPostOptions } from '../../../shared/fetchingUtils.mjs';
 
 const baseUrl = '/api/users/';
 
@@ -11,7 +11,7 @@ export const getHeroCount = async (id) => {
   return heroCount || 0; // Return 0 if no hero count is found
 };
 
-export const updateHeroCount = async ({ id, hero_count}) => {
+export const updateHeroCount = async ({ id, hero_count }) => {
   const [data, err] = await fetchHandler(`${baseUrl}/${id}`, getPostOptions({ id, hero_count }));
   if (err) return [null, err.msg];
   return [data, null];
