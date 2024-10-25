@@ -15,11 +15,7 @@ const authControllers = require('./controllers/authControllers');
 const userControllers = require('./controllers/userControllers');
 const favControllers = require('./controllers/favControllers');
 const heroController = require('./controllers/heroController');
-const adaStationsControllers = require('./controllers/adaStationsControllers');
-const nearbyRoutesControllers = require('./controllers/nearbyRoutesControllers');
-const accessibilityControllers = require('./controllers/accessibilityControllers');
-const mapControllers = require('./controllers/mapControllers')
-
+const adaStationsControllers = require('./controllers/adaStationsControllers')
 const app = express();
 
 // middleware
