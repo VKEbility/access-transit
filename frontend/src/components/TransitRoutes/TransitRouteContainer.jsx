@@ -3,7 +3,7 @@ import { fetchNearbyRoutes } from '../../adapters/transit-adapters';
 import TransitRouteCard from '../TransitRoutes/TransitRouteCard';
 import '../../styles/routes.css';
 
-export default function NearbyRoutesContainer({ coords }) {
+export default function NearbyRoutesContainer({ coords, mapReady }) {
   const [routes, setRoutes] = useState([]);
   const [firstLoad, setFirstLoad] = useState(true); //making sure routes don't refresh automatically in useEffect unless first page load
   const [errorText, setErrorText] = useState('');
@@ -21,11 +21,11 @@ export default function NearbyRoutesContainer({ coords }) {
   };
 
   useEffect(() => { //happens automatically on first render
-    if (firstLoad && coords.lat && coords.lon) {
+    if (firstLoad && mapReady && coords.lat && coords.lon) {
       loadNearbyRoutes();
       setFirstLoad(false); //set first load flag to false after the first fetch
     }
-  }, [firstLoad, coords]);
+  }, [firstLoad, mapReady, coords]);
 
   const handleTimerEnd = (transitId) => { //when time reaches transit departure time, removing the route card from the container by its transitId
     setRoutes((prevRoutes) => prevRoutes.filter(route => route.transitId !== transitId)); //changing routes state by filtering the arr for only the routes that don't match the transitId

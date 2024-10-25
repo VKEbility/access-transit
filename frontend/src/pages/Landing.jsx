@@ -7,6 +7,7 @@ const TransitRouteContainer = React.lazy(() => import('../components/TransitRout
 
 export default function LandingPage() {
   const [coords, setCoords] = useState({ lat: 40.7128, lon: -74.0060 }); //default coordinates set to nyc
+  const [mapReady, setMapReady] = useState(false);
 
   const LoadingFallback = () => <div>Loading...</div>;
 
@@ -14,9 +15,9 @@ export default function LandingPage() {
     <>
       <Suspense fallback={<LoadingFallback />}>
         <TransitHeader />
-        <MapContainerComponent setCoords={setCoords} />
+        <MapContainerComponent coords={coords} setCoords={setCoords} setMapReady={setMapReady} />
         <LocationSearch setCoords={setCoords} />
-        <TransitRouteContainer coords={coords} />
+        <TransitRouteContainer coords={coords} mapReady={mapReady} />
       </Suspense>
     </>
   );
