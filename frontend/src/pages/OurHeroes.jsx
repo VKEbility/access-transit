@@ -6,7 +6,7 @@ export default function OurHeroes() {
       <h1>Our Heroes</h1>
       <p>Put something interesting here!</p>
 
-      <li className="link"><Link to='/users' end={true}>Users</Link></li>
+      <li className="link"><Link to='/users' end="true">Users</Link></li>
     </>
   );
 };

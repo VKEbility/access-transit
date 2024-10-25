@@ -1,15 +1,59 @@
-////// Second Edition
 import React, { useEffect, useState } from 'react';
-import TransitCard from '/src/components/TransitCard';
+import { FiAlertTriangle } from "react-icons/fi";
+import { FaWheelchair } from "react-icons/fa";
+import { MdOutlineElevator } from "react-icons/md";
+import { GiEscalator } from "react-icons/gi";
+import NearbyRoutesContainer from '../components/NearbyRoutesContainer';
+import MapContainerComponent from '../components/MapContainer';
+import LocationSearch from '../components/LocationSearch';
+
+const accessibilityIcons = [
+  { icon: FaWheelchair, label: 'Wheelchair' },
+  { icon: MdOutlineElevator, label: 'Elevator' },
+  { icon: GiEscalator, label: 'Escalators' },
+  { icon: FiAlertTriangle, label: 'Alert' }
+];
 
 const trainIcons = [
-  '1', '2', '3', '4', '5', '6', '6d', '7', '7d', 'a', 'b', 
-  'c', 'd', 'e', 'f', 'g', 'h', 'j', 'l', 'm', 'n', 'q', 
+  '1', '2', '3', '4', '5', '6', '6d', '7', '7d', 'a', 'b',
+  'c', 'd', 'e', 'f', 'g', 'h', 'j', 'l', 'm', 'n', 'q',
   'r', 's', 'sf', 'sir', 'sr', 't', 'w', 'z'
 ];
 
+const TransitCard = ({ iconPath, idx, cardColor }) => (
+  <div
+    className="transit-card"
+    style={{ backgroundColor: cardColor }} //46% opacity
+  >
+    <img
+      src={iconPath}
+      alt={`Transit logo ${idx + 1}`}
+      className="transit-logo"
+    />
+    <p id="estimated-arrival-time">4 mins</p>
+    <div id="accessibility-icons-container" aria-label="Accessibility Features">
+    </div>
+  </div>
+);
+
+// Convert hex to RGB
+// const hexToRGB = (hex) => {
+//   let r = 0, g = 0, b = 0;
+//   if (hex.length === 4) {
+//     r = parseInt(hex[1] + hex[1], 16);
+//     g = parseInt(hex[2] + hex[2], 16);
+//     b = parseInt(hex[3] + hex[3], 16);
+//   } else if (hex.length === 7) {
+//     r = parseInt(hex[1] + hex[2], 16);
+//     g = parseInt(hex[3] + hex[4], 16);
+//     b = parseInt(hex[5] + hex[6], 16);
+//   }
+//   return `${r}, ${g}, ${b}`;
+// };
+
 export default function LandingPage() {
   const [loadedTrainIcons, setLoadedTrainIcons] = useState([]);
+  const [coords, setCoords] = useState({ lat: 40.7128, lon: -74.0060 }); //passing coords as props to nested components that will use them for data fetching throughout our frontend 
   const [cardColors, setCardColors] = useState([]);
   const [trainData, setTrainData] = useState([]);
   const [favorites, setFavorites] = useState(new Set()); // Track favorite stations by index
@@ -40,12 +84,13 @@ export default function LandingPage() {
       console.log('API Response:', data);
 
       // Extract relevant data: station name, direction, accessibility info, and alternative route
-      const formattedData = data.map(item => ({
-        stationName: item.station, // Station name
-        direction: item.trainno, // Using train number as direction // Alternative route instructions
+      const formattedData = data.map(station => ({
+        // stationName: item.station, // Station name
+        // direction: item.trainno, // Using train number as direction // Alternative route instructions
+        equipmentNo: station.equipmentno,
         accessibility: {
-          wheelchair: { isActive: item.ADA === 'Y' }, // Wheelchair accessible if ADA is 'Y'
-          elevator: { isActive: item.isactive === 'Y' }, // Elevator active status
+          wheelchair: { isActive: station.ADA === 'Y' }, // Wheelchair accessible if ADA is 'Y'
+          elevator: { isActive: station.isactive === 'Y' }, // Elevator active status
           escalator: { isActive: false }, // Placeholder, set according to your needs
           alert: { isActive: false } // Placeholder, set according to your needs
         }
@@ -66,15 +111,15 @@ export default function LandingPage() {
     const circle = svgDoc.querySelector('circle'); // Assuming the color is in the <circle> element
     return circle ? circle.getAttribute('fill') : '#FFFFFF'; // Default to white if no color
   };
-  
+
 
   const toggleFavorite = (index) => {
     setFavorites(prevFavorites => {
       const newFavorites = new Set(prevFavorites);
       if (newFavorites.has(index)) {
-        newFavorites.delete(index); // Remove from favorites
+        newFavorites.removeFav(index); // Remove from favorites
       } else {
-        newFavorites.add(index); // Add to favorites
+        newFavorites.addFav(index); // Add to favorites
       }
       return newFavorites;
     });
@@ -83,33 +128,32 @@ export default function LandingPage() {
   return (
     <>
       <header>
-        <h1 id="site-title-logged-in">Welcome to #Access Transit</h1>
+        <h1 id="site-title-logged-in">Welcome to #AccessTransit</h1>
       </header>
       <div id="home-flex-container">
-        <div id="access-transit-map"></div>
-        <input
-          type="text"
-          placeholder="Where to?"
-          id="transitSearch"
-          name="transitSearch"
-          aria-label="Transit Search"
-        />
+        <div id="access-transit-map">
+          <MapContainerComponent setCoords={setCoords} />
+          <LocationSearch setCoords={setCoords} />
+        </div>
       </div>
       <div id="transit-card-title">
-        <h2 id="section-title">Cards</h2>
+        <h2 id="section-title">Nearby Routes</h2>
         <div id="transit-cards-structure">
           <div id="transit-cards-container">
+            <NearbyRoutesContainer coords={coords} setCoords={setCoords} />
             {loadedTrainIcons.map((path, i) => (
               <TransitCard
                 key={i}
                 iconPath={path}
                 idx={i}
                 cardColor={cardColors[i]}
-                stationName={trainData[i]?.stationName || 'N/A'}
-                direction={trainData[i]?.direction || 'Unknown'}
+                // stationName={trainData[i]?.stationName || 'N/A'}
+                // direction={trainData[i]?.direction || 'Unknown'}
+                equipmentNo={trainData[i]?.equipmentNo || 'N/A'}
                 accessibility={trainData[i]?.accessibility || {}}
                 isFavorite={favorites.has(i)} // Check if this card is a favorite
                 toggleFavorite={() => toggleFavorite(i)} // Pass down toggle function
+                trainData={trainData}
               />
             ))}
           </div>

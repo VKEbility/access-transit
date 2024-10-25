@@ -17,7 +17,7 @@ exports.createUser = async (req, res) => {
     req.session.userId = user.id;
 
     res.status(201).send(user); //successful creation code
-  } catch (err) { //api related error
+  } catch (err) { //backend api related error
     console.error('Error creating user:', err);
     res.status(500).send({ msg: 'Internal: Error occurred while creating user' }); //for unexpected server errors
   }
