@@ -11,7 +11,7 @@ exports.up = function (knex) {
     table.string('stop_name').notNullable();
     table.decimal('gtfs_lon', 12, 8).notNullable();
     table.decimal('gtfs_lat', 12, 8).notNullable();
-    table.timestamps(true, true);
+    table.timestamps(true, true); //timestamps are automatically created when a new record is inserted
 
     table.unique(['user_id', 'rt_stop_id']); //ensures a user can only favorite a specific route once; this is enforced in the controller during route favoritism
   });
