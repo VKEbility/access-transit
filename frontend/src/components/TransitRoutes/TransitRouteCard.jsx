@@ -1,17 +1,7 @@
-import { FiAlertTriangle } from "react-icons/fi";
-import { FaWheelchair } from "react-icons/fa";
-import { MdOutlineElevator } from "react-icons/md";
-import { GiEscalator } from "react-icons/gi";
 import RouteIcon from '../TransitRoutes/RouteIcon';
+import AccessibilityIcons from '../TransitRoutes/AccessibilityIcons';
 import CountdownTimer from '../../hooks/CountdownTimer';
 import '../../styles/routes.css';
-
-const accessibilityIcons = [
-  { icon: FaWheelchair, label: 'Wheelchair' },
-  { icon: MdOutlineElevator, label: 'Elevator' },
-  { icon: GiEscalator, label: 'Escalators' },
-  { icon: FiAlertTriangle, label: 'Alert' }
-];
 
 export default function TransitRouteCard({ route, onTimerEnd }) {
   const itineraries = route.itineraries || [];
@@ -30,15 +20,9 @@ export default function TransitRouteCard({ route, onTimerEnd }) {
           ) : 'N/A'}
         </div>
         <RouteIcon route={route} />
-
         {closestStop.stopName && <div style={{ margin: 0 }}>{closestStop.stopName}</div>}
         <div style={{ margin: 0 }}>{longName}</div>
-
-        <div id="accessibility-icons-container" aria-label="Accessibility Features">
-          {closestStop.wheelchairBoarding && accessibilityIcons.map(({ icon: Icon, label }) => (
-            <Icon key={label} aria-label={label} />
-          ))}
-        </div>
+        <AccessibilityIcons closestStop={closestStop} />
       </div>
     </>
   );
