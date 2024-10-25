@@ -1,4 +1,4 @@
-import { fetchHandler, getPostOptions, deleteOptions } from "../utils/fetchingUtils";
+import { fetchHandler, getPostOptions, deleteOptions } from '../../../shared/fetchingUtils.mjs';
 
 const baseUrl = '/api/users';
 
