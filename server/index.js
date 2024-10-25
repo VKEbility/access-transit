@@ -64,7 +64,7 @@ app.post('/api/map-search', mapControllers.searchLocation);
 // Transit Routes
 ///////////////////////////////
 app.post('/api/transit-routes', nearbyRoutesControllers.listNearbyRoutes);
-app.post('/api/transit-routes/:routeId/accessibility', accessibilityControllers.showStatus);
+app.get('/api/transit-routes/:rt_stop_id/accessibility', accessibilityControllers.showStatus);
 
 
 ///////////////////////////////

@@ -33,20 +33,24 @@ export const fetchHandler = async (url, options = {}) => {
     const contentType = headers.get('content-type');
 
     const isJson = (contentType?.includes('application/json'));
+    const isHTML = (contentType?.includes('text/html'));
 
     if (!ok) {
       const errorData = await (isJson ? response.json() : response.text());
       throw new Error(errorData.msg || `Fetch failed with status - ${status}`, { cause: status });
     }
 
-    const responseData = await (isJson ? response.json() : response.text());
+    let responseData;
 
-    if (contentType?.includes('application/octet-stream')) { //accounting for MTA API content-type
+    if (isJson) {
+      responseData = await response.json(); //directly parse res as json
+    } else {
+      const textData = await response.text(); //get res as text
       try {
-        return [JSON.parse(responseData), null];
+        responseData = JSON.parse(textData); //try to parse it as json if so
       } catch (err) {
-        console.warn('Failed to parse octet-stream as JSON:', err);
-        return [null, new Error('Failed to parse octet-stream response as JSON')];
+        console.warn('Failed to parse response as JSON:', err);
+        return [null, new Error('Failed to parse response as JSON')];
       }
     }
 
@@ -56,3 +60,4 @@ export const fetchHandler = async (url, options = {}) => {
     return [null, error];
   }
 };
+
