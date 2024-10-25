@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { fetchSearchLocation } from '../../adapters/map-adapters';
 import '../../styles/map.css';
 
-export default function LocationSearch({ setCoords }) {
+export default function LocationSearch({ setCoords, setLocationSearched }) {
   const [query, setQuery] = useState('');
   const [errorText, setErrorText] = useState('');
   const [loading, setLoading] = useState(false);
@@ -22,9 +22,11 @@ export default function LocationSearch({ setCoords }) {
     if (locations && locations.length > 0) {
       const { lat, lon } = locations[0]; //getting coords for first search result (cons: won't be as accurate as user choosing from autocomplete options)
       setCoords({ lat, lon }); //updating coords state
+      setLocationSearched(true);
       setQuery(''); //clear input field
       setLoading(false);
     }
+    setLocationSearched(false);
   };
 
   return (
