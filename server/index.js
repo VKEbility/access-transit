@@ -73,7 +73,8 @@ app.delete('/api/users/:id/favorites/:train_id', checkAuthentication, favControl
 ///////////////////////////////
 // Herocount Route
 ///////////////////////////////
-app.get('/api/users/hero_count', checkAuthentication, heroController.updateHeroCount);
+app.get('/api/heroes/', checkAuthentication, heroController.updateHeroCount);
+app.get('/api/heroes/leaderboard', checkAuthentication, heroController.listHeroLeaderboard);
 
 ///////////////////////////////
 // Fallback Route

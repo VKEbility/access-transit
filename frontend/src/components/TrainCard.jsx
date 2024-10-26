@@ -6,7 +6,6 @@ import { listFavs, addFav, removeFav } from '../adapters/fav-adapter';
 import { listFavs, addFav, removeFav } from '../adapters/fav-adapter';
 
 // // export const TransitCard = ({ iconPath, idx, cardColor, stationName, direction, accessibility, isFavorite, toggleFavorite, trainData }) => {
-export const TransitCard = ({ iconPath, idx, cardColor, equipmentNo, accessibility, isFavorite, toggleFavorite }) => {
   export const TransitCard = ({ iconPath, idx, cardColor, equipmentNo, accessibility, isFavorite, toggleFavorite }) => {
     const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
