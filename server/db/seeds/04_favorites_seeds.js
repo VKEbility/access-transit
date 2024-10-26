@@ -23,7 +23,11 @@ exports.seed = async function (knex) {
     { rt_stop_id: 'A31/L01', stop_name: '145 St', gtfs_lon: -73.95035576, gtfs_lat: 40.82655319 },
     { rt_stop_id: 'F15S', stop_name: 'Dyckman St', gtfs_lon: -73.92553452, gtfs_lat: 40.86052951 },
     { rt_stop_id: 'F16N', stop_name: 'Brooklyn Bridge-City Hall', gtfs_lon: -73.98995283, gtfs_lat: 40.73466963 },
-    { rt_stop_id: 'L03', stop_name: 'Brooklyn Bridge-City Hall', gtfs_lon: -73.98995283, gtfs_lat: 40.73466963 },
+    { rt_stop_id: 'D22S', stop_name: 'Grand St', gtfs_lon: -73.99375695788954, gtfs_lat: 40.71826602721436 },
+    { rt_stop_id: 'M18S', stop_name: 'Delancey St-Essex St', gtfs_lon: -73.98743473593103, gtfs_lat: 40.71831099323114 },
+    { rt_stop_id: 'Q01N', stop_name: 'Canal St', gtfs_lon: -74.00045689438898, gtfs_lat: 40.71838293885798 },
+    { rt_stop_id: 'M101', stop_name: 'Bowery / Bayard St', gtfs_lon: -73.99646391209939, gtfs_lat: 40.71538820214079 },
+    { rt_stop_id: '403293', stop_name: 'Pearl St / Peck Slip', gtfs_lon: -74.00275915444783, gtfs_lat: 40.70876920447156 },
   ];
 
   const favorites = [];
@@ -31,7 +35,7 @@ exports.seed = async function (knex) {
   users.forEach(user => {
     const randomNum = Math.floor(Math.random() * (9 - 2 + 1)) + 2; //getting a random num between 2 and 9
     const shuffledStops = [...stops].sort(() => 0.5 - Math.random()); //shuffling the arr by sorting randomly
-    const userFavorites = shuffledStops.slice(0, 9).map(stop => ({ //ensuring each user has at least 2 to 9 favorite stations
+    const userFavorites = shuffledStops.slice(0, randomNum).map(stop => ({ //ensuring each user has at least 2 to 9 favorite stations
       user_id: user.id,
       rt_stop_id: stop.rt_stop_id,
       stop_name: stop.stop_name,
