@@ -1,44 +1,30 @@
 import { useState, useEffect } from 'react';
-// import {fetchHandler} from '../utils/fetchingUtils.js';
+import { fetchRouteAccessibility } from '../../adapters/transit-adapters';
+import AccessibilityIcons from '../TransitRoutes/AccessibilityIcons';
 
-export default function EquipmentStatus() {
-  // to keep track of the state of equipment when fetching 
-  const [equipmentStatuses, setEquipmentStatus] = useState([]);
-  // to keep track of the equipment being added to the rendered object 
-  const [statusesObj, setStatusObj] = useState([]);
+export default function AccessibilityStatus({ rtStopId }) {
+  const [accessibility, setAccessibility] = useState([]);
+  const [errorText, setErrorText] = useState('');
 
   useEffect(() => {
-    const doFetch = async () => {
-      const API_URL = `https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fnyct_ene_equipments.json`;
-      try {
-        const response = await fetch(API_URL);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+    const loadRtAccessibility = async () => {
+      console.log('BEFORE @loadRtAccessibility():', rtStopId);
+      if (!rtStopId) return console.warn('No rt_stop_id given');
+      const [equips, error] = await fetchRouteAccessibility(rtStopId);
+      if (error) return setErrorText(error.msg);
+      if (equips) console.log('AFTER @loadRtAccessibility():', equips); //to help debug
 
-        const data = await response.json();
-        const accessibleEquipmentObj = {};
+      setAccessibility(equips);
+    }
 
-        // Push data into statusesObj
-        data.forEach(equipment => {
-          accessibleEquipmentObj[equipment.equipmentno] = [
-            equipment.equipmenttype,
-            equipment.stationcomplexid,
-            equipment.isactive
-          ];
-        });
+    loadRtAccessibility();
+  }, [rtStopId]);
 
-        // Update states
-        setEquipmentStatus(data);
-        setStatusObj(accessibleEquipmentObj);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
 
-    doFetch();
-  }, []);
-
-  console.log("Equipments and their statuses: ", statusesObj); // This will show the entered data 
-}
-
+  return (
+    <div className="accessibility-status">
+      {errorText && <p className="error-text">{errorText}</p>}
+      <AccessibilityIcons accessibility={accessibility} />
+    </div>
+  );
+};
