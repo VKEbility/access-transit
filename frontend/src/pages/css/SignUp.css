@@ -1,0 +1,10 @@
+.link-log-in {
+	font-weight: bold;
+	color: black;
+	display: inline-flex;
+	align-items: center;
+}
+
+.icon {
+	margin-left: 5px; /* Adds space between the text and icon */
+}

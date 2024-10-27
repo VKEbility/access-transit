@@ -26,6 +26,7 @@ i18n
 						'The most reliable source for real-time status of your MTA <strong>elevators, escalators, ADA stations</strong>, and <strong>subway alerts</strong> in YOUR language.',
 
 					siteDescription: 'Status updated by users like you.',
+					select_language_label: 'Select language to get started:',
 
 					// About.jsx Page Translation
 
@@ -97,6 +98,35 @@ i18n
 					about_PrioritizedAccessibility1:
 						'We are committed to ensuring that all users have access to an aesthetic, user-friendly, and intuitive interface, removing barriers related to age or technical competence.',
 					about_Sources: 'Sources',
+
+					//Login.jsx page
+
+					login: 'Login',
+					log_back_in: 'Log back in!',
+					login_label: 'Login',
+					email_or_username_placeholder: 'Enter email or username',
+					password_label: 'Password',
+					password_placeholder: 'Enter password',
+					login_button: 'Log in!',
+
+					//SignUp.jsx
+
+					sign_up: 'Sign Up',
+					create_new_user: 'Create New User',
+					email_label: 'Email',
+					email_placeholder: 'Enter email',
+					username_label: 'Username',
+					username_placeholder: 'Enter username',
+					password_label: 'Password',
+					password_placeholder: 'Enter password',
+					choose_language: 'Choose Language',
+					sign_up_now: 'Sign Up Now!',
+					already_have_account: 'Already have an account with us?',
+					log_in: 'Log in!',
+					missing_email: 'Missing email',
+					missing_username: 'Missing username',
+					missing_password: 'Missing password',
+					missing_language: 'Missing language preference',
 				},
 			},
 
@@ -117,7 +147,7 @@ i18n
 						'La fuente más confiable para el estado en tiempo real de tus MTA <strong>elevadores, escaleras mecánicas, estaciones ADA</strong>, y <strong>alertas del metro</strong> en TU idioma.',
 
 					siteDescription: 'Estado actualizado por usuarios como tú.',
-
+					select_language_label: 'Seleccione el idioma para comenzar:',
 					// About.jsx Page Translation
 
 					access_transit_title: 'Acceso al Tránsito',
@@ -190,6 +220,34 @@ i18n
 					about_PrioritizedAccessibility1:
 						'Estamos comprometidos a garantizar que todos los usuarios tengan acceso a una interfaz estética, fácil de usar e intuitiva, eliminando barreras relacionadas con la edad o la competencia técnica.',
 					about_Sources: 'Fuentes',
+
+					//Login.tsx
+					login: 'Iniciar sesión',
+					log_back_in: '¡Inicia sesión de nuevo!',
+					login_label: 'Inicio de sesión',
+					email_or_username_placeholder:
+						'Ingresa tu correo electrónico o nombre de usuario',
+					password_label: 'Contraseña',
+					password_placeholder: 'Ingresa tu contraseña',
+					login_button: '¡Iniciar sesión!',
+
+					//SignUp.tsx
+					sign_up: 'Registrar',
+					create_new_user: 'Crear nuevo usuario',
+					email_label: 'Correo electrónico',
+					email_placeholder: 'Ingresa tu correo electrónico',
+					username_label: 'Nombre de usuario',
+					username_placeholder: 'Ingresa tu nombre de usuario',
+					password_label: 'Contraseña',
+					password_placeholder: 'Ingresa tu contraseña',
+					choose_language: 'Elegir idioma',
+					sign_up_now: '¡Regístrate ahora!',
+					already_have_account: '¿Ya tienes una cuenta con nosotros?',
+					log_in: '¡Inicia sesión!',
+					missing_email: 'Falta correo electrónico',
+					missing_username: 'Falta nombre de usuario',
+					missing_password: 'Falta contraseña',
+					missing_language: 'Falta preferencia de idioma',
 				},
 			},
 
@@ -210,6 +268,8 @@ i18n
 						'La source la plus fiable pour le statut en temps réel de vos MTA préférées <strong>ascenseurs, escaliers, stations ADA</strong>, et <strong>alertes de métro</strong> dans VOTRE langue.',
 
 					siteDescription: 'Statut mis à jour par des utilisateurs comme vous.',
+					select_language_label: 'Sélectionnez la langue pour commencer :',
+
 					// Other keys...
 					// About.jsx Page Translation
 
@@ -280,6 +340,32 @@ i18n
 					about_PrioritizedAccessibility1:
 						'Nous nous engageons à garantir que tous les utilisateurs aient accès à une interface esthétique, facile à utiliser et intuitive, éliminant les barrières liées à l’âge ou à la compétence technique.',
 					about_Sources: 'Sources',
+
+					login: 'Connexion',
+					log_back_in: 'Reconnectez-vous !',
+					login_label: 'Connexion',
+					email_or_username_placeholder:
+						"Entrez l'email ou le nom d'utilisateur",
+					password_label: 'Mot de passe',
+					password_placeholder: 'Entrez le mot de passe',
+					login_button: 'Se connecter !',
+
+					sign_up: "S'inscrire",
+					create_new_user: 'Créer un nouvel utilisateur',
+					email_label: 'Email',
+					email_placeholder: "Entrez l'email",
+					username_label: "Nom d'utilisateur",
+					username_placeholder: "Entrez le nom d'utilisateur",
+					password_label: 'Mot de passe',
+					password_placeholder: 'Entrez le mot de passe',
+					choose_language: 'Choisissez la langue',
+					sign_up_now: 'Inscrivez-vous maintenant !',
+					already_have_account: 'Vous avez déjà un compte chez nous ?',
+					log_in: 'Se connecter !',
+					missing_email: 'Email manquant',
+					missing_username: "Nom d'utilisateur manquant",
+					missing_password: 'Mot de passe manquant',
+					missing_language: 'Préférence de langue manquante',
 				},
 			},
 			de: {
@@ -299,6 +385,7 @@ i18n
 						'Die zuverlässigste Quelle für den Echtzeitstatus Ihrer MTA <strong>Aufzüge, Rolltreppen, ADA-Stationen</strong> und <strong>U-Bahn-Warnungen</strong> in IHRER Sprache.',
 
 					siteDescription: 'Status, aktualisiert von Nutzern wie Ihnen.',
+					select_language_label: 'Sprache auswählen, um zu beginnen:',
 
 					access_transit_title: 'Zugang zu öffentlichen Verkehrsmitteln',
 					the_problem: 'Das Problem',
@@ -367,6 +454,30 @@ i18n
 					about_PrioritizedAccessibility1:
 						'Wir verpflichten uns, sicherzustellen, dass alle Benutzer Zugang zu einer ästhetisch ansprechenden, benutzerfreundlichen und intuitiven Benutzeroberfläche haben, um Barrieren, die mit dem Alter oder technischen Fähigkeiten verbunden sind, abzubauen.',
 					about_Sources: 'Quellen',
+					login: 'Anmelden',
+					log_back_in: 'Melden Sie sich erneut an!',
+					login_label: 'Anmelden',
+					email_or_username_placeholder: 'E-Mail oder Benutzernamen eingeben',
+					password_label: 'Passwort',
+					password_placeholder: 'Passwort eingeben',
+					login_button: 'Anmelden!',
+
+					sign_up: 'Registrieren',
+					create_new_user: 'Neuen Benutzer erstellen',
+					email_label: 'E-Mail',
+					email_placeholder: 'E-Mail eingeben',
+					username_label: 'Benutzername',
+					username_placeholder: 'Benutzernamen eingeben',
+					password_label: 'Passwort',
+					password_placeholder: 'Passwort eingeben',
+					choose_language: 'Sprache wählen',
+					sign_up_now: 'Jetzt registrieren!',
+					already_have_account: 'Haben Sie bereits ein Konto bei uns?',
+					log_in: 'Anmelden!',
+					missing_email: 'E-Mail fehlt',
+					missing_username: 'Benutzername fehlt',
+					missing_password: 'Passwort fehlt',
+					missing_language: 'Spracheinstellung fehlt',
 				},
 			},
 
@@ -387,7 +498,7 @@ i18n
 						'La fonte più affidabile per lo stato in tempo reale dei tuoi <strong>ascensori, scale mobili, stazioni ADA</strong> e <strong>avvisi della metropolitana</strong> nella TUA lingua.',
 
 					siteDescription: 'Stato aggiornato da utenti come te.',
-
+					select_language_label: 'Seleziona la lingua per iniziare:',
 					access_transit_title: 'Accessibilità ai Trasporti',
 					the_problem: 'Il Problema',
 					accessibility_intro:
@@ -456,6 +567,30 @@ i18n
 					about_PrioritizedAccessibility1:
 						'Siamo impegnati a garantire che tutti gli utenti abbiano accesso a un’interfaccia estetica, user-friendly e intuitiva, rimuovendo le barriere relative all’età o alla competenza tecnica.',
 					about_Sources: 'Fonti',
+					login: 'Accedi',
+					log_back_in: 'Rientra!',
+					login_label: 'Accedi',
+					email_or_username_placeholder: 'Inserisci email o nome utente',
+					password_label: 'Password',
+					password_placeholder: 'Inserisci password',
+					login_button: 'Accedi!',
+
+					sign_up: 'Registrati',
+					create_new_user: 'Crea Nuovo Utente',
+					email_label: 'Email',
+					email_placeholder: 'Inserisci email',
+					username_label: 'Nome utente',
+					username_placeholder: 'Inserisci nome utente',
+					password_label: 'Password',
+					password_placeholder: 'Inserisci password',
+					choose_language: 'Scegli Lingua',
+					sign_up_now: 'Registrati Ora!',
+					already_have_account: 'Hai già un account con noi?',
+					log_in: 'Accedi!',
+					missing_email: 'Email mancante',
+					missing_username: 'Nome utente mancante',
+					missing_password: 'Password mancante',
+					missing_language: 'Preferenza lingua mancante',
 				},
 			},
 			ja: {
@@ -476,7 +611,7 @@ i18n
 
 					siteDescription:
 						'ステータスは、あなたのようなユーザーによって更新されます。',
-
+					select_language_label: '開始する言語を選択してください:',
 					access_transit_title: '交通アクセス',
 					the_problem: '問題',
 					accessibility_intro:
@@ -544,6 +679,32 @@ i18n
 					about_PrioritizedAccessibility1:
 						'私たちは、すべてのユーザーが年齢や技術的な能力に関係なく、審美的でユーザーフレンドリーで直感的なインターフェースにアクセスできることを確保することにコミットしています。',
 					about_Sources: '情報源',
+
+					login: 'ログイン',
+					log_back_in: '再ログイン！',
+					login_label: 'ログイン',
+					email_or_username_placeholder:
+						'メールアドレスまたはユーザー名を入力してください',
+					password_label: 'パスワード',
+					password_placeholder: 'パスワードを入力してください',
+					login_button: 'ログイン！',
+
+					sign_up: 'サインアップ',
+					create_new_user: '新しいユーザーを作成',
+					email_label: 'メール',
+					email_placeholder: 'メールアドレスを入力してください',
+					username_label: 'ユーザー名',
+					username_placeholder: 'ユーザー名を入力してください',
+					password_label: 'パスワード',
+					password_placeholder: 'パスワードを入力してください',
+					choose_language: '言語を選択',
+					sign_up_now: '今すぐサインアップ！',
+					already_have_account: 'すでにアカウントをお持ちですか？',
+					log_in: 'ログイン！',
+					missing_email: 'メールアドレスがありません',
+					missing_username: 'ユーザー名がありません',
+					missing_password: 'パスワードがありません',
+					missing_language: '言語設定がありません',
 				},
 			},
 			zh: {
@@ -563,7 +724,7 @@ i18n
 						'您语言中的MTA <strong>电梯、自动扶梯、ADA车站</strong> 和 <strong>地铁提醒</strong> 的实时状态的最可靠来源。',
 
 					siteDescription: '状态由像您这样的用户更新。',
-
+					select_language_label: '选择语言以开始：',
 					access_transit_title: '交通接入',
 					the_problem: '问题',
 					accessibility_intro:
@@ -627,6 +788,31 @@ i18n
 					about_PrioritizedAccessibility1:
 						'我们致力于确保所有用户都能访问美观、用户友好且直观的界面，消除与年龄或技术能力相关的障碍。',
 					about_Sources: '来源',
+
+					login: '登录',
+					log_back_in: '重新登录！',
+					login_label: '登录',
+					email_or_username_placeholder: '请输入邮箱或用户名',
+					password_label: '密码',
+					password_placeholder: '请输入密码',
+					login_button: '登录！',
+
+					sign_up: '注册',
+					create_new_user: '创建新用户',
+					email_label: '邮箱',
+					email_placeholder: '请输入邮箱',
+					username_label: '用户名',
+					username_placeholder: '请输入用户名',
+					password_label: '密码',
+					password_placeholder: '请输入密码',
+					choose_language: '选择语言',
+					sign_up_now: '立即注册！',
+					already_have_account: '已经有账户了吗？',
+					log_in: '登录！',
+					missing_email: '缺少邮箱',
+					missing_username: '缺少用户名',
+					missing_password: '缺少密码',
+					missing_language: '缺少语言偏好',
 				},
 			},
 
@@ -647,7 +833,7 @@ i18n
 						'A fonte mais confiável para o status em tempo real dos <strong>elevadores, escadas rolantes, estações ADA</strong> e <strong>alertas de metrô</strong> da MTA na SUA língua.',
 
 					siteDescription: 'Status atualizado por usuários como você.',
-
+					select_language_label: 'Selecione o idioma para começar:',
 					access_transit_title: 'Acesso ao Transporte',
 					the_problem: 'O Problema',
 					accessibility_intro:
@@ -715,6 +901,31 @@ i18n
 					about_PrioritizedAccessibility1:
 						'Estamos comprometidos em garantir que todos os usuários tenham acesso a uma interface estética, amigável e intuitiva, removendo barreiras relacionadas à idade ou competência técnica.',
 					about_Sources: 'Fontes',
+
+					login: 'Login',
+					log_back_in: 'Faça login novamente!',
+					login_label: 'Login',
+					email_or_username_placeholder: 'Digite seu e-mail ou nome de usuário',
+					password_label: 'Senha',
+					password_placeholder: 'Digite sua senha',
+					login_button: 'Entrar!',
+
+					sign_up: 'Inscreva-se',
+					create_new_user: 'Criar novo usuário',
+					email_label: 'E-mail',
+					email_placeholder: 'Digite seu e-mail',
+					username_label: 'Nome de usuário',
+					username_placeholder: 'Digite seu nome de usuário',
+					password_label: 'Senha',
+					password_placeholder: 'Digite sua senha',
+					choose_language: 'Escolha o idioma',
+					sign_up_now: 'Inscreva-se agora!',
+					already_have_account: 'Já tem uma conta conosco?',
+					log_in: 'Faça login!',
+					missing_email: 'E-mail ausente',
+					missing_username: 'Nome de usuário ausente',
+					missing_password: 'Senha ausente',
+					missing_language: 'Preferência de idioma ausente',
 				},
 			},
 
@@ -735,7 +946,7 @@ i18n
 						'Самый надежный источник актуальной информации о состоянии ваших <strong>лифтов, эскалаторов, станций ADA</strong> и <strong>уведомлениях метро</strong> на ВАШЕМ языке.',
 
 					siteDescription: 'Статус обновляется пользователями, такими как вы.',
-
+					select_language_label: 'Выберите язык для начала:',
 					// About.jsx Page Translation
 
 					access_transit_title: 'Доступ к транспорту',
@@ -805,6 +1016,32 @@ i18n
 					about_PrioritizedAccessibility1:
 						'Мы стремимся обеспечить, чтобы все пользователи имели доступ к эстетичному, удобному и интуитивно понятному интерфейсу, устраняя барьеры, связанные с возрастом или техническими навыками.',
 					about_Sources: 'Источники',
+
+					login: 'Вход',
+					log_back_in: 'Войти снова!',
+					login_label: 'Вход',
+					email_or_username_placeholder:
+						'Введите свой email или имя пользователя',
+					password_label: 'Пароль',
+					password_placeholder: 'Введите пароль',
+					login_button: 'Войти!',
+
+					sign_up: 'Зарегистрироваться',
+					create_new_user: 'Создать нового пользователя',
+					email_label: 'Email',
+					email_placeholder: 'Введите свой email',
+					username_label: 'Имя пользователя',
+					username_placeholder: 'Введите имя пользователя',
+					password_label: 'Пароль',
+					password_placeholder: 'Введите пароль',
+					choose_language: 'Выберите язык',
+					sign_up_now: 'Зарегистрироваться сейчас!',
+					already_have_account: 'Уже есть учетная запись у нас?',
+					log_in: 'Войти!',
+					missing_email: 'Email отсутствует',
+					missing_username: 'Имя пользователя отсутствует',
+					missing_password: 'Пароль отсутствует',
+					missing_language: 'Отсутствует предпочтение языка',
 				},
 			},
 			ar: {
@@ -824,7 +1061,7 @@ i18n
 						'أكثر مصدر موثوق للمعلومات الدقيقة حول حالة <strong>المصاعد، السلالم المتحركة، محطات ADA</strong> و <strong>تنبيهات المترو</strong> بلغتك.',
 
 					siteDescription: 'يتم تحديث الحالة بواسطة مستخدمين مثلك.',
-
+					select_language_label: 'اختر اللغة للبدء:',
 					// About.jsx Page Translation
 
 					access_transit_title: 'الوصول إلى النقل',
@@ -894,6 +1131,32 @@ i18n
 					about_PrioritizedAccessibility1:
 						'نحن نسعى لضمان أن جميع المستخدمين يمكنهم الوصول إلى واجهة أنيقة وسهلة الاستخدام وبديهية، مما يلغي الحواجز المرتبطة بالعمر أو المهارات التقنية.',
 					about_Sources: 'المصادر',
+
+					login: 'تسجيل الدخول',
+					log_back_in: 'تسجيل الدخول مرة أخرى!',
+					login_label: 'تسجيل الدخول',
+					email_or_username_placeholder:
+						'أدخل البريد الإلكتروني أو اسم المستخدم',
+					password_label: 'كلمة المرور',
+					password_placeholder: 'أدخل كلمة المرور',
+					login_button: 'تسجيل الدخول!',
+
+					sign_up: 'التسجيل',
+					create_new_user: 'إنشاء مستخدم جديد',
+					email_label: 'البريد الإلكتروني',
+					email_placeholder: 'أدخل البريد الإلكتروني',
+					username_label: 'اسم المستخدم',
+					username_placeholder: 'أدخل اسم المستخدم',
+					password_label: 'كلمة المرور',
+					password_placeholder: 'أدخل كلمة المرور',
+					choose_language: 'اختر اللغة',
+					sign_up_now: 'سجل الآن!',
+					already_have_account: 'هل لديك حساب معنا؟',
+					log_in: 'تسجيل الدخول!',
+					missing_email: 'البريد الإلكتروني مفقود',
+					missing_username: 'اسم المستخدم مفقود',
+					missing_password: 'كلمة المرور مفقودة',
+					missing_language: 'تفضيل اللغة مفقود',
 				},
 			},
 
@@ -915,7 +1178,7 @@ i18n
 
 					siteDescription:
 						'स्थिति को आपके जैसे उपयोगकर्ताओं द्वारा अपडेट किया गया।',
-
+					select_language_label: 'शुरू करने के लिए भाषा चुनें:',
 					// About.jsx Page Translation
 
 					access_transit_title: 'परिवहन का उपयोग',
@@ -985,6 +1248,31 @@ i18n
 					about_PrioritizedAccessibility1:
 						'हम यह सुनिश्चित करने के लिए प्रयासरत हैं कि सभी उपयोगकर्ता एक सुगम, उपयोगकर्ता-अनुकूल और सहज ज्ञान युक्त इंटरफ़ेस तक पहुँच सकें, जो उम्र या तकनीकी कौशल से संबंधित बाधाओं को समाप्त करता है।',
 					about_Sources: 'स्रोत',
+
+					login: 'लॉग इन',
+					log_back_in: 'फिर से लॉग इन करें!',
+					login_label: 'लॉग इन',
+					email_or_username_placeholder: 'ईमेल या उपयोगकर्ता नाम दर्ज करें',
+					password_label: 'पासवर्ड',
+					password_placeholder: 'पासवर्ड दर्ज करें',
+					login_button: 'लॉग इन करें!',
+
+					sign_up: 'साइन अप',
+					create_new_user: 'नया उपयोगकर्ता बनाएं',
+					email_label: 'ईमेल',
+					email_placeholder: 'ईमेल दर्ज करें',
+					username_label: 'उपयोगकर्ता नाम',
+					username_placeholder: 'उपयोगकर्ता नाम दर्ज करें',
+					password_label: 'पासवर्ड',
+					password_placeholder: 'पासवर्ड दर्ज करें',
+					choose_language: 'भाषा चुनें',
+					sign_up_now: 'अब साइन अप करें!',
+					already_have_account: 'क्या आपके पास हमारा खाता है?',
+					log_in: 'लॉग इन करें!',
+					missing_email: 'ईमेल गायब है',
+					missing_username: 'उपयोगकर्ता नाम गायब है',
+					missing_password: 'पासवर्ड गायब है',
+					missing_language: 'भाषा पसंद गायब है',
 				},
 			},
 			ko: {
@@ -1004,7 +1292,7 @@ i18n
 						'정확한 상태 정보의 가장 신뢰할 수 있는 출처 <strong>엘리베이터, 에스컬레이터, ADA 역</strong> 및 <strong>지하철 알림</strong>을 귀하의 언어로 제공합니다.',
 
 					siteDescription: '상태는 귀하와 같은 사용자에 의해 업데이트됩니다.',
-
+					select_language_label: '시작할 언어를 선택하세요:',
 					// About.jsx Page Translation
 
 					access_transit_title: '교통 접근성',
@@ -1074,6 +1362,31 @@ i18n
 					about_PrioritizedAccessibility1:
 						'우리는 모든 사용자가 나이 또는 기술적 능력과 관계없이 접근 가능하고 사용자 친화적이며 직관적인 인터페이스에 접근할 수 있도록 노력하고 있습니다.',
 					about_Sources: '출처',
+
+					login: '로그인',
+					log_back_in: '다시 로그인하세요!',
+					login_label: '로그인',
+					email_or_username_placeholder: '이메일 또는 사용자 이름 입력',
+					password_label: '비밀번호',
+					password_placeholder: '비밀번호 입력',
+					login_button: '로그인하기',
+
+					sign_up: '회원가입',
+					create_new_user: '새 사용자 만들기',
+					email_label: '이메일',
+					email_placeholder: '이메일 입력',
+					username_label: '사용자 이름',
+					username_placeholder: '사용자 이름 입력',
+					password_label: '비밀번호',
+					password_placeholder: '비밀번호 입력',
+					choose_language: '언어 선택',
+					sign_up_now: '지금 회원가입하기!',
+					already_have_account: '이미 계정이 있으신가요?',
+					log_in: '로그인하기',
+					missing_email: '이메일이 없습니다',
+					missing_username: '사용자 이름이 없습니다',
+					missing_password: '비밀번호가 없습니다',
+					missing_language: '언어 선호가 없습니다',
 				},
 			},
 		},

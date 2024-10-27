@@ -64,7 +64,7 @@ export default function OnboardingPage() {
 			</div>
 
 			<label htmlFor="language-select" id="select-language-label">
-				Select language to get started:
+				{t('select_language_label')}
 			</label>
 			<select
 				id="language-select"
