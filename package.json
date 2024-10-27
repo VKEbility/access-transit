@@ -5,7 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "kickstart": "cd frontend && npm i && npm run build && cd ../server && npm i && npm run migrate && npm run seed",
-    "deploy": "cd frontend && npm ci --include=dev && npx vite build && cd ../server && npm ci && npm run migrate && npm run seed",
+    "deploy": "cd frontend && npm ci --include=dev && npx vite build && cd ../server && npm ci && npm run migrate && npx knex migrate:status",
     "build:frontend": "cd frontend && npm i && npm run build",
     "migrate": "cd server && npm run migrate",
     "seed": "cd server && npm run seed",
@@ -13,12 +13,18 @@
     "start": "cd server && npm start",
     "dev": "cd server && npm run dev",
     "dev:frontend": "cd frontend && npm run dev",
-    "connect": "psql -U postgres -d access_transit_db"
+    "connect": "psql -U postgres -d access_transit_db",
+    "clean": "rm -rf frontend/node_modules frontend/dist frontend/package-lock.json server/node_modules server/package-lock.json",
+    "restart": "cd server && npm run migrate:rollback && cd ../ && npm run clean"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "react-router-dom": "^6.27.0"
+  },
+  "exports": {
+    "import": "./shared/fetchingUtils.mjs.js",
+    "require": "./shared/fetchingUtils.cjs.js"
   }
 }

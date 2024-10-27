@@ -1,0 +1,13 @@
+#user-login-form {
+  /* background-color: #666666; /* separating for dev purposes */
+  border: 1px solid #CCC;
+}
+
+#user-update-form {
+  /* background-color: #666666; /* separating for dev purposes */
+  border: 1px solid #CCC;
+}
+
+#account-signup-form {
+  border: 1px solid #CCC;
+}

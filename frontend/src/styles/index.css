@@ -1,108 +1,151 @@
-html {
-  height: 100vh;
+/* global reset */
+* {
+  padding: 0;
   margin: 0;
-  flex-shrink: 0;
-  background: linear-gradient(180deg, #FCFFF0 0%, #91B500 100%);
-  background-blend-mode: color;
+  box-sizing: border-box;
 }
 
+/* root */
+:root {
+  /* background-color: #EAEAEA; /* separating for dev purposes */
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-repeat: no-repeat; /* Prevents the background from repeating */
+  background-size: cover;
+  min-width: 100%; 
+  min-height: 100%; 
+  width: auto; 
+  height: auto;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: black;
+  background: linear-gradient(135deg, #ffffff 0%, #fffce5 50%, #f1f7d1 100%);
+  display: flex;
+  flex-direction: column;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* react root app */
 #root {
-  height: 100%;
+  /* separating for dev purposes: #E1E1E1; */
 }
 
-.nav-link {
+/* body styling */
+body {
+  /* background-color: #c9a2a2; /* separating for dev purposes */
+  min-width: 320px;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: inherit;
+  width: auto;
+  height: auto;
+}
+
+/* links */
+a {
+  /* background-color: #D1D1D1; /* separating for dev purposes */
+  text-decoration: none;
+  color: black;
+
+}
+
+/* links states */
+a:hover,
+a:active {
   color: black;
 }
 
-a {
-  text-decoration: none;
-  color: white;
-}
-
-/* Globally */
-
-/* Each state */
-a:visited {
-  text-decoration: none;
-  color: black
-}
-
-a:hover {
-  text-decoration: none;
-  color: white
-}
-
-a:focus {
-  text-decoration: none;
-  color: white
-}
-
-a:hover,
-a:active {
-  text-decoration: none;
-  color: black
-}
-
-body {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  margin: 0;
-  height: 100%;
-}
-
-input,
-label {
-  display: block;
-}
-
-input {
-  margin-bottom: 1rem;
-}
-
-header {
-  display: flex;
+/* navigation links */
+.nav-link {
+  /* background-color: #C0C0C0; /* separating for dev purposes */
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: black;
+  transition: all 0.23s ease-in-out;
+  overflow: hidden;
+  backface-visibility: hidden;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+  color: #E50064;
+  border-bottom: 0.15em solid #E50064;
+}
+
+/* header */
+header {
+  /* background-color: #B2B2B2; /* separating for dev purposes */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   padding: 0.5rem 1rem;
 }
 
-#logo {
+/* site logo */
+#site-logo-and-title-container {
+  /* background-color: #A1A1A1; /* separating for dev purposes */
   display: flex;
+  align-items: center;
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
-  color: black
+  color: black;
+  margin: 0 40px;
 }
 
+#site-logo {
+  height: 60px;
+}
+
+#site-title {
+  margin-right: 10px;
+  transition: transform 0.2s ease;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* navigation */
 nav ul {
+  /* background-color: #999999; /* separating for dev purposes */
   display: flex;
-  gap: 1rem;
-  padding: 0;
-  margin: 0;
   list-style: none;
 }
 
 nav a {
+  /* background-color: #888888; /* separating for dev purposes */
   display: block;
 }
 
-.nav-link {
-  color: black;
-}
-
 .nav-link-container {
+  /* background-color: #777777; /* separating for dev purposes */
   display: flex;
   width: 100%;
   align-items: center;
 }
 
+/* forms */
 form {
+  /* background-color: #666666; /* separating for dev purposes */
   padding: 1rem;
-  border: 1px solid #CCC;
   width: 15rem;
   margin: 1rem auto;
 }
 
+/* buttons */
 button {
+  /* background-color: #555555; /* separating for dev purposes */
   border-radius: 8px;
   color: white;
   border: 1px solid transparent;
@@ -124,75 +167,90 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* automatically added by NavLink component */
-.active {
-  color: #EEBC32;
-  font-weight: bold;
-  font-style: italic;
+/* input fields */
+input,
+label,
+select {
+  /* background-color: #444444; /* separating for dev purposes */
+  display: block;
 }
 
-/* Home Page CSS, if the user is logged in */
+input,
+select {
+  /* background-color: #333333; /* separating for dev purposes */
+  margin-bottom: 1rem;
+}
+
+input:invalid {
+  /* background-color: #222222; /* separating for dev purposes */
+  background-color: ivory;
+  border: none;
+  outline: 2px solid red;
+  border-radius: 5px;
+}
+
+/* home page */
 #access-transit {
+  /* background-color: #111111; /* separating for dev purposes */
   text-align: center;
 }
 
 #home-flex-container {
+  /* background-color: #0F0F0F; /* separating for dev purposes */
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
 
-#transitSearch {
-  width: 600px;
-  height: 50px;
-  margin: 10px;
-}
-
 #estimated-arrival-time {
-  color: red;
+  /* background-color: #0D0D0D; /* separating for dev purposes */
+  color: black;
 }
 
-#access-transit-map {
-  display: flex;
-  background-color: gray;
-  width: 700px;
-  height: 500px;
-}
-
+/* transit cards */
 #transit-cards-structure {
+  /* background-color: #0B0B0B; /* separating for dev purposes */
   display: flex;
   justify-content: center;
   padding: 20px;
 }
 
-#transit-card-title {
-  margin: 0 auto;
-}
-
 #transit-cards-container {
+  /* background-color: #0A0A0A; /* separating for dev purposes */
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   background-color: #C7CC65;
-  width: 700px;
-  height: 500px;
+  width: 800px;
   padding: 30px;
-}
-
-.transit-logo {
-  width: 50px;
-  height: 50px;
+  border: black solid 5px;
+  border-radius: 35px;
 }
 
 .transit-card {
+  /* background-color: #090909; /* separating for dev purposes */
   display: flex;
   background-color: wheat;
   flex-direction: column;
   width: 190px;
-  height: 200px;
   margin: 10px;
-  padding: 10px;
+  padding: 20px;
+  border-radius: 20px;
   justify-content: space-around;
+}
+
+#card-button {
+ width: 30px;
+ height: 30px;
+}
+
+svg {
+   display: flex;
+}
+
+.favorite-button {
+  width: 50px;
 }
 
 #site-logo-and-title-container {
@@ -200,25 +258,74 @@ button:focus-visible {
   align-items: center;
 }
 
+#transit-card-title {
+  /* background-color: #080808; /* separating for dev purposes */
+  margin: 0 auto;
+}
+
+/* icons and logos */
 #accessibility-icons-container {
+  /* background-color: #070707; /* separating for dev purposes */
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
   align-items: flex-end;
+  margin: 10px;
 }
 
 #accessibility-icon {
+  /* background-color: #060606; /* separating for dev purposes */
   color: white;
 }
 
 .transit-logo {
+  /* background-color: #050505; /* separating for dev purposes */
   display: flex;
   align-items: center;
   width: 50px;
   height: 40px;
 }
 
-/* Not logged in CSS */
+/* favorites section */
+#favorite-card-container {
+  /* background-color: #040404; /* separating for dev purposes */
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin: 30px;
+}
+/* Entire Favorites Page CSS */
+#favorites-page {
+  display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#favorites-container {
+  /* background-color: #030303; /* separating for dev purposes */
+  display: flex;
+  background-color: gray;
+  padding: 30px;
+  width: 100%;
+  flex-wrap: wrap;
+  border-radius: 20px;
+  justify-content: space-around;
+}
+
+#favorite-card {
+  /* background-color: #020202; /* separating for dev purposes */
+  display: flex;
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+  background-color: white;
+  border-radius: 20px;
+}
+
+/* user not logged in */
 #welcome-portion {
+  /* background-color: #010101; /* separating for dev purposes */
   flex-direction: column;
   height: 500px;
   display: flex;
@@ -227,26 +334,31 @@ button:focus-visible {
 }
 
 #welcome-header {
+  /* background-color: #000000; /* separating for dev purposes */
   flex-direction: column;
   display: flex;
 }
 
 #welcome-button-container {
+  /* background-color: #FFFFFF; /* separating for dev purposes */
   width: 500px;
   display: flex;
   justify-content: space-evenly;
 }
 
 #welcome-button-link {
+  /* background-color: #F0F0F0; /* separating for dev purposes */
   color: white;
 }
 
 #site-title-not-logged-in {
+  /* background-color: #EAEAEA; /* separating for dev purposes */
   font-size: 50px;
   display: flex;
 }
 
 #satisfied-users-image-container {
+  /* background-color: #D1D1D1; /* separating for dev purposes */
   display: flex;
   justify-content: space-around;
   width: 1000px;
@@ -254,17 +366,15 @@ button:focus-visible {
 }
 
 .satisfied-users {
+  /* background-color: #C0C0C0; /* separating for dev purposes */
   width: 200px;
   height: 200px;
   background-color: black;
 }
 
-#select-language-button {
-  margin: 10px;
-  font-size: 35px;
-}
-
+/* site description */
 #site-description-container {
+  /* background-color: #B2B2B2; /* separating for dev purposes */
   display: flex;
   flex-direction: column;
   width: 800px;
@@ -273,7 +383,35 @@ button:focus-visible {
 }
 
 #site-description {
+  /* background-color: #A1A1A1; /* separating for dev purposes */
   margin: 20px;
   text-align: center;
   font-size: 30px;
+}
+
+/* animations */
+.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  75% {
+    transform: translateX(-5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }

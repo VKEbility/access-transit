@@ -1,7 +1,12 @@
-const basicFetchOptions = {
+export const basicFetchOptions = {
   method: 'GET',
   credentials: 'include',
 };
+
+export const externalFetchOptions = (apiKey) => ({
+  method: 'GET',
+  headers: { 'Authorization': `Bearer ${apiKey}` }, //allowing any API key to be inserted dynamically
+});
 
 export const deleteOptions = {
   method: 'DELETE',
@@ -26,11 +31,14 @@ export const fetchHandler = async (url, options = {}) => {
   try {
     const response = await fetch(url, options);
     const { ok, status, headers } = response;
-    if (!ok) throw new Error(`Fetch failed with status - ${status}`, { cause: status });
+    const isJson = (headers.get('content-type')?.includes('application/json'));
 
-    const isJson = (headers.get('content-type') || '').includes('application/json');
+    if (!ok) {
+      const errorData = await (isJson ? response.json() : response.text()); //errorData is the msg obj our backend controller sends
+      throw new Error(errorData.msg || `Fetch failed with status - ${status}`, { cause: status }); //passing error.msg to catch block
+    }
+
     const responseData = await (isJson ? response.json() : response.text());
-
     return [responseData, null];
   } catch (error) {
     console.warn(error);
