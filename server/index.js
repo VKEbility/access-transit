@@ -1,7 +1,6 @@
 ///////////////////////////////
 // Imports
 ///////////////////////////////
-
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
@@ -14,25 +13,20 @@ const checkAuthentication = require('./middleware/checkAuthentication');
 // controller imports
 const authControllers = require('./controllers/authControllers');
 const userControllers = require('./controllers/userControllers');
-const app = express();
+const favControllers = require('./controllers/favControllers');
+const heroController = require('./controllers/heroController');
+const adaStationsControllers = require('./controllers/adaStationsControllers');
+const nearbyRoutesControllers = require('./controllers/nearbyRoutesControllers');
+const accessibilityControllers = require('./controllers/accessibilityControllers');
+const mapControllers = require('./controllers/mapControllers')
 
-const serveAccessibleStations = async (req, res, next) => {
-  // ada = 1 => only retrieve accessible stations 
-  const API_URL = `https://data.ny.gov/resource/39hk-dx4f.json?ada=1`;
-  const [data, error] = await fetchData(API_URL);
-  if (error) {
-    console.log(error.message);
-    return res.status(404).send(error);
-  }
-  res.send(data);
-}
+const app = express();
 
 // middleware
 app.use(handleCookieSessions); // adds a session property to each request representing the cookie
 app.use(logRoutes); // print information about each incoming request
 app.use(express.json()); // parse incoming request bodies as JSON
 app.use(express.static(path.join(__dirname, '../frontend/dist'))); // Serve static assets from the dist folder of the frontend
-
 
 ///////////////////////////////
 // Auth Routes
@@ -57,10 +51,33 @@ app.patch('/api/users/:id', checkAuthentication, userControllers.updateUser);
 
 
 ///////////////////////////////
-// Train Routes
+// Transit Routes
 ///////////////////////////////
-app.get('/api/accessible', serveAccessibleStations);
+app.get('/api/ada', adaStationsControllers.listADAStations);
+app.post('/api/transit-routes', nearbyRoutesControllers.listNearbyRoutes);
+app.post('/api/transit-routes/:routeId/accessibility-status', accessibilityControllers.showStatus);
+// app.patch('/api/transit-routes/:routeId/accessibility-status', accessibilityControllers.updateStatus);
 
+
+///////////////////////////////
+// Map Routes
+///////////////////////////////
+app.post('/api/map-search', mapControllers.searchLocation);
+
+///////////////////////////////
+// Favorites Routes
+///////////////////////////////
+
+// must check which user want to do an action first! 
+// then do the action (list, add, or remove)! 
+app.get('/api/users/:id/favorites', checkAuthentication, favControllers.listFavs);
+app.post('/api/users/:id/favorites', checkAuthentication, favControllers.addFav);
+app.delete('/api/users/:id/favorites/:train_id', checkAuthentication, favControllers.removeFav);
+
+///////////////////////////////
+// Herocount Route
+///////////////////////////////
+app.get('/api/users/hero_count', checkAuthentication, heroController.updateHeroCount);
 
 ///////////////////////////////
 // Fallback Route
@@ -72,6 +89,7 @@ app.get('*', (req, res, next) => {
   if (req.originalUrl.startsWith('/api')) return next();
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
+
 
 ///////////////////////////////
 // Start Listening
