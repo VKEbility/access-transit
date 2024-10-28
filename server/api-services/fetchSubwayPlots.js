@@ -1,5 +1,5 @@
 exports.fetchSubwayRoutes = async () => {
-  const TRANSIT_API_URL = 'https://external.transitapp.com/v3/public/routes_for_networks?network_ids=NYC Subway|NYC&include_itineraries=true';
+  const TRANSIT_API_URL = 'https://external.transitapp.com/v3/public/routes_for_networks?network_ids=NYCSubway|NYC&include_itineraries=true';
   const apiKey = process.env.TRANSIT_API_KEY;
   const [data, error] = await fetchHandler(TRANSIT_API_URL, externalFetchOptions(apiKey));
 

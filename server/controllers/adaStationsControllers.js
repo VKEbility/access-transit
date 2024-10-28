@@ -1,6 +1,7 @@
 const { fetchADAStations } = require('../api-services/fetchADAStations');
 
 exports.listADAStations = async (req, res) => {
+  console.log('--ADA CONTROLLER INVOKED @listADAStations'); //to help debug;
   try {
     const [ada, error] = await fetchADAStations();
     if (error) return res.status(503).send({ msg: 'Service unavailable: Unable to retrieve accessible stations' }); //in case MTA api is down

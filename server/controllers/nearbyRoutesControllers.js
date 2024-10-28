@@ -1,8 +1,10 @@
 const { fetchNearbyRoutes } = require('../api-services/fetchNearbyRoutes');
 
 exports.listNearbyRoutes = async (req, res) => {
+  console.log('--ROUTES CONTROLLER INVOKED @listNearbyRoutes'); //to help debug;
+  const { lat, lon } = req.body;
+
   try {
-    const { lat, lon } = req.body;
     if (!lat || !lon) return res.status(400).send({ msg: 'Missing longitude or latitude' });
 
     const [routes, err] = await fetchNearbyRoutes(lat, lon);
@@ -15,18 +17,3 @@ exports.listNearbyRoutes = async (req, res) => {
     res.status(500).send({ msg: 'Internal: An unexpected error occurred while fetching nearby transit routes' });
   }
 };
-
-
-// // method to save a user's favorite nearby route
-// static async saveFavoriteRoute(req, res) {
-//   const userId = req.user.id; // assuming user is authenticated and userId is available
-//   const { routeId } = req.body; // get route ID from the request body
-
-//   try {
-//     const favorite = await NearbyRoutesService.saveFavoriteRoute(userId, routeId);
-//     return res.status(201).json(favorite);
-//   } catch (error) {
-//     console.error('Error saving favorite route:', error);
-//     return res.status(500).json({ error: 'Failed to save favorite route.' });
-//   }
-// }

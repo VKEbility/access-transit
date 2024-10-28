@@ -1,6 +1,6 @@
 import React from 'react';
-import { useFavorites } from '../components/FavoriteService'; // Use the custom hook
-import TransitCard from '../components/TransitCard'; // Assuming you reuse the TransitCard from LandingPage
+import { useFavorites } from '../hooks/FavoriteService'; // Use the custom hook
+import TransitRouteCard from '../components/TransitRoutes/TransitRouteCard'; // Assuming you reuse the TransitCard from LandingPage
 
 export default function Favorites() {
   const { favorites, toggleFavorite } = useFavorites(); // Get the favorites and toggleFavorite from the hook
@@ -14,7 +14,7 @@ export default function Favorites() {
       </header>
 
       <div id="favorites-container">
-       
+
 
       </div>
     </div>
