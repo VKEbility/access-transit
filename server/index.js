@@ -15,6 +15,7 @@ const authControllers = require('./controllers/authControllers');
 const userControllers = require('./controllers/userControllers');
 const favControllers = require('./controllers/favControllers');
 const heroController = require('./controllers/heroController');
+const nearbyRoutesControllers = ('./controllers/nearbyRoutesControllers')
 const adaStationsControllers = require('./controllers/adaStationsControllers')
 const app = express();
 
@@ -50,15 +51,15 @@ app.patch('/api/users/:id', checkAuthentication, userControllers.updateUser);
 // Transit Routes
 ///////////////////////////////
 app.get('/api/ada', adaStationsControllers.listADAStations);
-app.post('/api/transit-routes', nearbyRoutesControllers.listNearbyRoutes);
-app.post('/api/transit-routes/:routeId/accessibility-status', accessibilityControllers.showStatus);
+// app.post('/api/transit-routes', nearbyRoutesControllers.listNearbyRoutes);
+// app.post('/api/transit-routes/:routeId/accessibility-status', accessibilityControllers.showStatus);
 // app.patch('/api/transit-routes/:routeId/accessibility-status', accessibilityControllers.updateStatus);
 
 
 ///////////////////////////////
 // Map Routes
 ///////////////////////////////
-app.post('/api/map-search', mapControllers.searchLocation);
+// app.post('/api/map-search', mapControllers.searchLocation);
 
 ///////////////////////////////
 // Favorites Routes
@@ -73,8 +74,8 @@ app.delete('/api/users/:id/favorites/:train_id', checkAuthentication, favControl
 ///////////////////////////////
 // Herocount Route
 ///////////////////////////////
-app.get('/api/heroes/', checkAuthentication, heroController.updateHeroCount);
-app.get('/api/heroes/leaderboard', checkAuthentication, heroController.listHeroLeaderboard);
+app.get('/api/hero_actions/:id', checkAuthentication, heroController.getHeroCount); // Get hero count for a specific user
+app.post('/api/hero_actions', checkAuthentication, heroController.listAllHeroes);    //
 
 ///////////////////////////////
 // Fallback Route

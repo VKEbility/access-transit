@@ -1,48 +1,43 @@
-const User = require('../models/User');
+const Hero = require('../models/Hero');
 
-// note: if you were to console.log() something like `favorites` in line 10, do it before res.send()!! 
-
-exports.updateHeroCount = async (req, res, hero_count) => {
+// Controller to update hero count for a user
+exports.getHeroCount = async (req, res) => {
   try {
-    // since we're checking which user this action is being done to 
     const { userId } = req.session;
-    const { accessibility_status_id } = req.body
-    const heroCount = await User.getHeroCount(userId); //userid
-    const heroAction = User.incrementHeroCount(id, hero_count, accesisbility_status)
-    console.log(heroCount)
-    console.log(heroAction)
-  }
-  catch(err) {
-    console.error('Error listing favorites:', err);
-    res.status(500).send({ msg: 'Internal: Error occurred while listing all hero count' });
-  }
-}
-
-exports.listAllHeroes = async (req, res) => {
-    try {
-      // since we're checking which user this action is being done to 
-      const { userId } = req.session;
-      const heroes = await User.listHeroes();
-      console.log(heroes) //convert to arr or something
-      // Sort heroes by hero_count in descending order
-      const leaderboard = heroes.sort((a, b) => b.hero_count - a.hero_count);
-      res.send(users);
-    } catch (err) {
-      console.error('Error listing users:', err);
-      res.status(500).send({ msg: 'Internal: Error occurred while listing all users' });
+    if (!userId) {
+      return res.status(401).send({ msg: 'Unauthorized: User not logged in' });
     }
-  };
-  // HeroControllers.updateHeroAction = async (req, res) => {
-  //   try {
-  //     const { id } = req.param;
-  //     const { accessibility_status_id } = req.body
-  //     const heroCount = await User.getHeroCount(userId); //userid
-  //     const heroAction = Hero.incrementHeroCount(id, hero_count, accesisbility_status)
-  
-  //     res.send(heroAction);
-  //   }
-  //   catch (err) {
-  //     console.error('Error listing favorites:', err);
-  //     res.status(500).send({ msg: 'Internal: Error occurred while listing all hero count' });
-  //   }
-  // }
+
+    const heroCount = await Hero.getHeroCount(userId);
+    console.log(`Hero count for user ${userId}:`, heroCount);
+    
+    if (!heroCount) {
+      return res.status(404).send({ msg: "Hero count not found for the user" });
+    }
+
+    res.send({ heroCount });
+  } catch (err) {
+    console.error('Error updating hero count:', err);
+    res.status(500).send({ msg: 'Internal: Error occurred while updating hero count' });
+  }
+};
+
+// Controller to list all heroes with their hero counts
+exports.listAllHeroes = async (req, res) => {
+  try {
+    const heroes = await Hero.listHeroes();
+    res.send(heroes);
+    if (!heroes || heroes.length === 0) {
+      return res.status(404).send({ msg: "No heroes found" });
+    }
+
+    // Sort heroes by hero_count in descending order
+    // const leaderboard = heroes.sort((a, b) => b.hero_count - a.hero_count);
+    console.log('Sorted leaderboard:', leaderboard);
+
+    res.send({ leaderboard });
+  } catch (err) {
+    console.error('Error listing heroes:', err);
+    res.status(500).send({ msg: 'Internal: Error occurred while listing all heroes' });
+  }
+};

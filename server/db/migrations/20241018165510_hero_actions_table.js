@@ -3,7 +3,7 @@
  * @returns { Promise<void> }
  */
 exports.up = function (knex) {
-  return knex.schema.createTable('heroes', (table) => {
+  return knex.schema.createTable('hero_actions', (table) => {
     table.increments();
     table.integer('user_id').notNullable();
     table.foreign('user_id').references('id').inTable('users').onDelete('CASCADE'); //fk to users.id- if user deletes their acc, their hero action records will be deleted as well
@@ -19,5 +19,5 @@ exports.up = function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = (knex) => {
-  return knex.schema.dropTableIfExists('heroes');
+  return knex.schema.dropTableIfExists('hero_actions');
 };
