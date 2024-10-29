@@ -1,6 +1,6 @@
 const knex = require('../db/knex');
 
-class Heroes {
+class Hero {
   constructor({ id, username, hero_count }) {
     this.id = id;
     this.username = username;
@@ -10,7 +10,8 @@ class Heroes {
   static async listHeroes() { //gets a list of all heroes with their hero count
     const query = `SELECT * FROM hero_actions`;
     const result = await knex.raw(query);
-    return result.rows.map((rawUserData) => new User(rawUserData));
+    console.log(result.rows);
+    return result.rows;
   }
 
   static async getHeroCount(id) { //get each users hero count, so that we can render it next to their username
@@ -21,7 +22,7 @@ class Heroes {
 
     const result = await knex.raw(query, [id]);
     const heroCount = result.rows[0];
-    return heroCount ? new User(heroCount) : null;
+    return heroCount;
   }
 
   static async deleteUser(id) {
@@ -33,4 +34,4 @@ class Heroes {
   }
 }
 
-module.exports = Heroes;
+module.exports = Hero;

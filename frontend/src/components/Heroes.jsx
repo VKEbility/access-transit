@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
-// import { listAllHeroes } from '../adapters/hero_count-adapter';
-import { listAllHeroes } from '../adapters/hero_count-adapter';
+import { useEffect, useState } from "react";
+import { listAllHeroes, getHeroCount } from "../adapters/hero_count-adapter";
 
 function Heroes() {
   const [heroes, setHeroes] = useState([]);
@@ -8,8 +7,10 @@ function Heroes() {
   useEffect(() => {
     const fetchHeroes = async () => {
       try {
-        console.log(listAllHeroes());
         const leaderboard = await listAllHeroes();
+        const heroCount = await getHeroCount();
+        console.log(heroCount)
+        console.log(leaderboard);
         setHeroes(leaderboard);
       } catch (error) {
         console.error("Error fetching hero leaderboard:", error);
@@ -21,13 +22,15 @@ function Heroes() {
   return (
     <div>
       <h2>Hero Leaderboard</h2>
-      <ul>
-        {heroes.map(hero => (
-          <li key={hero.id}>
-            {hero.id} - {hero.hero_count} heroes
-          </li>
-        ))}
-      </ul>
+        <div id="hero-leaderboard-container">
+        <ul>
+          {heroes.map(hero => (
+            <li key={hero.id}>
+              {hero.id} - {hero.hero_count} heroes
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

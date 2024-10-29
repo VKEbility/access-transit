@@ -24,18 +24,15 @@ exports.getHeroCount = async (req, res) => {
 
 // Controller to list all heroes with their hero counts
 exports.listAllHeroes = async (req, res) => {
+  console.log("hello world");
   try {
     const heroes = await Hero.listHeroes();
+    console.log(heroes);
     res.send(heroes);
     if (!heroes || heroes.length === 0) {
       return res.status(404).send({ msg: "No heroes found" });
     }
 
-    // Sort heroes by hero_count in descending order
-    // const leaderboard = heroes.sort((a, b) => b.hero_count - a.hero_count);
-    console.log('Sorted leaderboard:', leaderboard);
-
-    res.send({ leaderboard });
   } catch (err) {
     console.error('Error listing heroes:', err);
     res.status(500).send({ msg: 'Internal: Error occurred while listing all heroes' });

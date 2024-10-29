@@ -75,7 +75,7 @@ app.delete('/api/users/:id/favorites/:train_id', checkAuthentication, favControl
 // Herocount Route
 ///////////////////////////////
 app.get('/api/hero_actions/:id', checkAuthentication, heroController.getHeroCount); // Get hero count for a specific user
-app.post('/api/hero_actions', checkAuthentication, heroController.listAllHeroes);    //
+app.get('/api/hero_actions', checkAuthentication, heroController.listAllHeroes);    //
 
 ///////////////////////////////
 // Fallback Route

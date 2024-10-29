@@ -1,6 +1,6 @@
 import { fetchHandler, getPostOptions } from '../../../shared/fetchingUtils.mjs';
 
-const baseUrl = '/api/users';
+const baseUrl = '/api/hero_actions';
 
 export const getHeroCount = async (id) => {
   console.log(baseUrl);
@@ -19,7 +19,7 @@ export const updateHeroCount = async ({ id, hero_count}) => {
 }
 
 export const listAllHeroes = async () => {
-  const [heroes, err] = await fetchHandler(`${baseUrl}/hero_actions`);
+  const [heroes, err] = await fetchHandler(`${baseUrl}`);
   if (err) {
     console.log(err);
     return [];
