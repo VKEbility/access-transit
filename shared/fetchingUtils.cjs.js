@@ -4,16 +4,6 @@ const basicFetchOptions = (headers = {}) => ({
   headers,
 });
 
-const externalFetchOptions = (apiKey) => ({
-  method: 'GET',
-  headers: { 'apiKey': apiKey },
-});
-
-const externalFetchOptions = (apiKey) => ({
-  method: 'GET',
-  headers: { 'apiKey': apiKey },
-});
-
 const deleteOptions = {
   method: 'DELETE',
   credentials: 'include',
@@ -69,7 +59,6 @@ const fetchHandler = async (url, options = {}) => {
 
 module.exports = {
   basicFetchOptions,
-  externalFetchOptions,
   deleteOptions,
   getPostOptions,
   getPatchOptions,

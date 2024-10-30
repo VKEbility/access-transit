@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { Trans } from 'react-i18next'; // for use of <strong> html
+import { Trans } from 'react-i18next'; //for use of <strong> html
 
 export default function AccessTransit() {
-  const { t } = useTranslation(); // Get the translation function
+  const { t } = useTranslation(); //get the translation function
 
   return (
     <div>
