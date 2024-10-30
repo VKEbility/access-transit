@@ -1,5 +1,5 @@
-import RouteIcon from '../TransitRoutes/RouteIcon';
-import AccessibilityStatusCard from '../TransitRoutes/AccessibilityStatusCard';
+import RouteIcon from './RouteIcon';
+import AccessibilityStatusContainer from './AccessibilityStatusContainer';
 import CountdownTimer from '../../hooks/CountdownTimer';
 import '../../styles/routes.css';
 
@@ -22,7 +22,7 @@ export default function TransitRouteCard({ route, onTimerEnd }) {
         <RouteIcon route={route} />
         {closestStop.stopName && <div style={{ margin: 0 }}>{closestStop.stopName}</div>}
         <div style={{ margin: 0 }}>{longName}</div>
-        <AccessibilityStatusCard rtStopId={closestStop.rtStopId} />
+        <AccessibilityStatusContainer rtStopId={closestStop.rtStopId} />
       </div>
     </>
   );
