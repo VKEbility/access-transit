@@ -2,9 +2,9 @@ const { isAuthorized } = require('../utils/auth-utils');
 const User = require('../models/User');
 
 exports.createUser = async (req, res) => {
+  console.log('--USER CONTROLLER INVOKED @createUser'); //to help debug;
+  const { username, password, email, language } = req.body;
   try {
-    const { username, password, email, language } = req.body;
-
     // TODO: check if username is taken, and if it is what should you return?
     const existingEmail = await User.findByEmail(email);
     if (existingEmail) return res.status(409).send({ msg: 'Email already in use' }); //conflict status code
@@ -17,13 +17,14 @@ exports.createUser = async (req, res) => {
     req.session.userId = user.id;
 
     res.status(201).send(user); //successful creation code
-  } catch (err) { //api related error
+  } catch (err) { //backend api related error
     console.error('Error creating user:', err);
     res.status(500).send({ msg: 'Internal: Error occurred while creating user' }); //for unexpected server errors
   }
 };
 
 exports.listUsers = async (req, res) => {
+  console.log('--USER CONTROLLER INVOKED @listUsers'); //to help debug;
   try {
     const users = await User.list();
     res.send(users);
@@ -34,8 +35,10 @@ exports.listUsers = async (req, res) => {
 };
 
 exports.showUser = async (req, res) => {
+  console.log('--USER CONTROLLER INVOKED @showUser'); //to help debug;
+  const { id } = req.params;
+
   try {
-    const { id } = req.params;
     const user = await User.find(id);
     if (!user) return res.status(404).send({ msg: 'User does not exist' });
 
@@ -47,14 +50,15 @@ exports.showUser = async (req, res) => {
 };
 
 exports.updateUser = async (req, res) => {
-  try {
-    const { username, password, email } = req.body;
-    const { id } = req.params;
+  console.log('--USER CONTROLLER INVOKED @updateUser'); //to help debug;
+  const { username, password, email } = req.body;
+  const { id } = req.params;
 
+  try {
     // Not only do users need to be logged in to update a user, they
     // need to be authorized to perform this action for this particular
     // user (users should only be able to change their own profiles)
-    if (!isAuthorized(id, req.session)) return res.status(403).send({ msg: "Not authorized to update info for this user" });
+    if (!isAuthorized(id, req.session)) return res.status(403).send({ msg: 'Not authorized to update info for this user' });
 
     const existingEmail = await User.findByEmail(email);
     if (existingEmail) return res.status(409).send({ msg: 'Email already in use' });
@@ -63,7 +67,7 @@ exports.updateUser = async (req, res) => {
     if (existingUsername) return res.status(409).send({ msg: 'Username already taken' });
 
     const updatedUser = await User.update(id, username, password, email);
-    if (!updatedUser) return res.status(404).send({ msg: "User not found" });
+    if (!updatedUser) return res.status(404).send({ msg: 'User not found' });
 
     console.log('Updated user:', updatedUser.id);
     res.send(updatedUser);
@@ -74,9 +78,11 @@ exports.updateUser = async (req, res) => {
 };
 
 exports.deleteUser = async (req, res) => {
+  // console.log('--USER CONTROLLER INVOKED @deleteUser'); //to help debug;
+  const { id } = req.params;
+
   try {
-    const { id } = req.params;
-    if (!isAuthorized(id, req.session)) return res.status(403).send({ msg: "Not authorized to delete this user" });
+    if (!isAuthorized(id, req.session)) return res.status(403).send({ msg: 'Not authorized to delete this user' });
 
     const deletedRows = await User.delete(id);
     if (deletedRows === 0) return res.status(404).send({ msg: 'User to delete not found' }); //knex del() returns num of rows deleted

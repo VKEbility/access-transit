@@ -18,12 +18,12 @@ export default function EquipmentStatus() {
 
         const data = await response.json();
         const accessibleEquipmentObj = {};
-        
+
         // Push data into statusesObj
         data.forEach(equipment => {
           accessibleEquipmentObj[equipment.equipmentno] = [
-            equipment.equipmenttype, 
-            equipment.stationcomplexid, 
+            equipment.equipmenttype,
+            equipment.stationcomplexid,
             equipment.isactive
           ];
         });
@@ -35,7 +35,7 @@ export default function EquipmentStatus() {
         console.log(error.message);
       }
     };
-    
+
     doFetch();
   }, []);
 

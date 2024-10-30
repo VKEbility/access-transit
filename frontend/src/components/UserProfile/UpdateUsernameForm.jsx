@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { updateUser } from "../adapters/user-adapter";
+import { updateUser } from "../../adapters/user-adapter";
 
 export default function UpdateUserForm({ currentUser, setCurrentUser }) {
   const navigate = useNavigate();
