@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import CurrentUserContext from '../contexts/CurrentUserContext';
 import { accessibilityIcons } from './TrainAndAccessibilityIcon';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
-import { listFavs, addFav, removeFav } from '../adapters/fav-adapter';
+import {listFavs, addFav, removeFav } from '../adapters/fav-adapter';
 
 // // export const TransitCard = ({ iconPath, idx, cardColor, stationName, direction, accessibility, isFavorite, toggleFavorite, trainData }) => {
 export const TransitCard = ({ iconPath, idx, cardColor, equipmentNo, accessibility, isFavorite, toggleFavorite }) => {

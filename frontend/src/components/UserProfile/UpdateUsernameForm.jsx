@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { updateUser } from "../adapters/user-adapter";
-import '../styles/user-account.css';
+import { updateUser } from "../../adapters/user-adapter";
 
 export default function UpdateUserForm({ currentUser, setCurrentUser }) {
   const navigate = useNavigate();
@@ -38,7 +37,7 @@ export default function UpdateUserForm({ currentUser, setCurrentUser }) {
     setErrorText(''); // clear error message on successful update
   };
 
-  return <form id="user-update-form" onSubmit={handleSubmit} aria-labelledby="update-heading">
+  return <form onSubmit={handleSubmit} aria-labelledby="update-heading">
     <h2 id="update-heading">Update User {currentUser.username} </h2>
     <label htmlFor='email'>New Email</label>
     <input type='email' id='email' name='email' />

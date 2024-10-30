@@ -28,6 +28,7 @@ app.use(logRoutes); // print information about each incoming request
 app.use(express.json()); // parse incoming request bodies as JSON
 app.use(express.static(path.join(__dirname, '../frontend/dist'))); // Serve static assets from the dist folder of the frontend
 
+
 ///////////////////////////////
 // Auth Routes
 ///////////////////////////////
@@ -64,20 +65,23 @@ app.post('/api/transit-routes/:routeId/accessibility-status', accessibilityContr
 ///////////////////////////////
 app.post('/api/map-search', mapControllers.searchLocation);
 
+
 ///////////////////////////////
 // Favorites Routes
 ///////////////////////////////
 
 // must check which user want to do an action first! 
 // then do the action (list, add, or remove)! 
-app.get('/api/users/:id/favorites', checkAuthentication, favControllers.listFavs);
 app.post('/api/users/:id/favorites', checkAuthentication, favControllers.addFav);
+app.get('/api/users/:id/favorites', checkAuthentication, favControllers.listFavs);
 app.delete('/api/users/:id/favorites/:train_id', checkAuthentication, favControllers.removeFav);
+
 
 ///////////////////////////////
 // Herocount Route
 ///////////////////////////////
 app.get('/api/users/hero_count', checkAuthentication, heroController.updateHeroCount);
+
 
 ///////////////////////////////
 // Fallback Route
