@@ -19,7 +19,7 @@ export default function NearbyRoutesContainer({ coords, mapReady }) {
           {loading && <p>Loading nearby routes...</p>}
           {routes.length > 0 ? (
             routes.map((route) => (
-              <TransitRouteCard key={route.transitId} route={route} onTimerEnd={() => handleTimerEnd(route.transitId)} />
+              <TransitRouteCard key={route.globalRtId} route={route} onTimerEnd={() => handleTimerEnd(route.transitId)} />
             ))
           ) : (
             <p>No nearby routes found.</p>

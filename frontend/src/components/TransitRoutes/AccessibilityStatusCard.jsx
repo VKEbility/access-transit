@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { fetchRouteAccessibility } from '../../adapters/transit-adapter';
-import AccessibilityIcons from '../TransitRoutes/AccessibilityIcons';
+import AccessibilityIcons from './AccessibilityIcons';
 
-export default function AccessibilityStatus({ rtStopId }) {
+export default function AccessibilityStatusCard({ rtStopId }) {
   const [accessibility, setAccessibility] = useState([]);
   const [errorText, setErrorText] = useState('');
 

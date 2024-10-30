@@ -20,11 +20,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "i18next": "^23.16.4",
-    "react-i18next": "^15.1.0",
-    "react-router-dom": "^6.27.0"
-  },
   "exports": {
     "import": "./shared/fetchingUtils.mjs.js",
     "require": "./shared/fetchingUtils.cjs.js"

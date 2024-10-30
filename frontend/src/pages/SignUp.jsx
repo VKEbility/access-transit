@@ -3,9 +3,7 @@ import { useNavigate, Navigate, Link } from 'react-router-dom';
 import CurrentUserContext from '../contexts/CurrentUserContext';
 import { createUser } from '../adapters/user-adapter';
 import { FaArrowLeft } from 'react-icons/fa'; // Make sure to install react-icons
-
 import '../styles/user-account.css';
-import './css/SignUp.css';
 
 //Language
 import i18n from 'i18next';

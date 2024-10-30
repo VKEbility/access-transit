@@ -2,7 +2,7 @@ const { fetchHandler, basicFetchOptions } = require('../../shared/fetchingUtils.
 
 exports.fetchNearbyRoutes = async (lat, lon) => {
   // console.log('--ROUTES FETCH INVOKED @fetchNearbyRoutes', lat, lon); //to help debug;
-  const TRANSIT_API_URL = `https://external.transitapp.com/v3/public/nearby_routes?lat=${lat}&lon=${lon}&max_distance=1500&should_update_realtime=true`; //getting nearby routes within 1500m of coord location + their real time arrivals
+  const TRANSIT_API_URL = `https://external.transitapp.com/v3/public/nearby_routes?lat=${lat}&lon=${lon}&max_distance=1000&should_update_realtime=true`; //getting nearby routes within 1500m of coord location + their real time arrivals
   const header = { 'apiKey': process.env.TRANSIT_API_KEY };
   const [data, error] = await fetchHandler(TRANSIT_API_URL, basicFetchOptions(header));
   if (error) return [null, error];
