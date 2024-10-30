@@ -1,10 +1,16 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import path from "path"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
 import { visualizer } from 'rollup-plugin-visualizer'; //to analyze bundle size to keep site performance up
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), visualizer({ filename: './dist/stats.html', open: true })], //adding build stats visualizer
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
   server: {
     proxy: {
       '/api': {

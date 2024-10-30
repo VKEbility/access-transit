@@ -19,10 +19,10 @@ export default function TransitRouteCard({ route, onTimerEnd }) {
             <CountdownTimer departure={departure} onComplete={onTimerEnd} /> //passing prop state down
           ) : 'N/A'}
         </div>
-        <RouteIcon route={route} />
-        {closestStop.stopName && <div style={{ margin: 0 }}>{closestStop.stopName}</div>}
-        <div style={{ margin: 0 }}>{longName}</div>
-        <AccessibilityStatus rtStopId={closestStop.rtStopId} />
+          <RouteIcon route={route} />
+          {closestStop.stopName && <div style={{ margin: 0 }}>{closestStop.stopName}</div>}
+          <div style={{ margin: 0 }}>{longName}</div>
+          <AccessibilityStatus rtStopId={closestStop.rtStopId} />
       </div>
     </>
   );
