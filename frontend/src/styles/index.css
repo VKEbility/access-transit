@@ -12,8 +12,8 @@
   background-repeat: no-repeat;
   /* Prevents the background from repeating */
   background-size: cover;
-  min-width: 100%;
-  min-height: 100%;
+  /* min-width: 100%; */
+  min-height: 130vh;
   width: auto;
   height: auto;
   line-height: 1.5;
@@ -38,7 +38,7 @@
 body {
   /* background-color: #c9a2a2; /* separating for dev purposes */
   min-width: 100vh;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

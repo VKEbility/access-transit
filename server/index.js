@@ -20,7 +20,6 @@ const accessibilityControllers = require('./controllers/accessibilityControllers
 const serviceAlertsController = require('./controllers/serviceAlertsController');
 const nearbyRoutesControllers = require('./controllers/nearbyRoutesControllers');
 const mapControllers = require('./controllers/mapControllers');
-const accessibilityControllers = require('./controllers/accessibilityControllers');
 
 const app = express();
 
