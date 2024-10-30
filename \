@@ -1,0 +1,16 @@
+chore: install postcss and import mantine styles
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Wed Oct 30 19:26:52 2024 -0400
+#
+# On branch style/mantine-ui
+# Your branch is up to date with 'origin/style/mantine-ui'.
+#
+# Changes to be committed:
+#	modified:   frontend/package-lock.json
+#	modified:   frontend/package.json
+#	new file:   frontend/postcss.config.cjs
+#	new file:   frontend/src/styles/styles.js
+#	new file:   frontend/src/styles/theme.js
+#

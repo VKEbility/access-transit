@@ -41,7 +41,7 @@ export default function OnboardingPage() {
           <Link to="/alerts">
             <button id="welcome-button-link">{t('serviceAlerts')}</button>
           </Link>
-          <Link to="/accessibility-status">
+          <Link to="/transit-routes">
             <button id="welcome-button-link">{t('seeStatus')}</button>
           </Link>
         </div>
