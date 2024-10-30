@@ -8,6 +8,7 @@ const baseUrl = '/api/users';
 // };
 export const listFavs = async (user_id) => {
   // if favs is empty 
+  // if favs is empty 
   const [favs, err] = await fetchHandler(`${baseUrl}/${user_id}/favorites`);
   if (err) console.log(err); // print the error for simplicity
   return favs || [];
