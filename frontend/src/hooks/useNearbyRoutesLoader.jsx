@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { fetchNearbyRoutes } from '../adapters/transit-adapters';
+import { fetchNearbyRoutes } from '../adapters/transit-adapter';
 
 export default function useNearbyRoutes(coords, mapReady, locationSearched) {
   const [routes, setRoutes] = useState([]);
