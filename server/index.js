@@ -16,6 +16,7 @@ const userControllers = require('./controllers/userControllers');
 const favControllers = require('./controllers/favControllers');
 const heroController = require('./controllers/heroController');
 const adaStationsControllers = require('./controllers/adaStationsControllers');
+const accessibilityControllers = require('./controllers/accessibilityControllers');
 const serviceAlertsController = require('./controllers/serviceAlertsController');
 const nearbyRoutesControllers = require('./controllers/nearbyRoutesControllers');
 const mapControllers = require('./controllers/mapControllers');
@@ -67,8 +68,7 @@ app.post('/api/map-search', mapControllers.searchLocation);
 // Transit Routes
 ///////////////////////////////
 app.post('/api/transit-routes', nearbyRoutesControllers.listNearbyRoutes);
-app.post('/api/transit-routes/:routeId/accessibility-status', accessibilityControllers.showStatus);
-// app.patch('/api/transit-routes/:routeId/accessibility-status', accessibilityControllers.updateStatus);
+app.get('/api/transit-routes/:rt_stop_id/accessibility', accessibilityControllers.showStatus);
 
 ///////////////////////////////
 // Favorites Routes
