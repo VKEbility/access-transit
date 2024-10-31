@@ -1,4 +1,4 @@
-import { fetchHandler, getPostOptions } from '../../../shared/fetchingUtils.mjs';
+import { fetchHandler, getPostOptions } from '../../../shared/fetchingUtils.mjs.js';
 
 const baseUrl = '/api/hero_actions';
 

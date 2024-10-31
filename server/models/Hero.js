@@ -14,7 +14,7 @@ class Hero {
     return result.rows;
   }
 
-  static async getHeroUsername(userId) { 
+  static async getHeroUsername(userId) {
 
     // const query = `
     //   SELECT username
@@ -37,15 +37,15 @@ class Hero {
     // JOIN hero_actions ON user.id = hero_actions.user_id;
     // `
 
-    const query = 
-    `SELECT COUNT(*) AS hero_count 
+    const query =
+      `SELECT COUNT(*) AS hero_count 
     FROM hero_actions 
     WHERE user_id = $1`
 
     const result = await knex.raw(query);
     console.log(result.rows);
     return result.rows;
-}
+  }
 
 }
 
