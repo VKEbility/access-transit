@@ -1,17 +1,35 @@
 .map-container {
   display: flex;
+  justify-self: center;
+  position: relative;
   width: 700px;
   height: 500px;
 }
 
-#location-search {
-  /* background-color: #0E0E0E; /* separating for dev purposes */
-  width: 300px;
-  height: 30px;
+.leaflet-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
 
 #location-search-form {
-  padding: 1rem;
-  width: 15rem;
-  margin: 1rem auto;
+  /* background-color: #0E0E0E; /* separating for dev purposes */
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  /* width: 600px;
+  height: 500px;
+  margin: 30px;
+  border-radius: 15px; */
+}
+
+#location-search-input {
+  height: 3rem;
+  text-align: center;
+  margin: auto;
+}
+
+#location-search-button {
+  width: fit-content;
+  margin: 1rem;
 }

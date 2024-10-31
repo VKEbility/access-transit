@@ -1,11 +1,7 @@
-export const basicFetchOptions = {
+export const basicFetchOptions = (headers = {}) => ({
   method: 'GET',
   credentials: 'include',
-};
-
-export const externalFetchOptions = (apiKey) => ({
-  method: 'GET',
-  headers: { 'Authorization': `Bearer ${apiKey}` }, //allowing any API key to be inserted dynamically
+  headers,
 });
 
 export const deleteOptions = {
@@ -13,10 +9,13 @@ export const deleteOptions = {
   credentials: 'include',
 };
 
-export const getPostOptions = (body) => ({
+export const getPostOptions = (body, apiKey) => ({
   method: 'POST',
   credentials: 'include',
-  headers: { 'Content-Type': 'application/json' },
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${apiKey}`
+  },
   body: JSON.stringify(body),
 });
 
@@ -31,17 +30,34 @@ export const fetchHandler = async (url, options = {}) => {
   try {
     const response = await fetch(url, options);
     const { ok, status, headers } = response;
-    const isJson = (headers.get('content-type')?.includes('application/json'));
+    const contentType = headers.get('content-type');
+
+    const isJson = (contentType?.includes('application/json'));
+    const isHTML = (contentType?.includes('text/html'));
 
     if (!ok) {
-      const errorData = await (isJson ? response.json() : response.text()); //errorData is the msg obj our backend controller sends
-      throw new Error(errorData.msg || `Fetch failed with status - ${status}`, { cause: status }); //passing error.msg to catch block
+      const errorData = await (isJson ? response.json() : response.text());
+      throw new Error(errorData.msg || `Fetch failed with status - ${status}`, { cause: status });
     }
 
-    const responseData = await (isJson ? response.json() : response.text());
+    let responseData;
+
+    if (isJson) {
+      responseData = await response.json(); //directly parse res as json
+    } else {
+      const textData = await response.text(); //get res as text
+      try {
+        responseData = JSON.parse(textData); //try to parse it as json if so
+      } catch (err) {
+        console.warn('Failed to parse response as JSON:', err);
+        return [null, new Error('Failed to parse response as JSON')];
+      }
+    }
+
     return [responseData, null];
   } catch (error) {
     console.warn(error);
     return [null, error];
   }
 };
+

@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { useContext, useState } from "react";
-import { logUserOut } from "../adapters/auth-adapter";
-import CurrentUserContext from "../contexts/CurrentUserContext";
+import { logUserOut } from "../../adapters/auth-adapter";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import DropdownMenu from "./DropdownMenu";
-import siteLogo from '../assets/images/logo.svg';
+import siteLogo from '../../assets/images/logo.svg';
 
 export default function SiteHeadingAndNav() {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -29,13 +29,12 @@ export default function SiteHeadingAndNav() {
         <nav className="nav-bar">
           <ul className="nav-link-container">
             <li className="nav-link"><NavLink to='/'>Home</NavLink></li>
-            <li className="nav-link"><NavLink to='/about'>About</NavLink></li>
             <li className="nav-link"><NavLink to='/accessible-stations'>ADA Stations</NavLink></li>
             {currentUser ? (
               <>
+                <li className="nav-link"><NavLink to='/about'>About</NavLink></li>
                 <li className="nav-link"><NavLink to="/alerts">Service Alerts</NavLink></li>
                 <li className="nav-link"><NavLink to="/our-heroes">Our Heroes</NavLink></li>
-                <li className="nav-link"><NavLink to="/favorites">Favorites</NavLink></li>
                 <li className="nav-link"><DropdownMenu title="Settings" items={dropdownItems} /></li>
               </>
             ) : (

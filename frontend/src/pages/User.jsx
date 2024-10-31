@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import { getUser } from "../adapters/user-adapter";
 import { logUserOut } from "../adapters/auth-adapter";
-import UpdateUsernameForm from "../components/UpdateUsernameForm";
+import UpdateUsernameForm from "../components/UserProfile/UpdateUsernameForm";
 
 export default function UserPage() {
   const navigate = useNavigate();

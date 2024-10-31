@@ -1,11 +1,7 @@
-const basicFetchOptions = {
+const basicFetchOptions = (headers = {}) => ({
   method: 'GET',
   credentials: 'include',
-};
-
-const externalFetchOptions = (apiKey) => ({
-  method: 'GET',
-  headers: { 'apiKey': apiKey },
+  headers,
 });
 
 const deleteOptions = {
@@ -34,14 +30,30 @@ const fetchHandler = async (url, options = {}) => {
   try {
     const response = await fetch(url, options);
     const { ok, status, headers } = response;
-    const isJson = (headers.get('content-type')?.includes('application/json'));
+    const contentType = headers.get('content-type');
+
+    const isJson = (contentType?.includes('application/json'));
+    const isHTML = (contentType?.includes('text/html'));
 
     if (!ok) {
       const errorData = await (isJson ? response.json() : response.text());
       throw new Error(errorData.msg || `Fetch failed with status - ${status}`, { cause: status });
     }
 
-    const responseData = await (isJson ? response.json() : response.text());
+    let responseData;
+
+    if (isJson) {
+      responseData = await response.json(); //directly parse res as json
+    } else {
+      const textData = await response.text(); //get res as text
+      try {
+        responseData = JSON.parse(textData); //try to parse it as json if so
+      } catch (err) {
+        console.warn('Failed to parse response as JSON:', err);
+        return [null, new Error('Failed to parse response as JSON')];
+      }
+    }
+
     return [responseData, null];
   } catch (error) {
     console.warn(error);
@@ -51,7 +63,6 @@ const fetchHandler = async (url, options = {}) => {
 
 module.exports = {
   basicFetchOptions,
-  externalFetchOptions,
   deleteOptions,
   getPostOptions,
   getPatchOptions,
