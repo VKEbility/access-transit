@@ -16,10 +16,10 @@ const userControllers = require('./controllers/userControllers');
 const favControllers = require('./controllers/favControllers');
 const heroController = require('./controllers/heroController');
 const adaStationsControllers = require('./controllers/adaStationsControllers');
+const accessibilityControllers = require('./controllers/accessibilityControllers');
 const serviceAlertsController = require('./controllers/serviceAlertsController');
 const nearbyRoutesControllers = require('./controllers/nearbyRoutesControllers');
 const mapControllers = require('./controllers/mapControllers');
-const accessibilityControllers = require('./controllers/accessibilityControllers');
 
 const app = express();
 
@@ -28,6 +28,7 @@ app.use(handleCookieSessions); // adds a session property to each request repres
 app.use(logRoutes); // print information about each incoming request
 app.use(express.json()); // parse incoming request bodies as JSON
 app.use(express.static(path.join(__dirname, '../frontend/dist'))); // Serve static assets from the dist folder of the frontend
+
 
 ///////////////////////////////
 // Auth Routes
@@ -63,12 +64,12 @@ app.get('/api/service-alerts/:rt_stop_id', serviceAlertsController.showRouteAler
 ///////////////////////////////
 app.post('/api/map-search', mapControllers.searchLocation);
 
+
 ///////////////////////////////
 // Transit Routes
 ///////////////////////////////
 app.post('/api/transit-routes', nearbyRoutesControllers.listNearbyRoutes);
-app.post('/api/transit-routes/:routeId/accessibility-status', accessibilityControllers.showStatus);
-// app.patch('/api/transit-routes/:routeId/accessibility-status', accessibilityControllers.updateStatus);
+app.get('/api/transit-routes/:rt_stop_id/accessibility', accessibilityControllers.showStatus);
 
 ///////////////////////////////
 // Favorites Routes
@@ -76,14 +77,16 @@ app.post('/api/transit-routes/:routeId/accessibility-status', accessibilityContr
 
 // must check which user want to do an action first! 
 // then do the action (list, add, or remove)! 
-app.get('/api/users/:id/favorites', checkAuthentication, favControllers.listFavs);
 app.post('/api/users/:id/favorites', checkAuthentication, favControllers.addFav);
-app.delete('/api/users/:id/favorites/:train_id', checkAuthentication, favControllers.removeFav);
+app.get('/api/users/:id/favorites', checkAuthentication, favControllers.listFavs);
+app.delete('/api/users/:id/favorites/:rt_stop_id', checkAuthentication, favControllers.removeFav); 
+
 
 ///////////////////////////////
 // Herocount Route
 ///////////////////////////////
 app.get('/api/users/hero_count', checkAuthentication, heroController.updateHeroCount);
+
 
 ///////////////////////////////
 // Fallback Route

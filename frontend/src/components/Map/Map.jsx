@@ -4,8 +4,8 @@ import DragMap from './DragMap';
 import 'leaflet/dist/leaflet.css';
 import '../../styles/map.css';
 
-export default function MapContainerComponent({ setCoords }) {
-  const [position, setPosition] = useState([40.7128, -74.0060]); //state to hold the default marker position; init to lower manhattan
+export default function MapContainerComponent({ setCoords, setMapReady }) {
+  const [position, setPosition] = useState([40.7128, -74.0060]); //state to hold the default marker position; init to lower manhattan- same as in landing
   const [loading, setLoading] = useState(true);
 
   useEffect(() => { //effect to get the user's curr location when the component mounts/starts up
@@ -16,6 +16,7 @@ export default function MapContainerComponent({ setCoords }) {
           setPosition([latitude, longitude]); //updating position state with user's curr location
           setCoords({ lat: latitude, lon: longitude }); //passing user's coords to parent
           setLoading(false);
+          setMapReady(true); //to pass to TransitRoutesContainer when nearby routes are ready to be fetched
         },
         (error) => {
           console.error("Error getting location: ", error);
@@ -25,7 +26,7 @@ export default function MapContainerComponent({ setCoords }) {
     };
 
     getLocation();
-  }, [setCoords]);
+  }, [setCoords, setMapReady]);
 
   useEffect(() => { //effect to update parent coords when position state of the marker changes
     setCoords({ lat: position[0], lon: position[1] }); //updating parent with the new position

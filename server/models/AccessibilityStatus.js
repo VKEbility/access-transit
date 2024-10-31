@@ -10,26 +10,6 @@ class Accessibility {
     this.operational_status = operational_status;
   }
 
-  static async findByEquipNo(equip_no) {
-    const query = `SELECT * FROM users WHERE email = ?`;
-    const result = await knex.raw(query, [email]);
-    const rawUserData = result.rows[0];
-    return rawUserData ? new User(rawUserData) : null;
-  }
-
-  //fetches a single accessibility feature and its status by its equip_no identifier
-  static async getAllStatuses(equip_no) {
-    const query = `
-      SELECT user_id
-      FROM accessibility_status
-      WHERE equip_no = ?
-      ORDER BY updated_at DESC
-      LIMIT 1
-      `;
-    const result = await knex.raw(query, [equip_no]);
-    return result.rows.map((rawAccessibilityHero) => new AccessibilityFeature(rawAccessibilityHero));
-  }
-
   //creates a new accessibility feature and returns it
   static async create(user_id = null, rt_stop_id, equip_type, equip_no, operational_status) {
     const query = `
@@ -41,18 +21,20 @@ class Accessibility {
     return new Accessibility(rawFeatureData);
   }
 
-  //fetches a single accessibility feature by id
+  //fetches a single accessibility feature and its status by its equip_no identifier
+  static async findByEquipNo(equip_no) {
+    const query = `SELECT * FROM accessibility_status WHERE equip_no=?`;
+    const result = await knex.raw(query, [equip_no]);
+    const rawFeatureData = result.rows[0];
+    return rawFeatureData ? new Accessibility(rawFeatureData) : null;
+  }
+
+  //fetches a single accessibility feature's operational status by equip_no
   static async getOperationalStatus(equip_no) {
     const query = `SELECT operational_status FROM accessibility_status WHERE equip_no=?`;
 
     const result = await knex.raw(query, [equip_no]);
     return result.rows[0]?.operational_status || null; //returns the status or null if not found
-  }
-
-  static async getLastFeatureHero(equip_no) {
-    const query = `SELECT user_id FROM accessibility_status WHERE equip_no=?`;
-    const result = await knex.raw(query, [equip_no]);
-    return result.rows[0]?.user_id || null; //returns the last person that updated status or null if not found
   }
 
   static async getTimeLastUpdated(equip_no) {
@@ -61,54 +43,31 @@ class Accessibility {
     return result.rows[0]?.updated_at || null; //returns the timestamp of when status was updated last or null if not found
   }
 
-  //fetches a single accessibility feature by id
-  static async listOperationalStatus(equip_no) {
-    const query = `SELECT * FROM accessibility_features WHERE id=?`;
-    const result = await knex.raw(query, [id]);
-    const rawFeatureData = result.rows[0];
-    return rawFeatureData ? new AccessibilityFeature(rawFeatureData) : null;
-  }
-
-  static async update(id, user_id = null, rt_stop_id, equip_type, equip_no, operational_status) {
-    const fields = [];
-    const values = [];
-
-    if (user_id) {
-      fields.push("user_id=?");
-      values.push(user_id);
-    }
-    if (rt_stop_id) {
-      fields.push("rt_stop_id=?");
-      values.push(rt_stop_id);
-    }
-    if (equip_type) {
-      fields.push("equip_type=?");
-      values.push(equip_type);
-    }
-    if (equip_no) {
-      fields.push("equip_no=?");
-      values.push(equip_no);
-    }
-    if (operational_status !== null) {
-      fields.push("operational_status=?");
-      values.push(operational_status);
-    }
-
-    if (fields.length === 0) {
-      throw new Error("No fields to update");
-    }
-
-    values.push(id);
+  //getting the last user who updated an accessibility status by equip_no, ordering results by last updated_at value + limiting results to just 1 record
+  static async getLastFeatureHero(equip_no) {
     const query = `
-      UPDATE accessibility_features
-      SET ${fields.join(", ")}
-      WHERE id=?
-      RETURNING *
+      SELECT user_id 
+      FROM accessibility_status 
+      WHERE equip_no=? 
+      ORDER BY updated_at DESC 
+      LIMIT 1
     `;
-    const result = await knex.raw(query, values);
-    const rawUpdatedFeature = result.rows[0];
-    return rawUpdatedFeature ? new AccessibilityFeature(rawUpdatedFeature) : null;
+    const result = await knex.raw(query, [equip_no]);
+    return result.rows[0]?.user_id || null; //returns the last person that updated status or null if not found
   }
-}
+
+  //update existing accessibility feature's operational status by equip_no
+  static async updateOperationalStatus(equip_no, user_id = null, operational_status) {
+    const query = `
+      UPDATE accessibility_status 
+      SET operational_status=?, user_id=?
+      WHERE equip_no =?
+      RETURNING *
+      `;
+    const result = await knex.raw(query, [operational_status, user_id, equip_no]);
+    const updatedFeature = result.rows[0];
+    return updatedFeature ? new Accessibility(updatedFeature) : null; //returning the record updated
+  }
+};
 
 module.exports = Accessibility;
