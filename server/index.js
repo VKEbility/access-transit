@@ -74,7 +74,7 @@ app.delete('/api/users/:id/favorites/:train_id', checkAuthentication, favControl
 ///////////////////////////////
 // Herocount Route
 ///////////////////////////////
-app.get('/api/hero_actions/:id', checkAuthentication, heroController.getHeroCount); // Get hero count for a specific user
+app.get('/api/hero_actions/:id/hero_count', checkAuthentication, heroController.getHeroUsername); // Get hero count for a specific user
 app.get('/api/hero_actions', checkAuthentication, heroController.listAllHeroes);    //
 
 ///////////////////////////////

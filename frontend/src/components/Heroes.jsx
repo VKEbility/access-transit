@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { listAllHeroes, getHeroCount } from "../adapters/hero_count-adapter";
+import { listAllHeroes, getHeroUsername } from "../adapters/hero_count-adapter";
 
 function Heroes() {
   const [heroes, setHeroes] = useState([]);
@@ -8,10 +8,11 @@ function Heroes() {
     const fetchHeroes = async () => {
       try {
         const leaderboard = await listAllHeroes();
-        const heroCount = await getHeroCount();
-        console.log(heroCount)
-        console.log(leaderboard);
+        const heroUsername = await getHeroUsername();
+        // console.log(leaderboard);
+        console.log(heroUsername);
         setHeroes(leaderboard);
+        // setUsername(getHeroUsername);
       } catch (error) {
         console.error("Error fetching hero leaderboard:", error);
       }
@@ -20,18 +21,29 @@ function Heroes() {
   }, []);
 
   return (
-    <div>
-      <h2>Hero Leaderboard</h2>
-        <div id="hero-leaderboard-container">
-        <ul>
-          {heroes.map(hero => (
-            <li key={hero.id}>
-              {hero.id} - {hero.hero_count} heroes
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    <div id="hero-page-container">
+      <h1>Hero Leaderboard</h1>
+      <table id="hero-table">
+      <thead id="table-heading">
+        <tr id="table-headers">
+          <th>User ID</th>       
+          <th>Hero ID</th>       
+          <th>Hero Count</th>    
+          <th>Created At</th>   
+        </tr>
+      </thead>
+      <tbody id="hero-categories">
+        {heroes.map((hero) => (
+          <tr id="hero-username" key={hero.id}>
+            <td>{hero.user_id}</td> 
+            <td>{hero.id}</td>  
+            <td>{hero.hero_count}</td>  
+            <td>{hero.created_at}</td> 
+          </tr>
+        ))}
+      </tbody>
+      </table>
+  </div>
   );
 }
 
