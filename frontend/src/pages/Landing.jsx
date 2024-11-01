@@ -3,6 +3,7 @@ import TransitHeader from '../components/Header/TransitHeader';
 import LocationSearch from '../components/Map/LocationSearch';
 import useNearbyRoutes from '../hooks/useNearbyRoutesLoader';
 import FavoriteContainer from '../components/Favorites/FavoritesContainer';
+import { Grid, Title, Alert } from '@mantine/core';
 
 const MapContainerComponent = React.lazy(() => import('../components/Map/Map'));
 const TransitRouteContainer = React.lazy(() =>

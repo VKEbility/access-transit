@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchAllAlerts, fetchRouteAlerts } from '../adapters/alerts-adapter';
+import { Grid, Title, Alert } from '@mantine/core';
+import AlertCard from './AlertCard';
 
 export default function ServiceAlerts({ rt_stop_id }) {
 	const [allAlerts, setAllAlerts] = useState([]);
@@ -11,7 +13,6 @@ export default function ServiceAlerts({ rt_stop_id }) {
 		const loadAlerts = async () => {
 			setLoading(true);
 			setErrorText('');
-			console.log('BEFORE @loadAlerts():', rt_stop_id || 'ALL alerts');
 			const fetchAdapter = rt_stop_id
 				? () => fetchRouteAlerts(rt_stop_id)
 				: fetchAllAlerts;
@@ -23,7 +24,6 @@ export default function ServiceAlerts({ rt_stop_id }) {
 				setLoading(false);
 				return;
 			}
-			if (alertsObj) console.log('AFTER @loadAlerts():', alertsObj); // Debugging output
 
 			setPostedTime(alertsObj.postedTimestamp);
 			setAllAlerts(alertsObj.alerts);
@@ -37,43 +37,34 @@ export default function ServiceAlerts({ rt_stop_id }) {
 
 	return (
 		<div>
-			<h1>Service Alerts</h1>
-			<p>All alerts in effect</p>
-			{errorText && <p>Error: {errorText}</p>}
-			<ul>
+			<Title
+				order={2} // You can use order={1} for even larger text
+				style={{
+					textAlign: 'center', // Center the text
+					fontSize: '3rem', // Increase the font size
+				}}
+			>
+				Service Alerts
+			</Title>
+			<p style={{ textAlign: 'center', fontSize: '1.5rem' }}>
+				All alerts in effect
+			</p>
+			{errorText && (
+				<Alert title="Error" color="red">
+					{errorText}
+				</Alert>
+			)}
+			<Grid gutter="lg" style={{ padding: '30px' }}>
 				{allAlerts.length > 0 ? (
 					allAlerts.map((alert) => (
-						<li key={alert.id}>
-							<p>
-								Route: {alert.informedEntities?.metaData?.rtLineId || 'N/A'}
-							</p>
-							<p>Alert Type: {alert.alertType || 'N/A'}</p>
-							<p>Header: {alert.headerText || 'N/A'}</p>
-							<p>Description: {alert.descriptionText || 'N/A'}</p>
-							<p>
-								Active Period:{' '}
-								{alert.activePeriod
-									? alert.activePeriod
-											.map((period) => `${period.starting} to ${period.ending}`)
-											.join(', ')
-									: 'N/A'}
-							</p>
-							<p>
-								Alternatives:{' '}
-								{alert.travelAlternatives
-									?.map((alt) => `${alt.stopId} - ${alt.notes}`)
-									.join(', ') || 'N/A'}
-							</p>
-							<p>Posted: {postedTime || 'N/A'}</p>
-							<p>
-								Agency: {alert.informedEntities?.metaData?.agencyId || 'N/A'}
-							</p>
-						</li>
+						<Grid.Col key={alert.id} span={6}>
+							<AlertCard alert={alert} postedTime={postedTime} />
+						</Grid.Col>
 					))
 				) : (
 					<p>No subway alerts found. Please try again later.</p>
 				)}
-			</ul>
+			</Grid>
 		</div>
 	);
 }

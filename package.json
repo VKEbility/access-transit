@@ -23,5 +23,12 @@
   "exports": {
     "import": "./shared/fetchingUtils.mjs.js",
     "require": "./shared/fetchingUtils.cjs.js"
+  },
+  "dependencies": {
+    "@mantine/carousel": "^7.13.4",
+    "@mantine/core": "^7.13.4",
+    "@mantine/modals": "^7.13.4",
+    "@mantine/notifications": "^7.13.4",
+    "postcss-preset-mantine": "^1.17.0"
   }
 }

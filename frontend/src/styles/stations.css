@@ -1,0 +1,37 @@
+.accessible-stations-container {
+	padding: 20px;
+}
+
+.accessible-stations-grid {
+	display: grid; /* Use CSS Grid for layout */
+	grid-template-columns: repeat(
+		auto-fill,
+		minmax(200px, 1fr)
+	); /* Responsive grid */
+	gap: 20px; /* Space between grid items */
+}
+
+.accessible-station-card {
+	background-color: #f9f9f9; /* Light background for cards */
+	border: 1px solid #ccc; /* Light border */
+	padding: 15px; /* Internal padding */
+	border-radius: 8px; /* Rounded corners */
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+	text-align: center; /* Center text */
+	transition: transform 0.2s; /* Smooth scaling on hover */
+}
+
+.accessible-station-card:hover {
+	transform: scale(1.05); /* Slightly increase size on hover */
+	background-color: #e0f7fa; /* Change background on hover */
+}
+
+.accessible-station-name {
+	font-weight: bold; /* Bold station name */
+	font-size: 1.2em; /* Slightly larger font size */
+}
+
+.accessible-error-text {
+	color: red; /* Red color for errors */
+	text-align: center; /* Center align error text */
+}

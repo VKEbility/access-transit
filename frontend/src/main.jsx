@@ -5,17 +5,18 @@ import { MantineProvider } from '@mantine/core'; //ui
 import App from './App.jsx';
 import UserContextProvider from './contexts/CurrentUserContextProvider.jsx';
 import i18n from './i18n';
-import './styles/index.css'; //global styles
-
+import theme from './styles/theme.js'; // import './styles/index.css'; //global styles
+import './styles/styles.js'; //mantine styles
+// import '@mantine/core/styles.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <MantineProvider withGlobalStyles withNormalizeCSS>
-    <UserContextProvider>
-      <BrowserRouter>
-        <I18nextProvider i18n={i18n}>
-          <App />
-        </I18nextProvider>
-      </BrowserRouter>
-    </UserContextProvider>
-  </MantineProvider>
+	<MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
+		<UserContextProvider>
+			<BrowserRouter>
+				<I18nextProvider i18n={i18n}>
+					<App />
+				</I18nextProvider>
+			</BrowserRouter>
+		</UserContextProvider>
+	</MantineProvider>
 );
