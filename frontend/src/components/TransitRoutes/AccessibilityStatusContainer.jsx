@@ -1,5 +1,5 @@
 import AccessibilityStatusCard from './AccessibilityStatusCard';
-import '../../styles/accessibility.css';
+// import '../../styles/accessibility.css';
 
 export default function AccessibilityStatusContainer({ rtStopId }) {
   return (

@@ -1,6 +1,8 @@
-import TransitRouteCard from '../TransitRoutes/TransitRouteCard';
+import { Container, Button, Text, Loader, Box, Grid } from '@mantine/core';
+import RouteCarousel from './RouteCarousel';
 import useNearbyRoutes from '../../hooks/useNearbyRoutesLoader';
 import '../../styles/routes.css';
+import theme, { colors } from '../../styles/theme';
 
 export default function NearbyRoutesContainer({ coords, mapReady }) {
   const { routes, setRoutes, errorText, loading, loadNearbyRoutes } = useNearbyRoutes(coords, mapReady);
@@ -10,22 +12,37 @@ export default function NearbyRoutesContainer({ coords, mapReady }) {
   };
 
   return (
-    <div>
-      <button id="refresh-routes" onClick={loadNearbyRoutes}>Refresh</button>
+    <Container
+      sx={{
+        backgroundColor: '#8B0000',
+        // padding: '20px',
+        borderRadius: '8px',
+      }}
+    >
+      <Button onClick={loadNearbyRoutes} id="refresh-routes">Refresh</Button>
 
-      <div className="routes-container">
-        <div className="nearby-routes-container">
-          {errorText && <p className="error-text">{errorText}</p>}
-          {loading && <p>Loading nearby routes...</p>}
-          {routes.length > 0 ? (
-            routes.map((route) => (
-              <TransitRouteCard key={route.globalRtId} route={route} onTimerEnd={() => handleTimerEnd(route.transitId)} />
+      <Grid className="routes-container"
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          backgroundColor: colors.lightest,
+          gap: '20px',
+        }}
+      >
+        {errorText && <Text color="red">{errorText}</Text>}
+        {loading ? <Loader /> : (
+          routes.length > 0 ? (
+            routes.map(route => (
+              <Grid.Col key={route.globalRtId} span={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <RouteCarousel routes={[route]} handleTimerEnd={handleTimerEnd} />
+              </Grid.Col>
             ))
           ) : (
-            <p>No nearby routes found.</p>
-          )}
-        </div>
-      </div>
-    </div>
+            <Text>No nearby routes found.</Text>
+          )
+        )}
+      </Grid>
+    </Container >
   );
 }

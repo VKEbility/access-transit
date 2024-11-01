@@ -10,6 +10,7 @@ exports.listNearbyRoutes = async (req, res) => {
     const [routes, err] = await fetchNearbyRoutes(lat, lon);
     if (err) return res.status(503).send({ msg: 'Service unavailable: Unable to retrieve nearby routes' }); //in case MTA api is down
     console.log(`${routes.length} nearby transit routes retrieved`);
+    console.log("Each routeObj's itinerary length:", routes.map(route => route.itineraries.length));
 
     res.send(routes);
   } catch (err) {

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import { Loader } from '@mantine/core';
 import DragMap from './DragMap';
 import 'leaflet/dist/leaflet.css';
 import '../../styles/map.css';
@@ -32,7 +33,7 @@ export default function MapContainerComponent({ setCoords, setMapReady }) {
     setCoords({ lat: position[0], lon: position[1] }); //updating parent with the new position
   }, [position, setCoords]); //having effect run whenever position changes
 
-  if (loading) return <div>Loading map...</div>;
+  if (loading) return <Loader />;
 
   return (
     <>

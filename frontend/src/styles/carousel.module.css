@@ -1,0 +1,21 @@
+.controls {
+  transition: opacity 150ms ease;
+  opacity: 0;
+}
+
+.root {
+  position: relative;
+
+  &:hover .controls {
+    opacity: 1;
+  }
+}
+
+.indicators {
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.root:hover .indicators {
+  opacity: 1;
+}
