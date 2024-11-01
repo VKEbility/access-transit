@@ -2,7 +2,7 @@ import React, { useState, Suspense, useEffect } from 'react';
 import TransitHeader from '../components/Header/TransitHeader';
 import LocationSearch from '../components/Map/LocationSearch';
 import useNearbyRoutes from '../hooks/useNearbyRoutesLoader';
-import FavoriteContainer from '../components/Favorites/FavoritesContainer';
+// import FavoriteContainer from '../components/Favorites/FavoritesContainer';
 
 const MapContainerComponent = React.lazy(() => import('../components/Map/Map'));
 const TransitRouteContainer = React.lazy(() => import('../components/TransitRoutes/TransitRouteContainer'));
@@ -57,7 +57,7 @@ export default function LandingPage() {
           setCoords={setCoords}
           setLocationSearched={setLocationSearched}
         />
-        <FavoriteContainer></FavoriteContainer>
+        {/* <FavoriteContainer></FavoriteContainer> */}
         <TransitRouteContainer coords={coords} mapReady={mapReady} />
         <div id="google_translate_element"></div>{' '}
       </Suspense>

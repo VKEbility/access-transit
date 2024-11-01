@@ -1,17 +1,15 @@
 import { useState } from 'react';
+import { Card, Group, Text } from '@mantine/core';
 import RouteIcon from './RouteIcon';
 import AccessibilityStatusContainer from './AccessibilityStatusContainer';
 import CountdownTimer from '../../hooks/CountdownTimer';
-import '../../styles/routes.css';
+// import '../../styles/routes.css';
 
-export default function TransitRouteCard({ route, onTimerEnd }) {
-  const [currDirection, setCurrDirection] = useState(0); //state for direction swipe- 0 for uptown, 1 for downtown
-
+export default function TransitRouteCard({ route, onTimerEnd, direction }) {
   const itineraries = route.itineraries || [];
-  const uptown = itineraries.find(it => it.directionId === 0) || {}; //obj { closestStop{}, directionHeadsign, directionId, headsign, mergedHeadsign, closestStop, realTimeArrivals }
-  const downtown = itineraries.find(it => it.directionId === 1) || {};
-
-  const currItinerary = currDirection === 0 ? uptown : downtown;
+  const currItinerary = direction === "Uptown" //obj { closestStop{}, directionHeadsign, directionId, headsign, mergedHeadsign, closestStop, realTimeArrivals }
+    ? itineraries.find(it => it.directionId === 0)
+    : itineraries.find(it => it.directionId === 1) || {};
   const closestStop = currItinerary.closestStop || {}; //rendering the closest stop of whichever itinerary view currDirection state is on
   const realtimeArrival = currItinerary.realTimeArrivals[0] || {};
   const departure = realtimeArrival?.departureTime;
@@ -20,17 +18,32 @@ export default function TransitRouteCard({ route, onTimerEnd }) {
 
   return (
     <>
-      <div className="transit-card" style={{ backgroundColor: isOutOfCommission ? '#d3d3d3' : `#${route.color}` }}>
-        <div id="estimated-arrival-time">
-          {departure ? (
-            <CountdownTimer departure={departure} onComplete={onTimerEnd} /> //passing prop state down
-          ) : 'N/A'}
-        </div>
-        <RouteIcon route={route} />
-        {closestStop.stopName && <div style={{ margin: 0 }}>{closestStop.stopName}</div>}
-        <div style={{ margin: 0 }}>{longName}</div>
-        <AccessibilityStatusContainer rtStopId={closestStop.rtStopId} />
-      </div>
+      <Card
+        shadow="sm"
+        padding="lg"
+        radius="md"
+        withBorder
+        style={{
+          backgroundColor: isOutOfCommission ? '#d3d3d3' : `#${route.color}`,
+          minHeight: '180px',
+          maxWidth: '350px',
+          margin: '0 auto',
+        }}
+      >
+        <Group position="apart">
+          <RouteIcon route={route} />
+          <Text size="md" id="estimated-arrival-time">
+            {departure ? (
+              <CountdownTimer departure={departure} onComplete={onTimerEnd} /> //passing prop state down
+            ) : 'N/A'}
+          </Text>
+        </Group>
+        <Group position="apart">
+          {closestStop.stopName && <Text size="md">{closestStop.stopName}</Text>}
+          <Text>{longName}</Text>
+          <AccessibilityStatusContainer rtStopId={closestStop.rtStopId} />
+        </Group>
+      </Card>
     </>
   );
 };

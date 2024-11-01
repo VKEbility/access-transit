@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { fetchSearchLocation } from '../../adapters/map-adapters';
 import sanitizeInput from '../../utils/validation';
-import '../../styles/map.css';
+import { Button, TextInput, Flex, Loader } from '@mantine/core';
+// import '../../styles/map.css';
 
 export default function LocationSearch({ setCoords, setLocationSearched }) {
   const [query, setQuery] = useState('');
@@ -34,18 +35,22 @@ export default function LocationSearch({ setCoords, setLocationSearched }) {
   return (
     <div>
       {errorText && <p className="error-text">{errorText}</p>}
-      {loading && <p>Loading...</p>}
-      <form id="location-search-form" onSubmit={loadQueryCoords}>
-        <input
-          type="text"
-          id="location-search-input"
-          name="locationSearch"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Enter a location"
-        />
-        <button id="location-search-button" type="submit">Where to?</button>
-      </form>
+      {loading ? <Loader /> : (
+        <Flex direction="column" align="center" justify="center" gap="md">
+          <form id="location-search-form" onSubmit={loadQueryCoords}>
+            <input
+              type="text"
+              id="location-search-input"
+              name="locationSearch"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Enter a location"
+              style={{ width: '100%', maxWidth: '300px', marginBottom: '20px' }}
+            />
+            <Button id="location-search-button" type="submit" style={{ width: '100%', maxWidth: '300px' }}>Where to?</Button>
+          </form>
+        </Flex>
+      )}
     </div>
   );
 };
