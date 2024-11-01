@@ -13,31 +13,33 @@ import UserContext from './contexts/CurrentUserContext';
 import { checkForLoggedInUser } from './adapters/auth-adapter';
 import UsersPage from './pages/Users';
 import UserPage from './pages/User';
+import LandingPage from './pages/Landing';
 
 export default function App() {
-	const { setCurrentUser } = useContext(UserContext);
-	useEffect(() => {
-		checkForLoggedInUser().then(setCurrentUser);
-	}, [setCurrentUser]);
+  const { setCurrentUser } = useContext(UserContext);
+  useEffect(() => {
+    checkForLoggedInUser().then(setCurrentUser);
+  }, [setCurrentUser]);
 
-	return (
-		<>
-			<SiteHeadingAndNav />
-			<main>
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/about" element={<About />} />
-					<Route path="/our-heroes" element={<OurHeroes />} />
-					<Route path="/alerts" element={<Alerts />} />
-					<Route path="/accessible-stations" element={<ADAStationsPage />} />
-					<Route path="/login" element={<LoginPage />} />
-					<Route path="/sign-up" element={<SignUpPage />} />
-					<Route path="/users" element={<UsersPage />} />
-					<Route path="/users/:id" element={<UserPage />} />
-					<Route path="/users/:id/settings" element={<UserPage />} />
-					<Route path="*" element={<NotFoundPage />} />
-				</Routes>
-			</main>
-		</>
-	);
+  return (
+    <>
+      <SiteHeadingAndNav />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/our-heroes" element={<OurHeroes />} />
+          <Route path="/alerts" element={<Alerts />} />
+          <Route path="/accessible-stations" element={<ADAStationsPage />} />
+          <Route path="/transit-routes" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/users" element={<UsersPage />} />
+          <Route path="/users/:id" element={<UserPage />} />
+          <Route path="/users/:id/settings" element={<UserPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </main>
+    </>
+  );
 }
