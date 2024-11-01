@@ -5,8 +5,8 @@ import { MantineProvider } from '@mantine/core'; //ui
 import App from './App.jsx';
 import UserContextProvider from './contexts/CurrentUserContextProvider.jsx';
 import i18n from './i18n';
-import './styles/index.css'; //global styles
-
+// import './styles/index.css'; //global styles
+import './styles/styles.js'; //mantine styles
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <MantineProvider withGlobalStyles withNormalizeCSS>
