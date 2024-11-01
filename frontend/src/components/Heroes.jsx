@@ -24,24 +24,22 @@ function Heroes() {
     <div id="hero-page-container">
       <h1>Hero Leaderboard</h1>
       <table id="hero-table">
-        <thead id="table-heading">
-          <tr id="table-headers">
-            <th>User ID</th>
-            <th>Hero ID</th>
-            <th>Hero Count</th>
-            <th>Created At</th>
+      <thead id="table-heading">
+        <tr id="table-headers">
+          <th>User ID</th>       
+          <th>Hero ID</th>       
+          <th>Hero Count</th>
+        </tr>
+      </thead>
+      <tbody id="hero-categories">
+        {heroes.map((hero) => (
+          <tr id="hero-username" key={hero.id}>
+            <td>{hero.user_id}</td> 
+            <td>{hero.id}</td>  
+            <td>{hero.hero_count}</td>  
           </tr>
-        </thead>
-        <tbody id="hero-categories">
-          {heroes.map((hero) => (
-            <tr id="hero-username" key={hero.id}>
-              <td>{hero.user_id}</td>
-              <td>{hero.id}</td>
-              <td>{hero.hero_count}</td>
-              <td>{hero.created_at}</td>
-            </tr>
-          ))}
-        </tbody>
+        ))}
+      </tbody>
       </table>
     </div>
   );
