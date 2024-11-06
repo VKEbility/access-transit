@@ -16,3 +16,17 @@ exports.showStatus = async (req, res) => {
     res.status(500).send({ msg: 'Internal: An unexpected error occurred while fetching route accessibility status' });
   }
 };
+
+exports.updateStatus = async (req, res) => {
+  console.log('--ACCESSIBILITY CONTROLLER INVOKED @updateStatus'); // for debugging
+
+  try {
+    const [updatedTime, error] = await fetchAccessibilityStatus();
+    if (error) return res.status(503).send({ msg: "Service unavailable: Unable to retrieve route's accessibility update time" });
+
+    res.send({ time: updatedTime });
+  } catch (err) {
+    console.error('Error fetching accessibility update time:', err);
+    res.status(500).send({ msg: 'Internal: An unexpected error occurred while fetching accessibility update time' });
+  }
+};

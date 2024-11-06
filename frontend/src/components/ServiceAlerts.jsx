@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchAllAlerts, fetchRouteAlerts } from '../adapters/alerts-adapter';
+import AccessibilityStatusTime from './TransitRoutes/AccessibilityStatusTime';
 
 export default function ServiceAlerts({ rt_stop_id }) {
   const [allAlerts, setAllAlerts] = useState([]);
@@ -33,8 +34,10 @@ export default function ServiceAlerts({ rt_stop_id }) {
       {loading && <p>Loading...</p>}
 
       <ul>
-        <li></li>
-        {allAlerts.length > 0 ? (
+        <li>
+          <AccessibilityStatusTime />
+        </li>
+        {/* {allAlerts.length > 0 ? (
           allAlerts.map(alert => (
             <li key={alert.id}>
               <p>Route: {alert.informedEntities?.metaData?.rtLineId || 'N/A'}</p>
@@ -50,7 +53,7 @@ export default function ServiceAlerts({ rt_stop_id }) {
           ))
         ) : (
           <p>No subway alerts found. Please try again later.</p>
-        )}
+        )} */}
       </ul>
     </div>
   );

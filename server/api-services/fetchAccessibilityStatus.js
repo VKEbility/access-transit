@@ -1,4 +1,5 @@
 const { fetchHandler } = require('../../shared/fetchingUtils.cjs');
+const { unixConverter } = require('../utils/formatter-utils');
 
 exports.fetchAccessibilityStatus = async (rt_stop_id) => {
   console.log('ACCESSIBILITY STATUS FETCHED INVOKED @fetchAccessibilityStatus:', rt_stop_id);
@@ -7,7 +8,8 @@ exports.fetchAccessibilityStatus = async (rt_stop_id) => {
   const [data, error] = await fetchHandler(MTA_API_URL);
   if (error) return [null, error];
 
-  const routeStatus = Array.isArray(data) ? data
+  const lastUpdated = unixConverter(data.header.date); //time entire alert dataset was updated, converted to readable timestamp
+  const rtAccessibility = Array.isArray(data) ? data
     .filter((equipObj) => equipObj.elevatorsgtfsstopid === rt_stop_id.slice(0, 3)) //filtering objs comparing the slice of the 4 char Transit App API rt_stop_id to get the relational accessibility data at that station
     .map((routeEquipObj) => {
       return {
@@ -19,6 +21,11 @@ exports.fetchAccessibilityStatus = async (rt_stop_id) => {
         serving: routeEquipObj.serving, //defining the access point -> boarding location; ex. "125 St & Broadway (SW corner) to mezzanine"
       }
     }) : null;
+
+  const routeStatus = {
+    lastUpdated,
+    rtAccessibility
+  };
 
   return [routeStatus, null];
 };

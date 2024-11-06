@@ -65,7 +65,7 @@ app.post('/api/map-search', mapControllers.searchLocation);
 ///////////////////////////////
 app.post('/api/transit-routes', nearbyRoutesControllers.listNearbyRoutes);
 app.get('/api/transit-routes/:rt_stop_id/accessibility', accessibilityControllers.showStatus);
-
+app.get('/api/accessibility', accessibilityControllers.updateStatus);
 
 ///////////////////////////////
 // Fallback Route
