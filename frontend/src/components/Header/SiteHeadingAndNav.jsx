@@ -1,19 +1,44 @@
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { NavLink, useNavigate, Navigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
 import { logUserOut } from '../../adapters/auth-adapter';
+import { logUserIn } from '../../adapters/auth-adapter';
+
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import siteLogo from '../../assets/images/logo.svg';
-import { Menu, Container, Group, Button, Title } from '@mantine/core';
-import { HiChevronDown } from 'react-icons/hi'; // Import an arrow icon
+
+import {
+	Menu,
+	Container,
+	Group,
+	Button,
+	Title,
+	TextInput,
+	PasswordInput,
+	Paper,
+	Text,
+} from '@mantine/core';
+import { HiChevronDown } from 'react-icons/hi';
 
 export default function SiteHeadingAndNav() {
 	const navigate = useNavigate();
 	const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
-
+	const [opened, setOpened] = useState(false); // State to manage the dropdown visibility
+	const [errorText, setErrorText] = useState('');
 	const handleLogout = async () => {
 		logUserOut();
 		setCurrentUser(null);
 		navigate('/');
+	};
+
+	const handleLogin = async (event) => {
+		event.preventDefault();
+		setErrorText('');
+		const formData = new FormData(event.target);
+		const [user, error] = await logUserIn(Object.fromEntries(formData));
+		if (error) return setErrorText(error.msg);
+		setCurrentUser(user);
+		setOpened(false); // Close the dropdown after successful login
+		navigate(`/`); // Redirect to home or other page
 	};
 
 	const dropdownItems = currentUser
@@ -32,7 +57,7 @@ export default function SiteHeadingAndNav() {
 						display: 'flex',
 						alignItems: 'flex-end',
 						justifyContent: 'flex-end',
-						padding: '1rem 0', // Adjusted padding for better spacing
+						padding: '1rem 0',
 					}}
 				>
 					<a id="site-logo" href="/" style={{ marginLeft: '0rem' }}>
@@ -55,8 +80,8 @@ export default function SiteHeadingAndNav() {
 								style={({ isActive }) => ({
 									textDecoration: 'none',
 									fontWeight: 'bold',
-									color: 'black', // Keep it black
-									borderBottom: isActive ? '2px solid blue' : 'none', // Underline for active link
+									color: 'black',
+									borderBottom: isActive ? '2px solid blue' : 'none',
 								})}
 							>
 								Home
@@ -66,8 +91,8 @@ export default function SiteHeadingAndNav() {
 								style={({ isActive }) => ({
 									textDecoration: 'none',
 									fontWeight: 'bold',
-									color: 'black', // Keep it black
-									borderBottom: isActive ? '2px solid blue' : 'none', // Underline for active link
+									color: 'black',
+									borderBottom: isActive ? '2px solid blue' : 'none',
 								})}
 							>
 								ADA Stations
@@ -79,8 +104,8 @@ export default function SiteHeadingAndNav() {
 										style={({ isActive }) => ({
 											textDecoration: 'none',
 											fontWeight: 'bold',
-											color: 'black', // Keep it black
-											borderBottom: isActive ? '2px solid blue' : 'none', // Underline for active link
+											color: 'black',
+											borderBottom: isActive ? '2px solid blue' : 'none',
 										})}
 									>
 										About
@@ -90,8 +115,8 @@ export default function SiteHeadingAndNav() {
 										style={({ isActive }) => ({
 											textDecoration: 'none',
 											fontWeight: 'bold',
-											color: 'black', // Keep it black
-											borderBottom: isActive ? '2px solid blue' : 'none', // Underline for active link
+											color: 'black',
+											borderBottom: isActive ? '2px solid blue' : 'none',
 										})}
 									>
 										Service Alerts
@@ -105,12 +130,11 @@ export default function SiteHeadingAndNav() {
 													alignItems: 'center',
 													cursor: 'pointer',
 													fontWeight: 'bold',
-													color: 'black', // Default color
+													color: 'black',
 												}}
 											>
 												<span>Settings</span>
-												<HiChevronDown style={{ marginLeft: '0.5rem' }} />{' '}
-												{/* Arrow icon */}
+												<HiChevronDown style={{ marginLeft: '0.5rem' }} />
 											</div>
 										</Menu.Target>
 										<Menu.Dropdown>
@@ -119,7 +143,7 @@ export default function SiteHeadingAndNav() {
 													<Menu.Item
 														key={item.label}
 														onClick={item.action}
-														style={{ color: 'black', fontWeight: 'bold' }} // Keep dropdown item black
+														style={{ color: 'black', fontWeight: 'bold' }}
 													>
 														{item.label}
 													</Menu.Item>
@@ -128,7 +152,7 @@ export default function SiteHeadingAndNav() {
 														key={item.label}
 														component={NavLink}
 														to={item.path}
-														style={{ color: 'black', fontWeight: 'bold' }} // Keep dropdown item black
+														style={{ color: 'black', fontWeight: 'bold' }}
 													>
 														{item.label}
 													</Menu.Item>
@@ -139,23 +163,80 @@ export default function SiteHeadingAndNav() {
 								</>
 							) : (
 								<>
-									<NavLink
-										to="/login"
-										style={{
-											textDecoration: 'none',
-											fontWeight: 'bold',
-											color: 'black',
-										}} // Keep Login item black
-									>
-										Login
-									</NavLink>
+									<Menu opened={opened} onClose={() => setOpened(false)}>
+										<Menu.Target>
+											<div
+												style={{
+													display: 'flex',
+													alignItems: 'center',
+													cursor: 'pointer',
+													fontWeight: 'bold',
+													color: 'black',
+												}}
+												onClick={() => setOpened(true)} // Open the dropdown on click
+											>
+												<span>Login</span>
+												<HiChevronDown style={{ marginLeft: '0.5rem' }} />
+											</div>
+										</Menu.Target>
+										<Menu.Dropdown
+											style={{
+												padding: '10px',
+												width: '350px',
+												borderRadius: '8px',
+												backgroundColor: '#fff',
+											}}
+										>
+											<Paper>
+												<form
+													onSubmit={handleLogin}
+													style={{
+														display: 'flex',
+														flexDirection: 'column',
+														gap: '20px',
+													}}
+												>
+													<TextInput
+														label="Email or Username"
+														name="emailOrUsername"
+														placeholder="Enter your email or username"
+														required
+														size="lg"
+													/>
+													<PasswordInput
+														label="Password"
+														name="password"
+														placeholder="Enter your password"
+														required
+														size="lg"
+													/>
+													<Button
+														type="submit"
+														fullWidth
+														style={{
+															backgroundColor: '#3c7fd0',
+															color: 'white',
+															marginTop: '10px',
+														}}
+													>
+														Login
+													</Button>
+												</form>
+												{errorText && (
+													<Text color="red" style={{ marginTop: '10px' }}>
+														{errorText}
+													</Text>
+												)}
+											</Paper>
+										</Menu.Dropdown>
+									</Menu>
 									<NavLink
 										to="/sign-up"
 										style={{
 											textDecoration: 'none',
 											fontWeight: 'bold',
 											color: 'black',
-										}} // Keep Sign Up item black
+										}}
 									>
 										Sign Up
 									</NavLink>

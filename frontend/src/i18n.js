@@ -12,6 +12,20 @@ i18n
 			en: {
 				//Default - English
 				translation: {
+					'Sign Up': 'Sign Up',
+					'Register Email': 'Register Email',
+					'Create Username': 'Create Username',
+					'Create Password': 'Create Password',
+					'Confirm Password': 'Confirm Password',
+					choose_language: 'Choose Language',
+					sign_up_now: 'Sign Up Now',
+					already_have_account: 'Already have an account?',
+					log_in: 'Log In',
+					'Missing email': 'Email is required',
+					'Missing username': 'Username is required',
+					'Missing password': 'Password is required',
+					'Passwords do not match': 'Passwords do not match',
+
 					navHome: 'Home',
 					navAbout: 'About',
 					navAdaStations: 'ADA Stations',
@@ -133,6 +147,20 @@ i18n
 			es: {
 				//Spanish
 				translation: {
+					'Sign Up': 'Regístrate',
+					'Register Email': 'Registrar correo electrónico',
+					'Create Username': 'Crear nombre de usuario',
+					'Create Password': 'Crear contraseña',
+					'Confirm Password': 'Confirmar contraseña',
+					choose_language: 'Elegir idioma',
+					sign_up_now: 'Regístrate ahora',
+					already_have_account: '¿Ya tienes una cuenta?',
+					log_in: 'Iniciar sesión',
+					'Missing email': 'Se requiere correo electrónico',
+					'Missing username': 'Se requiere nombre de usuario',
+					'Missing password': 'Se requiere contraseña',
+					'Passwords do not match': 'Las contraseñas no coinciden',
+
 					navHome: 'Inicio',
 					navAbout: 'Acerca de',
 					navAdaStations: 'Estaciones ADA',
@@ -254,6 +282,20 @@ i18n
 			fr: {
 				//French
 				translation: {
+					'Sign Up': "S'inscrire",
+					'Register Email': "Email d'inscription",
+					'Create Username': "Créer un nom d'utilisateur",
+					'Create Password': 'Créer un mot de passe',
+					'Confirm Password': 'Confirmer le mot de passe',
+					choose_language: 'Choisir la langue',
+					sign_up_now: "S'inscrire maintenant",
+					already_have_account: 'Vous avez déjà un compte ?',
+					log_in: 'Se connecter',
+					'Missing email': "L'email est requis",
+					'Missing username': "Le nom d'utilisateur est requis",
+					'Missing password': 'Le mot de passe est requis',
+					'Passwords do not match': 'Les mots de passe ne correspondent pas',
+
 					navHome: 'Accueil',
 					navAbout: 'À propos',
 					navAdaStations: 'Stations ADA',
@@ -371,6 +413,20 @@ i18n
 			de: {
 				// German
 				translation: {
+					'Sign Up': 'Anmelden',
+					'Register Email': 'Registrierungs-E-Mail',
+					'Create Username': 'Benutzernamen erstellen',
+					'Create Password': 'Passwort erstellen',
+					'Confirm Password': 'Passwort bestätigen',
+					choose_language: 'Sprache wählen',
+					sign_up_now: 'Jetzt registrieren',
+					already_have_account: 'Hast du schon ein Konto?',
+					log_in: 'Einloggen',
+					'Missing email': 'E-Mail ist erforderlich',
+					'Missing username': 'Benutzername ist erforderlich',
+					'Missing password': 'Passwort ist erforderlich',
+					'Passwords do not match': 'Passwörter stimmen nicht überein',
+
 					navHome: 'Startseite',
 					navAbout: 'Über uns',
 					navAdaStations: 'ADA-Stationen',
@@ -484,6 +540,20 @@ i18n
 			it: {
 				// - Italian
 				translation: {
+					'Sign Up': 'Iscriviti',
+					'Register Email': 'Email di registrazione',
+					'Create Username': 'Crea nome utente',
+					'Create Password': 'Crea password',
+					'Confirm Password': 'Conferma password',
+					choose_language: 'Scegli la lingua',
+					sign_up_now: 'Iscriviti ora',
+					already_have_account: 'Hai già un account?',
+					log_in: 'Accedi',
+					'Missing email': "L'email è obbligatoria",
+					'Missing username': 'Il nome utente è obbligatorio',
+					'Missing password': 'La password è obbligatoria',
+					'Passwords do not match': 'Le password non corrispondono',
+
 					navHome: 'Home',
 					navAbout: 'Chi Siamo',
 					navAdaStations: 'Stazioni ADA',
@@ -596,6 +666,20 @@ i18n
 			ja: {
 				//Japanese
 				translation: {
+					'Sign Up': 'サインアップ',
+					'Register Email': '登録メールアドレス',
+					'Create Username': 'ユーザー名を作成',
+					'Create Password': 'パスワードを作成',
+					'Confirm Password': 'パスワードを確認',
+					choose_language: '言語を選択',
+					sign_up_now: '今すぐサインアップ',
+					already_have_account: 'すでにアカウントをお持ちですか？',
+					log_in: 'ログイン',
+					'Missing email': 'メールアドレスが必要です',
+					'Missing username': 'ユーザー名が必要です',
+					'Missing password': 'パスワードが必要です',
+					'Passwords do not match': 'パスワードが一致しません',
+
 					navHome: 'ホーム',
 					navAbout: '私たちについて',
 					navAdaStations: 'ADAステーション',
@@ -710,6 +794,20 @@ i18n
 			zh: {
 				//Chinese (Simplified)
 				translation: {
+					'Sign Up': '注册',
+					'Register Email': '注册邮箱',
+					'Create Username': '创建用户名',
+					'Create Password': '创建密码',
+					'Confirm Password': '确认密码',
+					choose_language: '选择语言',
+					sign_up_now: '立即注册',
+					already_have_account: '已有帐户?',
+					log_in: '登录',
+					'Missing email': '邮箱是必需的',
+					'Missing username': '用户名是必需的',
+					'Missing password': '密码是必需的',
+					'Passwords do not match': '密码不匹配',
+
 					navHome: '主页',
 					navAbout: '关于我们',
 					navAdaStations: 'ADA车站',
@@ -819,6 +917,20 @@ i18n
 			pt: {
 				//Portuguese
 				translation: {
+					'Sign Up': 'Cadastrar',
+					'Register Email': 'Email de registro',
+					'Create Username': 'Criar nome de usuário',
+					'Create Password': 'Criar senha',
+					'Confirm Password': 'Confirmar senha',
+					choose_language: 'Escolher idioma',
+					sign_up_now: 'Cadastrar agora',
+					already_have_account: 'Já tem uma conta?',
+					log_in: 'Entrar',
+					'Missing email': 'O e-mail é obrigatório',
+					'Missing username': 'O nome de usuário é obrigatório',
+					'Missing password': 'A senha é obrigatória',
+					'Passwords do not match': 'As senhas não coincidem',
+
 					navHome: 'Início',
 					navAbout: 'Sobre Nós',
 					navAdaStations: 'Estações ADA',
@@ -932,6 +1044,20 @@ i18n
 			ru: {
 				//Russian
 				translation: {
+					'Sign Up': 'Зарегистрироваться',
+					'Register Email': 'Email для регистрации',
+					'Create Username': 'Создать имя пользователя',
+					'Create Password': 'Создать пароль',
+					'Confirm Password': 'Подтвердить пароль',
+					choose_language: 'Выберите язык',
+					sign_up_now: 'Зарегистрироваться сейчас',
+					already_have_account: 'Уже есть аккаунт?',
+					log_in: 'Войти',
+					'Missing email': 'Email обязателен',
+					'Missing username': 'Имя пользователя обязательно',
+					'Missing password': 'Пароль обязателен',
+					'Passwords do not match': 'Пароли не совпадают',
+
 					navHome: 'Главная',
 					navAbout: 'О нас',
 					navAdaStations: 'Станции ADA',
@@ -1047,6 +1173,20 @@ i18n
 			ar: {
 				//Arabic
 				translation: {
+					'Sign Up': 'التسجيل',
+					'Register Email': 'البريد الإلكتروني للتسجيل',
+					'Create Username': 'إنشاء اسم المستخدم',
+					'Create Password': 'إنشاء كلمة المرور',
+					'Confirm Password': 'تأكيد كلمة المرور',
+					choose_language: 'اختيار اللغة',
+					sign_up_now: 'سجل الآن',
+					already_have_account: 'هل لديك حساب بالفعل؟',
+					log_in: 'تسجيل الدخول',
+					'Missing email': 'البريد الإلكتروني مطلوب',
+					'Missing username': 'اسم المستخدم مطلوب',
+					'Missing password': 'كلمة المرور مطلوبة',
+					'Passwords do not match': 'كلمات المرور غير متطابقة',
+
 					navHome: 'الرئيسية',
 					navAbout: 'معلومات عنا',
 					navAdaStations: 'محطات ADA',
@@ -1163,6 +1303,20 @@ i18n
 			hi: {
 				//Hindi
 				translation: {
+					'Sign Up': 'साइन अप',
+					'Register Email': 'रजिस्टर ईमेल',
+					'Create Username': 'यूज़रनेम बनाएं',
+					'Create Password': 'पासवर्ड बनाएं',
+					'Confirm Password': 'पासवर्ड की पुष्टि करें',
+					choose_language: 'भाषा चुनें',
+					sign_up_now: 'अभी साइन अप करें',
+					already_have_account: 'क्या आपका खाता पहले से है?',
+					log_in: 'लॉग इन करें',
+					'Missing email': 'ईमेल आवश्यक है',
+					'Missing username': 'यूज़रनेम आवश्यक है',
+					'Missing password': 'पासवर्ड आवश्यक है',
+					'Passwords do not match': 'पासवर्ड मेल नहीं खाते',
+
 					navHome: 'मुख्य पृष्ठ',
 					navAbout: 'हमारे बारे में',
 					navAdaStations: 'एडीए स्टेशन',
@@ -1278,6 +1432,20 @@ i18n
 			ko: {
 				//Korean
 				translation: {
+					'Sign Up': '가입하기',
+					'Register Email': '등록 이메일',
+					'Create Username': '사용자 이름 만들기',
+					'Create Password': '비밀번호 만들기',
+					'Confirm Password': '비밀번호 확인',
+					choose_language: '언어 선택',
+					sign_up_now: '지금 가입하기',
+					already_have_account: '계정이 이미 있나요?',
+					log_in: '로그인',
+					'Missing email': '이메일은 필수입니다',
+					'Missing username': '사용자 이름은 필수입니다',
+					'Missing password': '비밀번호는 필수입니다',
+					'Passwords do not match': '비밀번호가 일치하지 않습니다',
+
 					navHome: '홈',
 					navAbout: '우리에 대해',
 					navAdaStations: 'ADA 역',
